@@ -78,7 +78,7 @@ export async function getSponsors(owner: string): Promise<Sponsor[]> {
 
     // Sort sponsors by tier price in descending order
     return sponsors.sort(
-      (a, b) => b.tier.monthlyPriceInDollars - a.tier.monthlyPriceInDollars,
+      (a, b) => b.tier?.monthlyPriceInDollars - a.tier?.monthlyPriceInDollars,
     );
   } catch (error) {
     console.error('Error fetching sponsors:', error);
