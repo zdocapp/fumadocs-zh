@@ -1,15 +1,14 @@
 ---
-title: Quick Start
-description: Getting Started with Fumadocs
+title: 快速开始
+description: Fumadocs 入门指南
 icon: Album
 ---
 
-## Introduction
+## 介绍
 
-Fumadocs <span className='text-fd-muted-foreground text-sm'>(Foo-ma docs)</span> is a **documentation framework**, designed to be fast, flexible,
-and composes seamlessly into your React framework.
+Fumadocs <span className='text-fd-muted-foreground text-sm'>(Foo-ma docs)</span> 是一个**文档框架**，旨在快速、灵活，并能无缝集成到您的 React 框架中。
 
-Fumadocs has different parts:
+Fumadocs 包含不同的部分：
 
 <Cards>
 
@@ -43,17 +42,17 @@ A command line tool to install UI components and automate things, useful for cus
   Read our in-depth [What is Fumadocs](/docs/ui/what-is-fumadocs) introduction.
 </Callout>
 
-### Terminology
+### 术语
 
-**Markdown/MDX:** Markdown is a markup language for creating formatted text. Fumadocs natively supports Markdown and MDX (superset of Markdown).
+**Markdown/MDX：** Markdown 是一种用于创建格式化文本的标记语言。Fumadocs 原生支持 Markdown 和 MDX（Markdown 的超集）。
 
-**[Bun](https://bun.sh):** A JavaScript runtime, we use it for running scripts.
+**[Bun](https://bun.sh)：** 一个 JavaScript 运行时，我们用它来运行脚本。
 
-Although not required, some basic knowledge of React.js would be useful for further customisations.
+虽然不是必需的，但一些 React.js 的基础知识将有助于进一步的定制。
 
-## Automatic Installation
+## 自动安装
 
-A minimum version of Node.js 20 required, note that Node.js 23.1 might have problems with Next.js.
+需要 Node.js 20 的最低版本，请注意 Node.js 23.1 可能与 Next.js 存在兼容性问题。
 
 ```bash tab="npm"
 npm create fumadocs-app
@@ -71,12 +70,12 @@ yarn create fumadocs-app
 bun create fumadocs-app
 ```
 
-It will ask you:
+安装程序会询问您：
 
-- the React.js framework to use (Next.js recommended).
-- the content source to use.
+- 要使用的 React.js 框架（推荐 Next.js）
+- 要使用的内容源
 
-A new fumadocs app should be initialized. Now you can start hacking!
+一个新的 fumadocs 应用将被初始化。现在您可以开始开发了！
 
 <Callout title='From Existing Codebase?'>
 
@@ -84,9 +83,9 @@ A new fumadocs app should be initialized. Now you can start hacking!
 
 </Callout>
 
-### Enjoy!
+### 开始使用！
 
-Create your first MDX file in the docs folder.
+在 docs 文件夹中创建您的第一个 MDX 文件。
 
 ```mdx title="content/docs/index.mdx"
 ---
@@ -96,23 +95,23 @@ title: Hello World
 ## Yo what's up
 ```
 
-Run the app in development mode and see http://localhost:3000/docs.
+在开发模式下运行应用并访问 http://localhost:3000/docs。
 
 ```npm
 npm run dev
 ```
 
-## FAQ
+## 常见问题
 
-Some common questions you may encounter.
+您可能会遇到的一些常见问题。
 
 <Accordions>
 
-  <Accordion id='change-base-url' title="How to change the base route of docs?">
+  <Accordion id='change-base-url' title="如何更改文档的基础路由？">
 
-    Routing is handled by your React framework, you need to change the routing structure first.
+    路由由您的 React 框架处理，您需要先更改路由结构。
 
-    For example, in Next.js, rename the route (`/docs/*` -> `/info/*`):
+    例如，在 Next.js 中，重命名路由（`/docs/*` -> `/info/*`）：
 
     <Files>
       <Folder name="app/docs" defaultOpen className="opacity-50" disabled>
@@ -123,7 +122,7 @@ Some common questions you may encounter.
       </Folder>
     </Files>
 
-    Or rename from `/docs/*` to `/*` using a route group:
+    或者使用路由组将 `/docs/*` 重命名为 `/*`：
 
     <Files>
       <Folder name="app/(docs)" defaultOpen>
@@ -131,43 +130,43 @@ Some common questions you may encounter.
       </Folder>
     </Files>
 
-    Finally, update the base URL of pages in `source.ts`:
+    最后，更新 `source.ts` 中页面的基础 URL：
 
 ```ts title="lib/source.ts"
 import { loader } from 'fumadocs-core/source';
 
 export const source = loader({
-  baseUrl: '/info', // to the new value [!code highlight]
+  baseUrl: '/info', // 更新为新值 [!code highlight]
 });
 ```
 
   </Accordion>
 
-    <Accordion id='multi-docs' title="How to implement multi-docs?">
-        We recommend to use [Sidebar Tabs](/docs/ui/navigation/sidebar#sidebar-tabs).
+    <Accordion id='multi-docs' title="如何实现多文档？">
+        我们推荐使用 [侧边栏选项卡](/docs/ui/navigation/sidebar#sidebar-tabs)。
     </Accordion>
 
 </Accordions>
 
-### For Next.js
+### 对于 Next.js
 
 <Accordions>
-  <Accordion id='dynamic-route' title="It uses Dynamic Route, will it be poor in performance?">
+  <Accordion id='dynamic-route' title="它使用了动态路由，性能会差吗？">
 
-    Next.js turns dynamic route into static routes when `generateStaticParams` is configured.
-    Hence, it is as fast as static pages.
+    当配置了 `generateStaticParams` 时，Next.js 会将动态路由转换为静态路由。
+    因此，它的速度与静态页面一样快。
 
-    You can [enable Static Exports](/docs/ui/static-export) on Next.js to get a static build output.
+    你可以在 Next.js 上[启用静态导出](/docs/ui/static-export)以获得静态构建输出。
 
   </Accordion>
-  <Accordion id='custom-layout-docs-page' title='How to create a page in /docs without docs layout?'>
+  <Accordion id='custom-layout-docs-page' title='如何在 /docs 中创建一个不使用文档布局的页面？'>
 
-    Same as managing layouts in Next.js App Router, remove the original MDX file from content directory (`/content/docs`).
-    This ensures duplicated pages will not cause errors.
+    与在 Next.js App Router 中管理布局相同，从内容目录（`/content/docs`）中移除原始的 MDX 文件。
+    这确保了重复的页面不会导致错误。
 
-    Now, You can add the page to another route group, which isn't a descendant of docs layout.
+    现在，你可以将页面添加到另一个路由组，该路由组不是文档布局的后代。
 
-    For example, to replace `/docs/test`:
+    例如，要替换 `/docs/test`：
 
     <Files>
       <File name="(home)/docs/test/page.tsx" />
@@ -177,7 +176,7 @@ export const source = loader({
       </Folder>
     </Files>
 
-    For `/docs`, you need to change the catch-all route to be non-optional:
+    对于 `/docs`，你需要将全捕获路由更改为非可选的：
 
     <Files>
       <File name="(home)/docs/page.tsx" />
@@ -191,23 +190,23 @@ export const source = loader({
 
 </Accordions>
 
-### Upgrade Fumadocs
+### 升级 Fumadocs
 
-Make sure to upgrade Fumadocs when you've encountered any problems or trying out new features:
+当你遇到任何问题或尝试新功能时，请确保升级 Fumadocs：
 
 ```bash title="pnpm"
 pnpm update -i -r --latest
 ```
 
-## Learn More
+## 了解更多
 
-New to here? Don't worry, we are welcome for your questions.
+新来的？别担心，我们欢迎您提出问题。
 
-If you find anything confusing, please give your feedback on [Github Discussion](https://github.com/fuma-nama/fumadocs/discussions)!
+如果您发现任何令人困惑的地方，请在 [Github Discussion](https://github.com/fuma-nama/fumadocs/discussions) 上提供反馈！
 
-### Writing Content
+### 编写内容
 
-For authoring docs, make sure to read:
+关于撰写文档，请务必阅读：
 
 <Cards>
   <Card href="/docs/ui/markdown" title="Markdown">
@@ -226,7 +225,7 @@ For authoring docs, make sure to read:
   />
 </Cards>
 
-### Special Needs
+### 特殊需求
 
 <Cards>
   <Card

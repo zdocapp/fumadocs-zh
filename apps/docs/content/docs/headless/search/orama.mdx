@@ -1,17 +1,17 @@
 ---
-title: Built-in Search
-description: Built-in document search of Fumadocs
+title: 内置搜索
+description: Fumadocs 的内置文档搜索功能
 ---
 
-Fumadocs supports document search with Orama, It is the default but also the recommended option since it can be self-hosted and totally free.
+Fumadocs 支持使用 Orama 进行文档搜索，这是默认且推荐的选项，因为它可以自托管且完全免费。
 
-## Setup
+## 设置
 
-Host the server for handling search requests.
+托管用于处理搜索请求的服务器。
 
-### From Source
+### 从源代码创建
 
-Create the server from source object.
+从源对象创建服务器。
 
 <include cwd meta='tab="Next.js" title="app/api/search/route.ts"'>
   ../../examples/next-mdx/app/api/search/route.ts
@@ -25,11 +25,11 @@ Create the server from source object.
   ../../examples/tanstack-start/src/routes/api/search.ts
 </include>
 
-### From Search Indexes
+### 从搜索索引创建
 
-Create the server from search indexes, each index needs a `structuredData` field.
+从搜索索引创建服务器，每个索引都需要一个 `structuredData` 字段。
 
-Usually, it is provided by your content source (e.g. Fumadocs MDX). You can also extract it from Markdown/MDX document using the [Remark Structure](/docs/headless/mdx/structure) plugin.
+通常，这由您的内容源（例如 Fumadocs MDX）提供。您也可以使用 [Remark Structure](/docs/headless/mdx/structure) 插件从 Markdown/MDX 文档中提取。
 
 ```ts tab="Next.js" title="app/api/search/route.ts"
 import { source } from '@/lib/source';
@@ -89,12 +89,12 @@ export const ServerRoute = createServerFileRoute('/api/search').methods({
 });
 ```
 
-### Searching Documents
+### 搜索文档
 
-You can search documents using:
+您可以使用以下方式搜索文档：
 
-- **Fumadocs UI**: Supported out-of-the-box, see [Search UI](/docs/ui/search/orama) for details.
-- **Search Client**:
+- **Fumadocs UI**：开箱即用支持，详见 [搜索界面](/docs/ui/search/orama)。
+- **搜索客户端**：
 
 ```ts twoslash
 import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -106,11 +106,11 @@ const client = useDocsSearch({
 
 <auto-type-table type='Extract<import("fumadocs-core/search/client").Client, { type: "fetch" }>' />
 
-## Configurations
+## 配置
 
-### Tag Filter
+### 标签筛选
 
-Support filtering results by tag, it's useful for implementing multi-docs similar to this documentation.
+支持按标签筛选结果，这对于实现类似本文档的多文档功能非常有用。
 
 ```ts
 import { source } from '@/lib/source';
@@ -131,10 +131,10 @@ const server = createFromSource(source, {
 });
 ```
 
-and update your search client:
+并更新您的搜索客户端：
 
-- **Fumadocs UI**: Configure [Tag Filter](/docs/ui/search/orama#tag-filter) on Search UI.
-- **Search Client**: pass a tag to the hook.
+- **Fumadocs UI**：在搜索界面上配置 [标签筛选](/docs/ui/search/orama#tag-filter)。
+- **搜索客户端**：向钩子传递一个标签。
 
 ```ts
 import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -145,9 +145,9 @@ const client = useDocsSearch({
 });
 ```
 
-### Static Mode [#static-export]
+### 静态模式 [#static-export]
 
-To support usage without servers, use `staticGET` from search server. For example:
+为了支持无服务器使用，请使用搜索服务器中的 `staticGET`。例如：
 
 ```ts tab="Next.js" title="app/api/search/route.ts"
 import { source } from '@/lib/source';
@@ -178,13 +178,13 @@ export const ServerRoute = createServerFileRoute('/api/search').methods({
 });
 ```
 
-> `staticGET` is also available on `createSearchAPI`.
+> `staticGET` 在 `createSearchAPI` 中也可用。
 
-and update your search clients:
+并更新您的搜索客户端：
 
-- **Fumadocs UI**: use [static client](/docs/ui/search/orama#static) on Search UI.
+- **Fumadocs UI**: 在搜索界面使用[静态客户端](/docs/ui/search/orama#static)。
 
-- **Search Client**: use `static` instead of `fetch`.
+- **搜索客户端**: 使用 `static` 替代 `fetch`。
 
   ```ts
   import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -205,9 +205,9 @@ and update your search clients:
 
 </Callout>
 
-## Internationalization
+## 国际化
 
-Make sure your language is on the Orama [Supported Languages](https://docs.orama.com/docs/orama-js/supported-languages) list.
+请确保您的语言在 Orama [支持的语言](https://docs.orama.com/docs/orama-js/supported-languages)列表中。
 
 ```ts title="app/api/search/route.ts" tab="From Source"
 import { source } from '@/lib/source';
@@ -242,7 +242,7 @@ const server = createI18nSearchAPI('advanced', {
 });
 ```
 
-For **Static Mode**, you should configure from client-side instead:
+对于**静态模式**，您需要从客户端进行配置：
 
 ```tsx title="components/search.tsx"
 import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -266,9 +266,9 @@ function Search() {
 }
 ```
 
-### Special Languages
+### 特殊语言
 
-Chinese and Japanese require additional configurations:
+中文和日语需要额外配置：
 
 ```npm
 @orama/tokenizers
@@ -302,11 +302,11 @@ function Search() {
 }
 ```
 
-and update your search clients:
+并更新您的搜索客户端：
 
-- **Fumadocs UI**: No changes needed, Fumadocs UI handles this when you have i18n configured correctly.
-- **Search Client**:
-  Add `locale` to the search client, this will only allow pages with specified locale to be searchable by the user.
+- **Fumadocs UI**: 无需更改，当您正确配置 i18n 时，Fumadocs UI 会自动处理此问题。
+- **搜索客户端**:
+  在搜索客户端中添加 `locale` 参数，这将仅允许用户搜索具有指定语言环境的页面。
 
 ```ts
 import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -317,9 +317,9 @@ const { search, setSearch, query } = useDocsSearch({
 });
 ```
 
-## Headless
+## 无头模式
 
-You can host the search server on other backend such as Express and Elysia.
+您可以将搜索服务器托管在其他后端（如 Express 和 Elysia）上。
 
 ```ts
 import { initAdvancedSearch } from 'fumadocs-core/search/server';

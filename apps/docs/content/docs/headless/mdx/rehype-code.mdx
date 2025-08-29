@@ -1,13 +1,13 @@
 ---
-title: Rehype Code
-description: Code syntax highlighter
+title: Rehype 代码高亮
+description: 代码语法高亮器
 ---
 
-A wrapper of [Shiki](https://shiki.style), the built-in syntax highlighter.
+[Shiki](https://shiki.style) 的封装，内置语法高亮器。
 
-## Usage
+## 使用方法
 
-Add the rehype plugin.
+添加 rehype 插件。
 
 ```ts title="MDX Compiler"
 import { compile } from '@mdx-js/mdx';
@@ -18,11 +18,11 @@ await compile('...', {
 });
 ```
 
-> This plugin is included by default on Fumadocs MDX.
+> 该插件默认包含在 Fumadocs MDX 中。
 
-### Output
+### 输出
 
-A codeblock wrapped in `<pre />` element.
+包裹在 `<pre />` 元素中的代码块。
 
 ```html
 <pre>
@@ -30,9 +30,9 @@ A codeblock wrapped in `<pre />` element.
 </pre>
 ```
 
-### Meta
+### 元数据
 
-It parses the `title` meta string, and adds it to the `pre` element as an attribute.
+它会解析 `title` 元字符串，并将其作为属性添加到 `pre` 元素中。
 
 ````mdx
 ```js title="Title"
@@ -40,25 +40,25 @@ console.log('Hello');
 ```
 ````
 
-You may filter the meta string before processing it with the `filterMetaString` option.
+您可以使用 `filterMetaString` 选项在处理前过滤元字符串。
 
-### Inline Code
+### 内联代码
 
-`console.log("hello world"){:js}` works.
+`console.log("hello world"){:js}` 有效。
 
-See https://shiki.style/packages/rehype#inline-code.
+参见 https://shiki.style/packages/rehype#inline-code。
 
-### Icon
+### 图标
 
-Adds an icon according to the language of the codeblock.
-It outputs HTML, you might need to render it with React `dangerouslySetInnerHTML`.
+根据代码块的语言添加图标。
+它会输出 HTML，您可能需要使用 React 的 `dangerouslySetInnerHTML` 来渲染。
 
 ```jsx
 <pre icon="<svg />">...</pre>
 ```
 
-Disable or customise icons with the `icon` option.
+使用 `icon` 选项禁用或自定义图标。
 
-### More Options
+### 更多选项
 
-See [Shiki](https://shiki.style).
+参见 [Shiki](https://shiki.style)。

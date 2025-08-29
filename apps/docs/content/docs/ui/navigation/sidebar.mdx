@@ -1,9 +1,9 @@
 ---
-title: Sidebar Links
-description: Customise sidebar navigation links on Docs Layout.
+title: 侧边栏链接
+description: 自定义文档布局中的侧边栏导航链接。
 ---
 
-## Overview
+## 概述
 
 <div className='flex justify-center items-center *:max-w-[200px] bg-gradient-to-br from-fd-primary/10 rounded-xl border'>
 
@@ -11,9 +11,9 @@ description: Customise sidebar navigation links on Docs Layout.
 
 </div>
 
-Sidebar items are rendered from the page tree you passed to `<DocsLayout />`.
+侧边栏项目根据传递给 `<DocsLayout />` 的页面树进行渲染。
 
-For `source.pageTree`, it generates the tree from your file structure, you can see [Routing](/docs/ui/page-conventions) for available patterns.
+对于 `source.pageTree`，它会根据您的文件结构生成树，您可以在[路由](/docs/ui/page-conventions)中查看可用模式。
 
 ```tsx title="layout.tsx"
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
@@ -32,7 +32,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-You may hardcode it too:
+您也可以硬编码它：
 
 ```tsx title="layout.tsx"
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
@@ -53,9 +53,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-### Sidebar Tabs (Dropdown) [#sidebar-tabs]
+### 侧边栏选项卡（下拉菜单） [#sidebar-tabs]
 
-Sidebar Tabs are folders with tab-like behaviours, only the content of opened tab will be visible.
+侧边栏选项卡是具有类似选项卡行为的文件夹，只有打开的选项卡内容可见。
 
 <div className='flex justify-center items-center *:max-w-[360px] bg-gradient-to-br from-fd-primary/10 rounded-xl border'>
 
@@ -63,9 +63,9 @@ Sidebar Tabs are folders with tab-like behaviours, only the content of opened ta
 
 </div>
 
-By default, the tab trigger will be displayed as a **Dropdown** component (hidden unless one of its items is active).
+默认情况下，选项卡触发器将显示为**下拉菜单**组件（除非其某个项目处于活动状态，否则隐藏）。
 
-You can add items by marking folders as [Root Folders](/docs/ui/page-conventions#root-folder), create a `meta.json` file in the folder:
+您可以通过将文件夹标记为[根文件夹](/docs/ui/page-conventions#root-folder)来添加项目，在文件夹中创建 `meta.json` 文件：
 
 ```json title="content/docs/my-folder/meta.json"
 {
@@ -75,7 +75,7 @@ You can add items by marking folders as [Root Folders](/docs/ui/page-conventions
 }
 ```
 
-Or specify them explicitly:
+或显式指定它们：
 
 ```tsx title="/app/docs/layout.tsx"
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
@@ -97,7 +97,7 @@ import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 />;
 ```
 
-Set it to `false` to disable:
+将其设置为 `false` 以禁用：
 
 ```tsx
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
@@ -130,9 +130,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 
 </Callout>
 
-#### Decoration
+#### 装饰
 
-Change the icon/styles of tabs.
+更改选项卡的图标/样式。
 
 ```tsx
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';

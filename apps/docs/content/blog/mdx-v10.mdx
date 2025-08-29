@@ -1,17 +1,17 @@
 ---
 title: Fumadocs MDX v10
-description: Improvement over Fumadocs MDX, our built-in content source.
+description: 对 Fumadocs MDX（我们内置的内容源）的改进。
 date: 2024-09-06
 author: Fuma Nama
 ---
 
-## The Problem
+## 问题所在
 
-Fumadocs MDX worked great for docs. But we also want to prioritize flexibility and code organization.
+Fumadocs MDX 在文档处理方面表现优异，但我们同样希望优先考虑灵活性和代码组织。
 
-Previously, it was a simple Webpack loader that turns **MDX** into **JavaScript**.
-You pass the MDX processor options to the loader, it turns them into JavaScript files.
-Then, a `.map.ts` will be exported:
+此前，它只是一个简单的 Webpack 加载器，将 **MDX** 转换为 **JavaScript**。
+您将 MDX 处理器选项传递给加载器，它会将这些选项转换为 JavaScript 文件。
+然后，会导出一个 `.map.ts` 文件：
 
 ```ts
 export const map = {
@@ -20,15 +20,15 @@ export const map = {
 };
 ```
 
-Your Next.js app will import the map file, and access the available MDX files.
+您的 Next.js 应用将导入该映射文件，并访问可用的 MDX 文件。
 
-This model works, but we started to see some problems:
+这种模式是可行的，但我们开始发现一些问题：
 
-- **No built-in way to define multiple collections:**
+- **缺乏内置方式定义多个集合：**
 
-  For example, we have a directory for blog posts and a directory for docs pages.
+  例如，我们有一个用于博客文章的目录和一个用于文档页面的目录。
 
-  On Fumadocs MDX, all these resources are transformed into a single object exported by `.map.ts`:
+  在 Fumadocs MDX 中，所有这些资源都会被转换为由 `.map.ts` 导出的单一对象：
 
   ```ts
   export const map = {
@@ -37,27 +37,27 @@ This model works, but we started to see some problems:
   };
   ```
 
-  We implemented a solution using Source API `rootDir` option, but this is not the ideal way.
-  This also gave us another problem:
+  我们使用 Source API 的 `rootDir` 选项实现了一个解决方案，但这并非理想方式。
+  这也给我们带来了另一个问题：
 
-- **Different MDX Options for each collection:**
+- **每个集合需要不同的 MDX 选项：**
 
-  Same as the above example, we have a `/blog` directory for blog posts.
-  If we want to add a remark plugin that **only work on blog posts**, this is impossible with Fumadocs MDX.
+  同上例，我们有一个用于博客文章的 `/blog` 目录。
+  如果我们想要添加一个**仅对博客文章生效**的 remark 插件，这在 Fumadocs MDX 中是无法实现的。
 
-  Once you apply a remark plugin, it's effective on all MDX files, including the MDX files in the docs directory.
+  一旦应用了 remark 插件，它将对所有 MDX 文件生效，包括文档目录中的 MDX 文件。
 
-- **Turbopack Compatibility:**
+- **Turbopack 兼容性：**
 
-  Turbopack doesn't allow passing unserializable options to loaders.
-  However, the entire MDX, remark and rehype ecosystem use functions for plugins.
-  Functions are not serializable, we cannot migrate Fumadocs to Turbopack unless we find a seamless solution that supports Turbopack.
+  Turbopack 不允许向加载器传递不可序列化的选项。
+  然而，整个 MDX、remark 和 rehype 生态系统都使用函数作为插件。
+  函数是不可序列化的，除非我们找到支持 Turbopack 的无缝解决方案，否则无法将 Fumadocs 迁移到 Turbopack。
 
-- **Compile-time validation:**
+- **编译时验证：**
 
-  All schema validation cannot be done during build time because the MDX loader actually, _doesn't know the collections you defined in `source.ts`._
+  所有模式验证都无法在构建时完成，因为 MDX 加载器实际上*并不知道你在 `source.ts` 中定义的集合*。
 
-  Furthermore, the Zod schema is passed to the source adapter in `source.ts` rather than the loader:
+  此外，Zod 模式是在 `source.ts` 中传递给源适配器，而不是传递给加载器：
 
   ```ts
   import { loader } from 'fumadocs-core/source';
@@ -65,27 +65,27 @@ This model works, but we started to see some problems:
 
   export const source = loader({
     source: createMDXSource(map, {
-      // schema
+      // 模式
     }),
   });
   ```
 
-  This loses some performance optimizations that can be possibly done on bundler level.
+  这失去了一些可能在打包器层面完成的性能优化。
 
-- **Untyped:**
+- **无类型：**
 
-  The exported `map` object from `.map.ts` file has a type of `unknown`, it is only typed when using it with Source API `loader`.
+  从 `.map.ts` 文件导出的 `map` 对象类型为 `unknown`，只有在与 Source API 的 `loader` 一起使用时才会被类型化。
 
-  This avoided the complexity to auto-generate types, but I wanted to make it typed and usable without Source API.
+  这避免了自动生成类型的复杂性，但我希望使其具有类型，并且无需 Source API 即可使用。
 
-### The Solution
+### 解决方案
 
-Taking some references from Content Collections and [Velite](https://velite.js.org), I found it would be great to have a config file for Fumadocs MDX.
+参考 Content Collections 和 [Velite](https://velite.js.org) 的设计思路，我认为为 Fumadocs MDX 提供一个配置文件会非常理想。
 
 #### `source.config.ts`
 
-We can make the syntax similar to Content Collections and other tools, to make the adoption process easier.
-To define a collection:
+我们可以让语法与 Content Collections 及其他工具相似，以降低采用门槛。
+定义一个集合：
 
 ```ts
 import { z } from 'zod';
@@ -101,32 +101,32 @@ export const blog = defineCollections({
 });
 ```
 
-The MDX loader reads the config file, find the corresponding collection of the file, validate, and compile it using the options from collection.
+MDX 加载器读取配置文件，找到文件对应的集合，进行验证，并使用集合中的选项进行编译。
 
-This allows us to pass MDX options normally without breaking Turbopack's rules.
+这使我们能够正常传递 MDX 选项，同时不违反 Turbopack 的规则。
 
-### The Implementation
+### 实现方式
 
-As the config file is written in TypeScript, we will need a bundler to read it.
-I used esbuild, it is a performant bundler written in Go.
+由于配置文件是用 TypeScript 编写的，我们需要一个打包器来读取它。
+我使用了 esbuild，这是一个用 Go 编写的高性能打包器。
 
-After bundling the config file, a dynamic import will work as expected.
+打包配置文件后，动态导入将按预期工作。
 
 ```js
 await import('./source.compiled.mjs');
 ```
 
-#### `.map` file
+#### `.map` 文件
 
-We need a place to import the compiled collections.
-Previously, we simply generate a `.map.ts` file with Webpack plugins.
-It declares the types, with no actual data.
+我们需要一个地方来导入编译后的集合。
+之前，我们简单地使用 Webpack 插件生成了一个 `.map.ts` 文件。
+它声明了类型，但不包含实际数据。
 
 ```ts
 export declare const map: unknown;
 ```
 
-A loader will be used to transform `.map.ts` file into the output aforementioned:
+将使用一个加载器将 `.map.ts` 文件转换为上述输出：
 
 ```ts
 export const map = {
@@ -135,35 +135,35 @@ export const map = {
 };
 ```
 
-The generated `.map.ts` never changes because it doesn't depend on the config file.
-No matter how you configure it, there'll be only a `map` object exported, with a type of `unknown`.
+生成的 `.map.ts` 文件永远不会改变，因为它不依赖于配置文件。
+无论你如何配置，都只会导出一个类型为 `unknown` 的 `map` 对象。
 
-Now, we need to generate types for every collection, and the types may change as we change the collections.
-The previous approach is no longer applicable.
+现在，我们需要为每个集合生成类型，并且这些类型可能会随着集合的更改而变化。
+之前的方法不再适用。
 
-I renamed the `.map.ts` file to `.source/index`, both `index.d.ts` and `index.js` are generated by Fumadocs MDX, instead of using a loader.
+我将 `.map.ts` 文件重命名为 `.source/index`，`index.d.ts` 和 `index.js` 均由 Fumadocs MDX 生成，而非使用加载器。
 
-A map file generator is implemented, it reads the config file and generate output based on exported collections.
+已实现映射文件生成器，它会读取配置文件并根据导出的集合生成输出。
 
-#### Auto-reload
+#### 自动重载
 
-We want to watch for changes:
+我们需要监听变更：
 
-- When a input file added/removed, add or remove relevant entries from the `.source/index.js` file.
-- When the config file changed, re-compile affected files, and update generate types at `.source/index.d.ts`.
+- 当输入文件被添加/删除时，在 `.source/index.js` 文件中添加或移除相关条目。
+- 当配置文件变更时，重新编译受影响的文件，并更新 `.source/index.d.ts` 中的生成类型。
 
-I chose chokidar to watch file changes, it worked well.
-The file watcher lives on `next.config.mjs`, it's independent to the MDX loader.
+我选择使用 chokidar 来监听文件变更，效果良好。
+文件监听器位于 `next.config.mjs`，独立于 MDX 加载器。
 
-To notify bundlers when config files changed, we added a **hash**.
+为了在配置文件变更时通知打包器，我们添加了**哈希值**。
 
 ```ts
 export const collection1 = [import('./docs/index.mdx?hash=hashOfConfigFile')];
 ```
 
-The file will be re-compiled as the config hash changes.
+当配置哈希值变更时，文件将被重新编译。
 
-To optimize performance, we also added the collection name.
+为优化性能，我们还添加了集合名称。
 
 ```ts
 export const collection1 = [
@@ -171,22 +171,22 @@ export const collection1 = [
 ];
 ```
 
-The loader obtains the collection of input file from resource query, without taking extra steps to detect its associated collection.
+加载器从资源查询中获取输入文件的集合，无需额外步骤检测其关联的集合。
 
-### Result
+### 结果
 
-A `.source/index` file will be generated, it is fully typed.
-The files will be re-compiled as you modify the config file.
+将生成一个 `.source/index` 文件，该文件具备完整类型支持。
+当您修改配置文件时，文件将被重新编译。
 
-- Turbopack supported, we have a small example in the repo using Turbopack.
-- Multiple Collections, with its own MDX options.
-- Runtime + Build-time validation & transformation.
+- 支持 Turbopack，我们在代码库中提供了使用 Turbopack 的小型示例。
+- 多集合支持，每个集合拥有独立的 MDX 选项。
+- 运行时 + 构建时验证与转换。
 
-### Questions
+### 问题
 
-I think there is still room for improvement:
+我认为仍有改进空间：
 
-- Use a Turbopack-native thing to bundle the config file?
-- Lazy bundle/import the main body of MDX file?
+- 使用 Turbopack 原生功能来打包配置文件？
+- 懒加载/导入 MDX 文件的主体内容？
 
-Please give me feedback about the redesign of Fumadocs MDX ;)
+请对 Fumadocs MDX 的重新设计提供反馈意见 ;)

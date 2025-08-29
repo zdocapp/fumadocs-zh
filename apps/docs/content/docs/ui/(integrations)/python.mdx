@@ -1,27 +1,27 @@
 ---
 title: Python
-description: Generate docs from Python
+description: 从 Python 生成文档
 ---
 
 <Callout type="warn" title="Experimental">
   Support for Python docgen is still experimental, please use it in caution.
 </Callout>
 
-## Setup
+## 设置
 
 ```package-install
 fumadocs-python shiki
 ```
 
-### Generate Docs
+### 生成文档
 
-Install the Python command first, we need it to collect docs from your Python package.
+首先安装 Python 命令，我们需要它来从你的 Python 包中收集文档。
 
 ```bash
 pip install ./node_modules/fumadocs-python
 ```
 
-Generate the docs as a JSON:
+将文档生成为 JSON：
 
 ```bash
 fumapy-generate your-package-name
@@ -29,7 +29,7 @@ fumapy-generate your-package-name
 fumapy-generate httpx
 ```
 
-Use the following script to convert JSON into MDX:
+使用以下脚本将 JSON 转换为 MDX：
 
 ```js title="scripts/generate-docs.mjs"
 import { rimraf } from 'rimraf';
@@ -62,9 +62,9 @@ void generate();
   Make sure your doc is valid in MDX syntax before running.
 </Callout>
 
-### MDX Components
+### MDX 组件
 
-Add the components.
+添加组件。
 
 ```tsx
 import defaultMdxComponents from 'fumadocs-ui/mdx';
@@ -80,7 +80,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 }
 ```
 
-Add styles:
+添加样式：
 
 ```css title="Tailwind CSS"
 @import 'tailwindcss';

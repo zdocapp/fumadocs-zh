@@ -1,18 +1,18 @@
 ---
-title: The early mistake of Fumadocs
-description: What we failed at to deliver better DX.
+title: Fumadocs 的早期失误
+description: 我们在提供更佳开发者体验方面的失败之处。
 author: Fuma Nama
 date: 2025-08-22
 ---
 
-## A Mistake
+## 一个失误
 
-The early mistake of Fumadocs was **Fumadocs CLI being too late and not getting enough mentions on docs**.
+Fumadocs 的早期失误在于 **Fumadocs CLI 推出过晚且在文档中提及不足**。
 
-To push the CLI approach further like the recent Shadcn CLI support, there's changes we have to made.
-Early adopters will face problems if their customisations went beyond what our abstraction can mitigate.
+为了进一步推进 CLI 方法，例如最近对 Shadcn CLI 的支持，我们必须做出一些改变。
+如果早期采用者的自定义超出了我们抽象层能够缓解的范围，他们将面临问题。
 
-**For example:** A small CSS change can still breaks hacky CSS customisations, we can only ensure backward compatibility for the ones scoped by CSS selectors, or exposed options:
+**例如：** 一个小的 CSS 变更仍可能破坏临时的 CSS 自定义，我们只能确保通过 CSS 选择器限定范围或公开选项的向后兼容性：
 
 ```css
 #nd-sidebar {
@@ -21,36 +21,36 @@ Early adopters will face problems if their customisations went beyond what our a
 }
 ```
 
-For CLI to work better, we need layout components to be entirely independent for modularization. A ideal state is that:
+为了让 CLI 更好地工作，我们需要布局组件完全独立以实现模块化。理想状态是：
 
-- Normal users can use exposed options, enjoying UI iterations from upstream.
-- Advanced customisations can use Fumadocs CLI, avoiding upstream changes.
+- 普通用户可以使用公开选项，享受上游的 UI 迭代。
+- 高级自定义可以使用 Fumadocs CLI，避免上游变更。
 
-Same as the solution described in [this post about UI Customisation](/blog/customise-ui#the-solution).
+这与[这篇关于 UI 自定义的文章](/blog/customise-ui#the-solution)中描述的解决方案相同。
 
-### A Good Example
+### 一个良好示例
 
-For lighter customisations like nuqs did, a PR to migrate from old versions [#1056](https://github.com/47ng/nuqs/pull/1056) can reduce code on user land and migration is simple.
+对于像 nuqs 所做的较轻量自定义，通过 PR 从旧版本迁移 [#1056](https://github.com/47ng/nuqs/pull/1056) 可以减少用户端的代码量，且迁移过程简单。
 
-### The Problems
+### 问题所在
 
-When your hacks is heavier, migration is much harder combined with the tech debt of your codebase.
+当你的临时方案更复杂时，结合代码库的技术债务，迁移会困难得多。
 
-Some problems I observed:
+我观察到的一些问题：
 
-#### Page Tree API being Neglected
+#### 页面树 API 被忽视的问题
 
-Page tree is actually a crucial idea of Fumadocs, unifying all navigation & linking of docs.
+页面树实际上是 Fumadocs 的核心概念，统一了文档的所有导航和链接。
 
-Even in the early days, it's already a robust API supporting features like Root Folder (since v12):
+即使在早期版本中，它已经是一个支持根文件夹等功能（自 v12 起）的强大 API：
 
 <div className="flex flex-row justify-center mx-auto max-w-[300px]">
   ![Preview](/blog/v12-root-toggle.png)
 </div>
 
-Some projects didn't rely on our file-based routing nor page tree API, which resulted in a lot of hacks around sidebar & `loader()`.
+一些项目既不依赖我们的基于文件的路由，也不使用页面树 API，这导致在侧边栏和 `loader()` 方面出现了大量临时解决方案。
 
-Its idea is simple:
+其理念很简单：
 
 ```txt tab="Server"
 files -> Fumadocs -> page tree
@@ -60,13 +60,13 @@ files -> Fumadocs -> page tree
 page tree -> navigation components (e.g. page footer & sidebar)
 ```
 
-Using it properly can already reduce a massive amount of work, we have [a specs for Page Tree](/docs/headless/page-tree) for hardcoded page trees.
+正确使用它已经可以大幅减少工作量，我们为硬编码页面树提供了[页面树规范](/docs/headless/page-tree)。
 
-#### CSS Variables being Neglected
+#### CSS 变量被忽视的问题
 
-Fumadocs is using CSS variables for all colors since the beginning, the naming is identical to Shadcn UI which makes customisation easy.
+Fumadocs 从一开始就使用 CSS 变量来处理所有颜色，其命名与 Shadcn UI 完全相同，这使得自定义变得容易。
 
-But I noticed some are overriding the Tailwind CSS **classes** rather than **colors**, like:
+但我注意到有些人覆盖的是 Tailwind CSS **类**而不是**颜色**，例如：
 
 ```css
 #nd-sidebar .color-fd-background\/80 {
@@ -74,7 +74,7 @@ But I noticed some are overriding the Tailwind CSS **classes** rather than **col
 }
 ```
 
-In fact we always support a simpler way:
+实际上我们一直支持更简单的方法：
 
 ```css
 #nd-sidebar {
@@ -82,21 +82,21 @@ In fact we always support a simpler way:
 }
 ```
 
-Now we also have a Shadcn UI preset to reuse your colors from main app.
+现在我们还有一个 Shadcn UI 预设，可以重用主应用程序中的颜色。
 
-### Early Reflections
+### 早期反思
 
-I think the CLI approach is correct, it'll be the primary way for advanced customisation.
+我认为 CLI 方法是正确的，它将成为高级自定义的主要方式。
 
-My future plans:
+我的未来计划：
 
-- **Continue improving Fumadocs CLI:** adding install-time optimization to remove unused files according to your options (e.g. use existing sidebar component instead of installing one).
-- **A better versioning policy:** Reduce abstraction for mitigating upstream changes, instead version the components directly (e.g. creating a new `fumadocs-ui/layouts/v2/page` instead of a major UI change).
-- **Add Fumadocs-native cloud features:** More official integrations like monitoring/analytics feature designed for Fumadocs.
+- **持续改进 Fumadocs CLI：** 新增安装时优化功能，根据您的选项移除未使用的文件（例如使用现有的侧边栏组件而非安装新组件）。
+- **更优的版本管理策略：** 减少抽象层级以缓解上游变更影响，改为直接对组件进行版本控制（例如创建新的 `fumadocs-ui/layouts/v2/page` 而非进行重大的 UI 改动）。
+- **增加 Fumadocs 原生云功能：** 提供更多官方集成方案，例如专为 Fumadocs 设计的监控/分析功能。
 
-My biggest goal is to build my own dev team or startup, I realized my time is too limited to build the excellent software in my imaginary.
-There's rough edges that I never found time to polish, and too many things to do - even if AI has handled the basic work.
+我最大的目标是组建自己的开发团队或初创公司，我意识到自己的时间过于有限，无法实现理想中的卓越软件。
+存在许多我始终无暇打磨的粗糙边缘，以及待办事项过多——即便人工智能已处理了基础工作。
 
-That's all I want to say :)
+这就是我想说的全部内容 :)
 
-Welcome for questions (via DM/GitHub), I'm happy to improve rough edges whenever I have time.
+欢迎提问（通过私信/GitHub），我会在有空时不断完善这些粗糙之处。

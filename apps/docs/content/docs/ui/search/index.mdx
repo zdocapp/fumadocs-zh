@@ -1,13 +1,13 @@
 ---
-title: Search
-description: Implement document search in your docs
+title: 搜索
+description: 在您的文档中实现文档搜索功能
 ---
 
-## Search UI
+## 搜索界面
 
-You can customise some configurations from root provider.
+您可以从根提供程序自定义一些配置。
 
-For example, to disable search UI:
+例如，禁用搜索界面：
 
 ```tsx title="app/layout.tsx"
 import { RootProvider } from 'fumadocs-ui/provider';
@@ -30,11 +30,11 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-For further customisations, you can see [Search Client](#search-client).
+如需进一步自定义，请参阅[搜索客户端](#search-client)。
 
-### Hot Keys
+### 快捷键
 
-Customise the hot keys to trigger search dialog, by default it's <kbd>⌘</kbd> <kbd>K</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd>.
+自定义触发搜索对话框的快捷键，默认为 <kbd>⌘</kbd> <kbd>K</kbd> 或 <kbd>Ctrl</kbd> <kbd>K</kbd>。
 
 ```tsx
 import { RootProvider } from 'fumadocs-ui/provider';
@@ -53,23 +53,23 @@ import { RootProvider } from 'fumadocs-ui/provider';
 </RootProvider>;
 ```
 
-## Search Client
+## 搜索客户端
 
-You can choose & configure the search client according to your search engine, it defaults to Orama search.
+您可以根据搜索引擎选择和配置搜索客户端，默认为 Orama 搜索。
 
 <DocsCategory />
 
-### Community Integrations
+### 社区集成
 
-A list of integrations maintained by community.
+由社区维护的集成列表。
 
 - [Trieve Search](/docs/headless/search/trieve)
 
-### Highlight Matches
+### 高亮匹配项
 
-Search integrations can provide `contentWithHighlights` to highlight matches.
+搜索集成可以提供 `contentWithHighlights` 来高亮显示匹配项。
 
-After configuring search client UI according to the guides above, you can customise how it is rendered.
+根据上述指南配置搜索客户端界面后，您可以自定义其渲染方式。
 
 ```tsx title="components/search.tsx"
 <SearchDialogList

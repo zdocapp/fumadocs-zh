@@ -1,14 +1,14 @@
 ---
 title: Banner
-description: Add a banner to your site
+description: 为您的网站添加横幅
 preview: banner
 ---
 
 <Installation name="banner" />
 
-## Usage
+## 使用方法
 
-Put the element at the top of your root layout, you can use it for displaying announcements.
+将此元素放置在根布局的顶部，可用于显示公告信息。
 
 ```tsx
 import { Banner } from 'fumadocs-ui/components/banner';
@@ -29,9 +29,9 @@ export default function RootLayout({
 }
 ```
 
-### Variant
+### 变体
 
-Change the default variant.
+更改默认变体。
 
 ```tsx
 import { Banner } from 'fumadocs-ui/components/banner';
@@ -55,10 +55,10 @@ import { Banner } from 'fumadocs-ui/components/banner';
 </Banner>;
 ```
 
-### Change Layout
+### 更改布局
 
-By default, the banner uses a `style` tag to modify Fumadocs layouts (e.g. reduce the sidebar height).
-You can disable it with:
+默认情况下，横幅使用 `style` 标签来修改 Fumadocs 布局（例如减少侧边栏高度）。
+您可以通过以下方式禁用它：
 
 ```tsx
 import { Banner } from 'fumadocs-ui/components/banner';
@@ -66,9 +66,9 @@ import { Banner } from 'fumadocs-ui/components/banner';
 <Banner changeLayout={false}>Hello World</Banner>;
 ```
 
-### Close
+### 关闭
 
-To allow users to close the banner, give the banner an ID.
+若要允许用户关闭横幅，请为横幅指定一个 ID。
 
 ```tsx
 import { Banner } from 'fumadocs-ui/components/banner';
@@ -76,4 +76,4 @@ import { Banner } from 'fumadocs-ui/components/banner';
 <Banner id="hello-world">Hello World</Banner>;
 ```
 
-The state will be automatically persisted.
+状态将自动持久化保存。

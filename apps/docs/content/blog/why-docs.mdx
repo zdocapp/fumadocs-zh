@@ -1,72 +1,72 @@
 ---
-title: Why do you need docs?
-description: You've read so many docs, but are they necessary?
+title: 为什么需要文档？
+description: 你已经阅读了这么多文档，但它们真的必要吗？
 date: 2024-05-26
 author: Fuma Nama
 ---
 
-People often ask me, do we really need a framework to build docs sites? Well, **You don't**.
+人们经常问我，我们真的需要一个框架来构建文档站点吗？嗯，**你不需要**。
 
-Documentation sites are so important in software development,
-internal docs for developers in your company to understand the architecture,
-docs for frameworks,
-docs for web standards...
+文档网站在软件开发中非常重要，
+公司内部供开发人员理解架构的内部文档，
+框架文档，
+Web标准文档...
 
-Building docs seems simple, but can be difficult.
+构建文档看似简单，但可能很困难。
 
-There are so many paradigms to build docs, but writing beginner-friendly docs could be difficult.
-As a result, people tend to use powerful docs frameworks, making the docs site interactive and straightforward.
+构建文档有很多范式，但编写对初学者友好的文档可能很困难。
+因此，人们倾向于使用功能强大的文档框架，使文档站点具有交互性且直观易懂。
 
-## Over-Engineered
+## 过度工程化
 
-For the docs of a small library/API service, you probably don't need to setup a Next.js site and spend time writing your site.
-Neither Nextra nor Fumadocs could be better than GitHub wiki and Swagger docs in this case.
+对于小型库/API服务的文档，你可能不需要设置Next.js站点并花费时间编写站点。
+在这种情况下，无论是Nextra还是Fumadocs，都无法比GitHub wiki和Swagger文档更好。
 
-They offer a good, decent UI, basic functionalities, and a proper workflow of authoring docs.
-The DX is good enough, I can't think of a reason to switch to a full-powered docs framework just to make your docs look fancy.
+它们提供了良好、得体的用户界面，基本功能，以及编写文档的适当工作流程。
+开发者体验已经足够好，我想不出有什么理由要切换到一个功能齐全的文档框架，仅仅为了让你的文档看起来花哨。
 
-I'll just recommend writing your docs in markdown, make it accessible on your GitHub repository.
+我只会建议你用markdown编写文档，使其在你的GitHub仓库中可访问。
 
-## Why Framework?
+## 为什么需要框架？
 
-Now you may wonder, why major services and frameworks have their own docs sites built with docs frameworks?
+现在你可能想知道，为什么主要服务和框架都有自己用文档框架构建的文档站点？
 
-Of course, _Usually_ using things like GitHub Wiki is adequate, but it is not always true.
-Let's take Component Library for example, you cannot showcase your components with Markdown.
-You will constantly find an ordinary Markdown document lacks capability and flexibility.
+当然，*通常*使用像 GitHub Wiki 这样的工具就足够了，但这并非总是如此。
+以组件库为例，你无法用 Markdown 来展示你的组件。
+你会不断发现普通的 Markdown 文档缺乏能力和灵活性。
 
-Documentation frameworks aim to solve this problem, with the ability to integrate with major libraries like **React.js** and **Vue.js**.
-Good examples are Vitepress, Mintlify and Nextra - They made writing docs more convenient and effective, while offering a better, dedicated experience to readers.
+文档框架旨在解决这个问题，它们能够与主流库如 **React.js** 和 **Vue.js** 集成。
+优秀的例子包括 Vitepress、Mintlify 和 Nextra——它们让编写文档更加便捷高效，同时为读者提供了更好、更专注的体验。
 
-For anything more than a simple library or API service, **it is worth trying.**
+对于任何超出简单库或 API 服务的项目，**值得一试。**
 
-### Reinvent the Wheels
+### 重新发明轮子
 
-I would never recommend building a "custom docs site" on your own, without a proper docs framework.
-Despite the **Don't re-invent the wheels** principle, your hand-made docs site actually takes way more effort to make it decent.
+我绝不建议在没有合适的文档框架的情况下，自行构建“自定义文档站点”。
+尽管有 **不要重新发明轮子** 的原则，但手工制作的文档站点实际上需要付出更多努力才能使其像样。
 
-1. Document Search
-2. A user-friendly navigation experience
-3. Reading experience
-4. UI/UX Design
+1. 文档搜索
+2. 用户友好的导航体验
+3. 阅读体验
+4. UI/UX 设计
 
-Implementing them properly already sounds nerve-racking, right?
+正确实现这些功能听起来就已经令人头疼了，对吧？
 
-The docs itself, is definitely not your first priority. You should never spend your precious time re-inventing the wheels - **it isn't worth it**.
+文档本身绝对不是你的首要任务。你不应该把宝贵的时间花在重新发明轮子上——**这不值得**。
 
-From my perspective, I'd rather use GitHub Wiki than re-inventing the wheels.
-Why don't pick a decent solution? It saves your indispensable time, and help reduce the shitty docs sites on the internet.
+在我看来，我宁愿使用 GitHub Wiki 也不愿重新发明轮子。
+为什么不选择一个像样的解决方案呢？它节省了你宝贵的时间，并有助于减少互联网上糟糕的文档站点。
 
-## What do we focus at Fumadocs?
+## Fumadocs 关注什么？
 
-I personally value reading experience more than a fancy eye-catching UI.
-You may notice, we do not have animations everywhere, and we avoided many fancy designs.
+我个人更看重阅读体验，而非花哨夺目的用户界面。
+您可能会注意到，我们并未处处使用动画，也避免了许多浮华的设计。
 
-Fanciness of UI should stay only in landing page, a docs site should focus on **content.**
-Navigation elements are helpers to browse your site, never should they take up too much space on the screen.
+界面的华丽应仅停留在着陆页，文档站点应专注于**内容**。
+导航元素是浏览站点的辅助工具，绝不应在屏幕上占据过多空间。
 
-One thing I hated the most is the design of _two sidebars_, it is confusing and meaningless.
-You can just organize all items to a single, clean sidebar, but people instead added two hamburger buttons to the navbar.
+我最讨厌的设计莫过于*双侧边栏*，它既令人困惑又毫无意义。
+您完全可以将所有项目组织到一个简洁的单一边栏中，但人们却选择在导航栏添加两个汉堡按钮。
 
 <div className='mx-auto max-w-[400px]'>
 
@@ -74,11 +74,11 @@ You can just organize all items to a single, clean sidebar, but people instead a
 
 </div>
 
-My favourite docs site is still [Linear docs](https://linear.app/docs), looks good and simple.
+我最喜欢的文档站点仍是 [Linear docs](https://linear.app/docs)，外观美观且简洁。
 
-## Conclusion
+## 结论
 
-1. You don't need a full-powered docs framework for a small library
-2. Don't make a docs site on your own, use a proper docs framework
-3. Fumadocs focuses on reading experience
-4. You should focus on content, too
+1. 对于小型库，您不需要功能全面的文档框架
+2. 不要自行构建文档站点，请使用合适的文档框架
+3. Fumadocs 专注于阅读体验
+4. 您也应专注于内容

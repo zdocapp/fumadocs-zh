@@ -1,17 +1,17 @@
 ---
-title: Math
-description: Writing math equations in Markdown/MDX.
+title: 数学公式
+description: 在 Markdown/MDX 中编写数学公式。
 ---
 
-## Getting Started
+## 开始使用
 
 ```package-install
 remark-math rehype-katex katex
 ```
 
-### Add Plugins
+### 添加插件
 
-Add the required remark/rehype plugins, the code might be vary depending on your content source.
+添加所需的 remark/rehype 插件，具体代码可能因您的内容源而异。
 
 ```ts title="source.config.ts" tab="Fumadocs MDX"
 import rehypeKatex from 'rehype-katex';
@@ -27,17 +27,17 @@ export default defineConfig({
 });
 ```
 
-### Add Stylesheet
+### 添加样式表
 
-Add the following to root layout to make it looks great:
+将以下内容添加到根布局中，使其看起来更美观：
 
 ```tsx title="layout.tsx"
 import 'katex/dist/katex.css';
 ```
 
-### Done
+### 完成
 
-Type some TeX expression in your documents, like the Pythagoras theorem:
+在您的文档中输入一些 TeX 表达式，例如勾股定理：
 
 ````mdx
 Inline: $$c = \pm\sqrt{a^2 + b^2}$$
@@ -47,13 +47,13 @@ c = \pm\sqrt{a^2 + b^2}
 ```
 ````
 
-Inline: $$c = \pm\sqrt{a^2 + b^2}$$
+行内公式：$$c = \pm\sqrt{a^2 + b^2}$$
 
 ```math
 c = \pm\sqrt{a^2 + b^2}
 ```
 
-Taylor Expansion (expressing holomorphic function $$f(x)$$ in power series):
+泰勒展开（将全纯函数 $$f(x)$$ 表示为幂级数）：
 
 ```math
 \displaystyle {\begin{aligned}T_{f}(z)&=\sum _{k=0}^{\infty }{\frac {(z-c)^{k}}{2\pi i}}\int _{\gamma }{\frac {f(w)}{(w-c)^{k+1}}}\,dw\\&={\frac {1}{2\pi i}}\int _{\gamma }{\frac {f(w)}{w-c}}\sum _{k=0}^{\infty }\left({\frac {z-c}{w-c}}\right)^{k}\,dw\\&={\frac {1}{2\pi i}}\int _{\gamma }{\frac {f(w)}{w-c}}\left({\frac {1}{1-{\frac {z-c}{w-c}}}}\right)\,dw\\&={\frac {1}{2\pi i}}\int _{\gamma }{\frac {f(w)}{w-z}}\,dw=f(z),\end{aligned}}

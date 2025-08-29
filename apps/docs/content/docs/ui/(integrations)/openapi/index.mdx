@@ -1,11 +1,11 @@
 ---
 title: OpenAPI
-description: Generating docs for OpenAPI schema
+description: 为 OpenAPI 模式生成文档
 ---
 
-## Manual Setup
+## 手动设置
 
-Install the required packages.
+安装所需的包。
 
 ```npm
 npm i fumadocs-openapi shiki
@@ -16,9 +16,9 @@ npm i fumadocs-openapi shiki
   [#2223](https://github.com/fuma-nama/fumadocs/issues/2223).
 </Callout>
 
-### Generate Styles
+### 生成样式
 
-Please note that you must have Tailwind CSS v4 configured.
+请注意，您必须已配置 Tailwind CSS v4。
 
 ```css title="Tailwind CSS"
 @import 'tailwindcss';
@@ -28,9 +28,9 @@ Please note that you must have Tailwind CSS v4 configured.
 @import 'fumadocs-openapi/css/preset.css';
 ```
 
-### Configure Pages
+### 配置页面
 
-Create an OpenAPI instance on the server.
+在服务器上创建一个 OpenAPI 实例。
 
 ```ts title="lib/openapi.ts"
 import { createOpenAPI } from 'fumadocs-openapi/server';
@@ -53,7 +53,7 @@ export const source = loader({
 });
 ```
 
-Add `APIPage` to your MDX Components, so that you can use it in MDX files.
+将 `APIPage` 添加到您的 MDX 组件中，以便您可以在 MDX 文件中使用它。
 
 ```tsx title="mdx-components.tsx"
 import defaultComponents from 'fumadocs-ui/mdx';
@@ -70,13 +70,13 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 }
 ```
 
-> `APIPage` is a React Server Component.
+> `APIPage` 是一个 React 服务器组件。
 
-### Generate Files
+### 生成文件
 
-You can generate MDX files directly from your OpenAPI schema.
+您可以直接从 OpenAPI 模式生成 MDX 文件。
 
-Create a script:
+创建一个脚本：
 
 ```js title="scripts/generate-docs.ts"
 import { generateFiles } from 'fumadocs-openapi';
@@ -91,24 +91,24 @@ void generateFiles({
 });
 ```
 
-> Only OpenAPI 3.0 and 3.1 are supported.
+> 仅支持 OpenAPI 3.0 和 3.1。
 
-Generate docs with the script:
+使用脚本生成文档：
 
 ```bash
 bun ./scripts/generate-docs.ts
 ```
 
-## Features
+## 功能特性
 
-The official OpenAPI integration supports:
+官方的 OpenAPI 集成支持：
 
-- Basic API endpoint information
-- Interactive API playground
-- Example code to send request (in different programming languages)
-- Response samples and TypeScript definitions
-- Request parameters and body generated from schemas
+- 基本的 API 端点信息
+- 交互式 API 演练场
+- 发送请求的示例代码（使用不同的编程语言）
+- 响应示例和 TypeScript 定义
+- 从模式生成的请求参数和请求体
 
-### Demo
+### 演示
 
-[View demo](/docs/openapi).
+[查看演示](/docs/openapi)。

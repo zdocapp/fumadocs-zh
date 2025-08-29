@@ -1,17 +1,17 @@
 ---
 title: Next.js
-description: Use Fumadocs MDX with Next.js
+description: 在 Next.js 中使用 Fumadocs MDX
 ---
 
-## Setup
+## 设置
 
-Set up Fumadocs MDX for your Next.js application.
+为你的 Next.js 应用程序设置 Fumadocs MDX。
 
 ```npm
 npm i fumadocs-mdx @types/mdx @types/mdx
 ```
 
-Create the configuration file:
+创建配置文件：
 
 ```ts title="source.config.ts"
 import { defineDocs, defineConfig } from 'fumadocs-mdx/config';
@@ -23,7 +23,7 @@ export const docs = defineDocs({
 export default defineConfig();
 ```
 
-Add the plugin to Next.js config:
+将插件添加到 Next.js 配置中：
 
 ```js title="next.config.mjs"
 import { createMDX } from 'fumadocs-mdx/next';
@@ -47,11 +47,11 @@ export default withMDX(config);
 
 </Callout>
 
-A `.source` folder will be generated when you run `next dev` or `next build`.
+当你运行 `next dev` 或 `next build` 时，将生成一个 `.source` 文件夹。
 
-### Accessing Content
+### 访问内容
 
-You can access the collection output from `.source` folder with its original name:
+你可以通过原始名称从 `.source` 文件夹访问集合输出：
 
 ```ts tab="source.config.ts"
 import { defineDocs } from 'fumadocs-mdx/config';
@@ -73,13 +73,13 @@ import { docs } from '@/.source';
 console.log(docs);
 ```
 
-The type of output can have a different type/shape depending on the collection type and schema.
+输出的类型可能因集合类型和模式的不同而具有不同的类型/形状。
 
-> Make sure you are importing from `.source` rather than `source.config.ts`. We will import it with `@/.source` import alias in this guide.
+> 确保你从 `.source` 导入，而不是 `source.config.ts`。在本指南中，我们将使用 `@/.source` 导入别名来导入。
 
-### Integrate with Fumadocs
+### 与 Fumadocs 集成
 
-Create a `docs` collection and use `toFumadocsSource()` on the output.
+创建一个 `docs` 集合并对输出使用 `toFumadocsSource()`。
 
 ```ts title="lib/source.ts"
 import { docs } from '@/.source';
@@ -91,9 +91,9 @@ export const source = loader({
 });
 ```
 
-> You can do the same for multiple `docs` collections.
+> 你可以对多个 `docs` 集合执行相同的操作。
 
-Generally, you'll interact with the collection through [`loader()`](/docs/headless/source-api#output).
+通常，你将通过 [`loader()`](/docs/headless/source-api#output) 与集合进行交互。
 
 ```tsx
 import { source } from '@/lib/source';
@@ -109,7 +109,7 @@ if (page) {
 }
 ```
 
-To render the page, use `page.data.body` as a component.
+要渲染页面，请使用 `page.data.body` 作为组件。
 
 ```tsx
 import { getMDXComponents } from '@/mdx-components';
@@ -120,9 +120,9 @@ const MDX = page.data.body;
 return <MDX components={getMDXComponents()} />;
 ```
 
-### Integrate with CI
+### 与 CI 集成
 
-The `fumadocs-mdx` command also generates types for `.source` folder. Add it as a post install script to ensure types are generated when initializing the project.
+`fumadocs-mdx` 命令还会为 `.source` 文件夹生成类型。将其添加为安装后脚本，以确保在初始化项目时生成类型。
 
 ```json title="package.json"
 {

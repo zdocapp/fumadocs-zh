@@ -1,28 +1,28 @@
 ---
-title: Custom Source
-description: Build your own content source
+title: 自定义源
+description: 构建您自己的内容源
 ---
 
-## Introduction
+## 介绍
 
-**Fumadocs is very flexible.** You can integrate with any content source, even without an official adapter.
+**Fumadocs 非常灵活。** 您可以与任何内容源集成，即使没有官方适配器。
 
-### Examples
+### 示例
 
-You can see examples to use Fumadocs with a CMS, which allows a nice experience on publishing content, and real-time update without re-building the app.
+您可以查看使用 Fumadocs 与 CMS 的示例，这能提供良好的内容发布体验，并且无需重新构建应用即可实现实时更新。
 
 - [BaseHub](https://github.com/fuma-nama/fumadocs-basehub)
 - [Sanity](https://github.com/fuma-nama/fumadocs-sanity)
 - [Payload CMS](https://github.com/MFarabi619/fumadocs-payloadcms)
 
-For a custom content source implementation, you will need:
+对于自定义内容源的实现，您需要：
 
-### Page Tree
+### 页面树
 
-You can either hardcode the page tree, or write some code to generate one.
-See [Definitions of Page Tree](/docs/headless/page-tree).
+您可以硬编码页面树，或者编写一些代码来生成一个。
+请参阅[页面树的定义](/docs/headless/page-tree)。
 
-Pass your page tree to `DocsLayout` (usually in a `layout.tsx`):
+将您的页面树传递给 `DocsLayout`（通常在 `layout.tsx` 中）：
 
 ```tsx title="layout.tsx"
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
@@ -44,22 +44,22 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-The page tree is like a smarter "sidebar items", they will be referenced everywhere in the UI for navigation elements, such as the page footer.
+页面树类似于更智能的“侧边栏项”，它们将在 UI 中的导航元素（如页面页脚）中被引用。
 
-### Docs Page
+### 文档页面
 
-For docs page, it's the same logic:
+对于文档页面，逻辑相同：
 
-- Define path params (`slugs`).
-- Fetch page content from path params.
-- Render the content.
-- (Optional) Configure pre-rendering for your framework.
+- 定义路径参数（`slugs`）。
+- 根据路径参数获取页面内容。
+- 渲染内容。
+- （可选）为您的框架配置预渲染。
 
-#### Body
+#### 主体
 
-In the main body of page, find the corresponding page according to the slug and render its content inside the `DocsPage` component.
+在页面的主体部分，根据 slug 找到相应的页面，并在 `DocsPage` 组件内渲染其内容。
 
-You also need table of contents, which can be generated with your own implementation, or using the [`getTableOfContents`](/docs/headless/utils/get-toc) utility (Markdown/MDX only).
+您还需要目录功能，可以通过自行实现或使用 [`getTableOfContents`](/docs/headless/utils/get-toc) 工具（仅限 Markdown/MDX）来生成。
 
 ```tsx
 import { DocsPage, DocsBody } from 'fumadocs-ui/page';
@@ -78,37 +78,37 @@ export default function Page({ params }: { params: { slug?: string[] } }) {
 }
 ```
 
-#### Pre-rendering (Next.js only)
+#### 预渲染（仅限 Next.js）
 
-Define the [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params) function.
-It should return a list of parameters (`params`) to populate the `[[...slug]]` catch-all route.
+定义 [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params) 函数。
+它应返回一个参数列表（`params`）来填充 `[[...slug]]` 全捕获路由。
 
-### Document Search
+### 文档搜索
 
-This can be difficult considering your content may not be necessarily Markdown/MDX.
-For Markdown and MDX, the built-in [Search API](/docs/headless/search/orama) is adequate for most use cases.
-Otherwise, you will have to bring your own implementation.
+考虑到您的内容可能不一定是 Markdown/MDX，这可能会比较困难。
+对于 Markdown 和 MDX，内置的[搜索 API](/docs/headless/search/orama) 足以满足大多数用例。
+否则，您需要自行实现。
 
-We recommend 3rd party solutions like Orama or Algolia Search. They are more flexible than the built-in Search API, and is easier to integrate with remote sources.
-Fumadocs offers a simple [Algolia Search Adapter](/docs/headless/search/algolia), which includes a search client to integrate with Fumadocs UI.
+我们推荐使用第三方解决方案，如 Orama 或 Algolia Search。它们比内置的搜索 API 更灵活，并且更容易与远程源集成。
+Fumadocs 提供了一个简单的 [Algolia 搜索适配器](/docs/headless/search/algolia)，其中包含一个搜索客户端，可与 Fumadocs UI 集成。
 
 ## MDX Remote
 
-Fumadocs offers the **MDX Remote** package, it is a helper to integrate Markdown-based content sources with Fumadocs.
-You can think it as a `next-mdx-remote` with built-in plugins for Fumadocs.
+Fumadocs 提供 **MDX Remote** 包，它是一个帮助程序，用于将基于 Markdown 的内容源与 Fumadocs 集成。
+您可以将其视为带有 Fumadocs 内置插件的 `next-mdx-remote`。
 
-### Setup
+### 设置
 
 ```package-install
 @fumadocs/mdx-remote
 ```
 
-The main feature it offers is the MDX Compiler, it can compile MDX content to JSX nodes.
-Since it doesn't use a bundler, there's some limitations:
+它提供的主要功能是 MDX 编译器，可以将 MDX 内容编译为 JSX 节点。
+由于它不使用打包器，因此存在一些限制：
 
-- No imports and exports in MDX files.
+- MDX 文件中无需导入和导出。
 
-It's compatible with Server Components. For example:
+它与服务器组件兼容。例如：
 
 ```tsx
 import { compileMDX } from '@fumadocs/mdx-remote';
@@ -138,9 +138,9 @@ export default async function Page({
 }
 ```
 
-#### Images
+#### 图片
 
-On serverless platforms like Vercel, the original `public` folder (including static assets like images) will be removed after production build.
-`compileMDX` might no longer be able to access local images in `public`.
+在 Vercel 等无服务器平台上，原始的 `public` 文件夹（包括图片等静态资源）在生产构建后会被移除。
+`compileMDX` 可能无法再访问 `public` 中的本地图片。
 
-When referencing images, make sure to use a URL.
+引用图片时，请确保使用 URL。

@@ -1,39 +1,39 @@
 ---
 title: Mixedbread
-description: Integrate Mixedbread Search with Fumadocs
+description: 将 Mixedbread Search 与 Fumadocs 集成
 ---
 
-## Introduction
+## 介绍
 
-The Mixedbread Integration uses vector search to provide semantic search capabilities for your documentation. It indexes your documentation content into a vector store, enabling users to search using natural language queries and find relevant content based on meaning rather than just keyword matching.
+Mixedbread 集成使用向量搜索为您的文档提供语义搜索功能。它将您的文档内容索引到向量存储中，使用户能够使用自然语言查询进行搜索，并根据含义而非仅关键词匹配找到相关内容。
 
-## Setup
+## 设置
 
-### Get your API Key
+### 获取 API 密钥
 
-1. Sign up at [Mixedbread](https://platform.mixedbread.com)
-2. Navigate to [API Keys](https://platform.mixedbread.com/platform?next=api-keys)
-3. Create a new API key and store it in your environment variables
+1. 在 [Mixedbread](https://platform.mixedbread.com) 注册账号
+2. 前往 [API Keys](https://platform.mixedbread.com/platform?next=api-keys)
+3. 创建新的 API 密钥并将其存储在环境变量中
 
-### Create a Vector Store
+### 创建向量存储
 
-To sync your documentation, you'll need to create a vector store:
+要同步您的文档，您需要创建一个向量存储：
 
-1. Go to the [Vector Stores](https://platform.mixedbread.com/platform?next=vector-stores) in your Mixedbread dashboard
-2. Create a new vector store for your documentation
-3. Copy the vector store ID
+1. 在 Mixedbread 仪表板中前往 [Vector Stores](https://platform.mixedbread.com/platform?next=vector-stores)
+2. 为您的文档创建新的向量存储
+3. 复制向量存储 ID
 
-### Sync Documentation
+### 同步文档
 
-Use the [Mixedbread CLI](https://www.mixedbread.com/cli) to sync your documentation:
+使用 [Mixedbread CLI](https://www.mixedbread.com/cli) 同步您的文档：
 
-Install the CLI:
+安装 CLI：
 
 ```package-install
 @mixedbread/cli -D
 ```
 
-Configure authentication and sync your documentation:
+配置身份验证并同步您的文档：
 
 ```bash
 # Configure authentication
@@ -43,11 +43,11 @@ mxbai config keys add YOUR_API_KEY
 mxbai vs sync YOUR_VECTOR_STORE_ID "./content/docs"
 ```
 
-The CLI will automatically detect changes in your documentation and update the vector store accordingly.
+CLI 将自动检测文档中的更改并相应更新向量存储。
 
-### Workflow
+### 工作流程
 
-You can automatically sync your documentation by adding a sync script to your `package.json`:
+您可以通过在 `package.json` 中添加同步脚本来自动同步文档：
 
 ```json
 {
@@ -57,11 +57,11 @@ You can automatically sync your documentation by adding a sync script to your `p
 }
 ```
 
-## Options
+## 选项
 
-### Tag Filter
+### 标签筛选
 
-To filter search results by tags, add a tag field to your document metadata:
+要按标签筛选搜索结果，请在文档元数据中添加标签字段：
 
 ```md
 ---
@@ -73,10 +73,10 @@ tag: docs
 ---
 ```
 
-And update your search client:
+并更新您的搜索客户端：
 
-- **Fumadocs UI**: Enable [Tag Filter](/docs/ui/search/orama#tag-filter) on Search UI.
-- **Search Client**: You can add the tag filter like:
+- **Fumadocs UI**: 在搜索界面上启用[标签筛选器](/docs/ui/search/orama#tag-filter)。
+- **搜索客户端**: 您可以像这样添加标签筛选器：
 
   ```ts
   import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -87,4 +87,4 @@ And update your search client:
   });
   ```
 
-This allows you to scope searches to specific sections of your documentation.
+这使您能够将搜索范围限定到文档的特定部分。

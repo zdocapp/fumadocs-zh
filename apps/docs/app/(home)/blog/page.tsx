@@ -34,11 +34,9 @@ export default function Page() {
         }}
       >
         <h1 className="mb-4 border-b-4 border-fd-foreground pb-2 text-4xl font-bold md:text-5xl">
-          Fumadocs Blog
+          Fumadocs 博客
         </h1>
-        <p className="text-sm md:text-base">
-          Light and gorgeous. like the moon
-        </p>
+        <p className="text-sm md:text-base">轻盈华美，宛若明月</p>
       </div>
       <div className="grid grid-cols-1 border md:grid-cols-3 lg:grid-cols-4">
         {posts.map((post) => (

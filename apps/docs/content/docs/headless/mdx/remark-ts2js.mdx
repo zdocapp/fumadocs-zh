@@ -1,17 +1,17 @@
 ---
-title: Remark TS to JS
-description: A remark plugin to transform TypeScript codeblocks into two tabs of codeblock with its JavaScript variant.
+title: TypeScript 转 JavaScript 插件
+description: 一个 remark 插件，用于将 TypeScript 代码块转换为包含其 JavaScript 变体的双标签页代码块。
 ---
 
-## Usage
+## 使用方法
 
-Install dependencies:
+安装依赖：
 
 ```npm
 npm i fumadocs-docgen oxc-transform
 ```
 
-For Next.js, externalize `oxc-transform`:
+对于 Next.js，外部化 `oxc-transform`：
 
 ```js title="next.config.mjs (Next.js)"
 import { createMDX } from 'fumadocs-mdx/next';
@@ -27,7 +27,7 @@ const withMDX = createMDX();
 export default withMDX(config);
 ```
 
-Add the remark plugin:
+添加 remark 插件：
 
 ```ts title="source.config.ts" tab="Fumadocs MDX"
 import { remarkTypeScriptToJavaScript } from 'fumadocs-docgen/remark-ts2js';
@@ -49,7 +49,7 @@ await compile('...', {
 });
 ```
 
-Finally, make sure to define the required MDX components: `Tabs` and `Tab`.
+最后，确保定义所需的 MDX 组件：`Tabs` 和 `Tab`。
 
 ```tsx title="mdx-components.tsx (Fumadocs UI)"
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
@@ -66,7 +66,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 }
 ```
 
-You can now enable it on TypeScript/TSX codeblocks, like:
+现在您可以在 TypeScript/TSX 代码块上启用此功能，例如：
 
 ````md
 ```tsx ts2js

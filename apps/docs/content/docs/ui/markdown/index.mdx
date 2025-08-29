@@ -1,23 +1,23 @@
 ---
 title: Markdown
-description: How to write documents
+description: 如何编写文档
 ---
 
-## Introduction
+## 介绍
 
-Fumadocs provides many useful extensions to MDX, a markup language. Here is a brief introduction to the default MDX syntax of Fumadocs.
+Fumadocs 为 MDX（一种标记语言）提供了许多有用的扩展。以下是 Fumadocs 默认 MDX 语法的简要介绍。
 
-> MDX is not the only supported format of Fumadocs. In fact, you can use any renderers such as `next-mdx-remote` or CMS.
+> MDX 并非 Fumadocs 唯一支持的格式。实际上，您可以使用任何渲染器，例如 `next-mdx-remote` 或 CMS。
 
 ## MDX
 
-We recommend MDX, a superset of Markdown with JSX syntax.
-It allows you to import components, and use them in the document, or even writing JavaScript.
+我们推荐使用 MDX，它是 Markdown 的超集，支持 JSX 语法。
+它允许您导入组件，并在文档中使用它们，甚至编写 JavaScript。
 
-See:
+参见：
 
-- [MDX Syntax](https://mdxjs.com/docs/what-is-mdx/#mdx-syntax).
-- GFM (GitHub Flavored Markdown) is also supported, see [GFM Specification](https://github.github.com/gfm).
+- [MDX 语法](https://mdxjs.com/docs/what-is-mdx/#mdx-syntax)。
+- 同时支持 GFM（GitHub Flavored Markdown），请参阅 [GFM 规范](https://github.github.com/gfm)。
 
 ```mdx
 ---
@@ -54,11 +54,11 @@ Hello World, **Bold**, _Italic_, ~~Hidden~~
 | Hello | World       |
 ```
 
-### Auto Links
+### 自动链接
 
-Internal links use the `<Link />` component of your React framework (e.g. `next/link`) to allow prefetching and avoid hard-reload.
+内部链接使用您 React 框架（例如 `next/link`）的 `<Link />` 组件，以实现预取并避免硬重载。
 
-External links will get the default `rel="noreferrer noopener" target="_blank"` attributes for security.
+外部链接将默认添加 `rel="noreferrer noopener" target="_blank"` 属性以确保安全。
 
 ```mdx
 [My Link](https://github.github.com/gfm)
@@ -66,9 +66,9 @@ External links will get the default `rel="noreferrer noopener" target="_blank"` 
 This also works: https://github.github.com/gfm.
 ```
 
-### Cards
+### 卡片
 
-Useful for adding links.
+适用于添加链接。
 
 ```mdx
 import { HomeIcon } from 'lucide-react';
@@ -100,9 +100,9 @@ import { HomeIcon } from 'lucide-react';
   </Card>
 </Cards>
 
-#### "Further Reading" Section
+#### “进一步阅读”部分
 
-You can do something like:
+您可以执行如下操作：
 
 ```tsx title="page.tsx"
 import { getPageTreePeers } from 'fumadocs-core/server';
@@ -117,15 +117,15 @@ import { source } from '@/lib/source';
 </Cards>;
 ```
 
-This will show the other pages in the same folder as cards.
+这将显示同一文件夹中的其他页面作为卡片。
 
 <DocsCategory url="/docs/ui/navigation" />
 
-### Callouts
+### 提示框
 
-Useful for adding tips/warnings, it is included by default. You can specify the type of callout:
+适用于添加提示/警告，默认包含。您可以指定提示框的类型：
 
-- `info` (default)
+- `info`（默认）
 - `warn`/`warning`
 - `error`
 - `success`
@@ -150,17 +150,17 @@ Useful for adding tips/warnings, it is included by default. You can specify the 
   Hello World
 </Callout>
 
-### Headings
+### 标题
 
-An anchor is automatically applied to each heading, it sanitizes invalid characters like spaces. (e.g. `Hello World` to `hello-world`)
+每个标题都会自动应用锚点，它会清理无效字符（如空格）。（例如将 `Hello World` 转换为 `hello-world`）
 
 ```md
 # Hello `World`
 ```
 
-#### TOC Settings
+#### 目录设置
 
-The table of contents (TOC) will be generated based on headings, you can also customise the effects of headings:
+目录（TOC）将根据标题生成，你也可以自定义标题的效果：
 
 ```md
 # Heading [!toc]
@@ -175,25 +175,25 @@ Like headings rendered in a React component:
 <MyComp />
 ```
 
-#### Custom Anchor
+#### 自定义锚点
 
-You can add `[#slug]` to customise heading anchors.
+你可以添加 `[#slug]` 来自定义标题锚点。
 
 ```md
 # heading [#my-heading-id]
 ```
 
-You can also chain it with TOC settings like:
+你还可以将其与目录设置链式使用，例如：
 
 ```md
 # heading [toc] [#my-heading-id]
 ```
 
-To link people to a specific heading, add the heading id to hash fragment: `/page#my-heading-id`.
+要将用户链接到特定标题，请在哈希片段中添加标题 ID：`/page#my-heading-id`。
 
-### Codeblock
+### 代码块
 
-Syntax Highlighting is supported by default using [Rehype Code](/docs/headless/mdx/rehype-code).
+默认支持使用 [Rehype Code](/docs/headless/mdx/rehype-code) 进行语法高亮。
 
 ````mdx
 ```js
@@ -205,9 +205,9 @@ console.log('Hello World');
 ```
 ````
 
-#### Line Numbers
+#### 行号
 
-Show line numbers, it also works with Twoslash and other transformers.
+显示行号，它也可以与 Twoslash 和其他转换器一起使用。
 
 ````mdx tab="Input"
 ```ts twoslash lineNumbers
@@ -223,7 +223,7 @@ const a = 'Hello World';
 console.log(a); // [!code highlight]
 ```
 
-You can set the initial value of line numbers.
+你可以设置行号的初始值。
 
 ````mdx tab="Input"
 ```js lineNumbers=4
@@ -243,9 +243,9 @@ function main() {
 }
 ```
 
-#### Shiki Transformers
+#### Shiki 转换器
 
-We support some of the [Shiki Transformers](https://shiki.style/packages/transformers), allowing you to highlight/style specific lines.
+我们支持部分 [Shiki 转换器](https://shiki.style/packages/transformers)，允许你高亮/样式化特定行。
 
 ````md tab="Input"
 ```tsx
@@ -281,7 +281,7 @@ console.log('hello'); // [!code ++]
 return new ResizeObserver(() => {}) // [!code focus]
 ```
 
-#### Tab Groups
+#### 标签组
 
 ````mdx
 ```ts tab="Tab 1"
@@ -301,7 +301,7 @@ console.log('A');
 console.log('B');
 ```
 
-While disabled by default, you use MDX in tab values by configuring the remark plugin:
+虽然默认禁用，但你可以通过配置 remark 插件在标签值中使用 MDX：
 
 ```ts tab="Fumadocs MDX" title="source.config.ts"
 import { defineConfig } from 'fumadocs-mdx/config';
@@ -349,22 +349,22 @@ console.log('A');
 console.log('B');
 ```
 
-### Include
+### 包含
 
-> This is only available on **Fumadocs MDX**.
+> 此功能仅在 **Fumadocs MDX** 中可用。
 
-Reference another file (can also be a Markdown/MDX document).
-Specify the target file path in `<include>` tag (relative to the MDX file itself).
+引用另一个文件（也可以是 Markdown/MDX 文档）。
+在 `<include>` 标签中指定目标文件路径（相对于 MDX 文件本身）。
 
 ```mdx title="page.mdx"
 <include>./another.mdx</include>
 ```
 
-See [other usages of include](/docs/mdx/include).
+查看 [include 的其他用法](/docs/mdx/include)。
 
-### NPM Commands
+### NPM 命令
 
-Useful for generating commands for installing packages with different package managers.
+用于生成不同包管理器安装包的命令。
 
 ````md tab="Input"
 ```npm
@@ -376,7 +376,7 @@ npm i next -D
 npm i next -D
 ```
 
-When using Fumadocs MDX, you can customise it like:
+使用 Fumadocs MDX 时，您可以像这样进行自定义：
 
 ```tsx title="source.config.ts"
 import { defineConfig } from 'fumadocs-mdx/config';
@@ -390,12 +390,12 @@ export default defineConfig({
 });
 ```
 
-### Other Components
+### 其他组件
 
-You can configure & use the [built-in components](/docs/ui/components) in your MDX document, such as Tabs, Accordions and Zoomable Image.
+您可以在 MDX 文档中配置和使用[内置组件](/docs/ui/components)，例如选项卡、手风琴和可缩放图像。
 
-## Additional Features
+## 附加功能
 
-You may be interested:
+您可能感兴趣：
 
 <DocsCategory />

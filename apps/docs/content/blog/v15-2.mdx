@@ -1,26 +1,26 @@
 ---
 title: Fumadocs v15.2
-description: From Next.js only to Next.js first.
+description: 从仅限 Next.js 到优先 Next.js。
 date: 2025-03-28
 author: Fuma Nama
 ---
 
-## Overview
+## 概述
 
-Fumadocs 15.2 introduces a layer over `fumadocs-core` to extend support to other React frameworks, including React Router and Tanstack Start. Other frameworks can also be supported using the `FrameworkProvider` from `fumadocs-core/framework/base`.
+Fumadocs 15.2 在 `fumadocs-core` 之上引入了一个层，以扩展对其他 React 框架的支持，包括 React Router 和 Tanstack Start。其他框架也可以通过使用 `fumadocs-core/framework/base` 中的 `FrameworkProvider` 来获得支持。
 
-### Why?
+### 为什么？
 
-The main focus of Fumadocs is flexibility, I aim to support more frameworks as long as it doesn't change the fundamentals of Fumadocs, like the separation of core and UI package.
+Fumadocs 的主要关注点是灵活性，我的目标是支持更多框架，只要这不改变 Fumadocs 的基本原则，比如核心包和 UI 包的分离。
 
-The React.js ecosystem is a joy to work with, porting Fumadocs to other frameworks isn't as difficult as I thought.
-It's also my goal to make it work not only for Next.js devs, but also everyone in the ecosystem who is using a SSR-compatible React framework.
+React.js 生态系统使用起来非常愉快，将 Fumadocs 移植到其他框架并不像我最初想的那么困难。
+我的目标也是让它不仅适用于 Next.js 开发者，也适用于生态系统中所有使用 SSR 兼容 React 框架的人。
 
-### Breaking Changes
+### 破坏性变更
 
-This is a minor release, it shouldn't break any previous usages unless you're relying on the lower level APIs from `fumadocs-core` without `fumadocs-ui`.
+这是一个次要版本发布，它不应该破坏任何以前的用法，除非你在没有 `fumadocs-ui` 的情况下依赖 `fumadocs-core` 的底层 API。
 
-Fumadocs Core now requires a `FrameworkProvider`. It's as simple as wrapping it with appropriate provider:
+Fumadocs Core 现在需要一个 `FrameworkProvider`。只需用适当的提供者包装它即可：
 
 ```tsx
 import { NextProvider } from 'fumadocs-core/framework/next';
@@ -30,7 +30,7 @@ export function Provider({ children }) {
 }
 ```
 
-If you're using Fumadocs UI, there's no need to change. `RootProvider` included it by default, and allows you to provide your own framework with:
+如果你在使用 Fumadocs UI，则无需更改。`RootProvider` 默认包含了它，并允许你通过以下方式提供自己的框架：
 
 ```tsx
 import { RootProvider } from 'fumadocs-ui/provider/base';
@@ -41,33 +41,33 @@ export function Provider({ children }) {
 }
 ```
 
-Please report issues if you find any public APIs are broken unexpectedly.
+如果你发现任何公共 API 意外中断，请报告问题。
 
-### Compilation Time
+### 编译时间
 
-15.2 also included some small performance improvements to Fumadocs, the time taken for Turbopack to start dev server and compile its first docs page is about 2-3 seconds.
+15.2 版本还为 Fumadocs 带来了一些小幅性能优化，Turbopack 启动开发服务器并编译其首个文档页面的时间缩短至约 2-3 秒。
 
-This change also potentially allows Fumadocs to run on Vite, production build of minimal React Router setup only takes around 4s on a Macbook.
+此项变更还使得 Fumadocs 有望在 Vite 上运行，在 Macbook 上，最小化 React Router 设置的生产构建仅需约 4 秒。
 
-## Try it out
+## 尝试体验
 
-Upgrade from your existing Next.js docs:
+从您现有的 Next.js 文档升级：
 
 ```bash
 pnpm update -i -r
 ```
 
-If you want to try the React Router example:
+如果您想尝试 React Router 示例：
 
 ```bash
 pnpm create fumadocs-app
 ```
 
-### Future Plans
+### 未来计划
 
-15.2 doesn't support Astro, and probably won't unless better React.js support is provided by Astro.
+15.2 版本不支持 Astro，并且除非 Astro 提供更好的 React.js 支持，否则很可能不会支持。
 
-- `transition:persist` is needed for Fumadocs UI layouts, however this will also affect its children (e.g. MDX content), causing page content to be persisted even after navigation.
-- React contexts cannot work across islands, this changes the usage of Fumadocs significantly and hence require a redesign of APIs.
+- Fumadocs UI 布局需要 `transition:persist`，但这也会影响其子元素（例如 MDX 内容），导致页面内容在导航后仍被保留。
+- React 上下文无法跨 Islands 工作，这显著改变了 Fumadocs 的使用方式，因此需要重新设计 API。
 
-Fumadocs will continue to be Next.js first, the docs won't be changed to generalize usages of other frameworks. Instead, a new docs site will be developed for other frameworks (planned).
+Fumadocs 将继续以 Next.js 为首选，文档内容不会为了通用化其他框架的用法而更改。相反，将为其他框架开发一个新的文档站点（计划中）。

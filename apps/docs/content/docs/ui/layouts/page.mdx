@@ -1,14 +1,13 @@
 ---
-title: Docs Page
-description: A page in your documentation
+title: 文档页面
+description: 文档中的一个页面
 ---
 
 <Customisation />
 
-Page is the base element of a documentation, it includes Table of contents,
-Footer, and Breadcrumb.
+页面是文档的基本元素，它包含目录、页脚和面包屑导航。
 
-## Usage
+## 使用方法
 
 ```tsx title="page.tsx"
 import {
@@ -35,9 +34,9 @@ This will render the title in the MDX body.
 
 </Callout>
 
-### Edit on GitHub
+### 在 GitHub 上编辑
 
-You can also add your own component.
+您还可以添加自己的组件。
 
 ```tsx
 import { DocsBody } from 'fumadocs-ui/page';
@@ -54,12 +53,12 @@ import { DocsBody } from 'fumadocs-ui/page';
 </DocsBody>;
 ```
 
-## Configurations
+## 配置
 
-### Full Mode
+### 完整模式
 
-To extend the page to fill up all available space, pass `full` to the page component.
-This will force TOC to be shown as a popover.
+要将页面扩展以填满所有可用空间，请向页面组件传递 `full` 参数。
+这将强制将目录显示为弹出窗口。
 
 ```tsx
 import { DocsPage } from 'fumadocs-ui/page';
@@ -67,12 +66,12 @@ import { DocsPage } from 'fumadocs-ui/page';
 <DocsPage full>...</DocsPage>;
 ```
 
-### Table of Contents
+### 目录
 
-An overview of all the headings in your article, it requires an array of headings.
+文章所有标题的概览，需要一个标题数组。
 
-For Markdown and MDX documents, You can obtain it using the
-[TOC Utility](/docs/headless/utils/get-toc). Content sources like Fumadocs MDX offer this out-of-the-box.
+对于 Markdown 和 MDX 文档，您可以使用
+[目录工具](/docs/headless/utils/get-toc) 获取。像 Fumadocs MDX 这样的内容源提供了开箱即用的支持。
 
 ```tsx
 import { DocsPage } from 'fumadocs-ui/page';
@@ -80,7 +79,7 @@ import { DocsPage } from 'fumadocs-ui/page';
 <DocsPage toc={headings}>...</DocsPage>;
 ```
 
-You can customise or disable it with the `tableOfContent` option, or with `tableOfContentPopover` on smaller devices.
+您可以通过 `tableOfContent` 选项自定义或禁用它，或者在较小设备上使用 `tableOfContentPopover`。
 
 ```tsx
 import { DocsPage } from 'fumadocs-ui/page';
@@ -92,9 +91,9 @@ import { DocsPage } from 'fumadocs-ui/page';
 
 <AutoTypeTable path="./content/docs/ui/props.ts" name="TOCProps" />
 
-#### Style
+#### 样式
 
-You can choose another style for TOC, like `clerk` inspired by https://clerk.com:
+您可以为目录选择另一种样式，例如受 https://clerk.com 启发的 `clerk` 样式：
 
 ```tsx
 import { DocsPage } from 'fumadocs-ui/page';
@@ -108,9 +107,9 @@ import { DocsPage } from 'fumadocs-ui/page';
 </DocsPage>;
 ```
 
-### Last Updated Time
+### 最后更新时间
 
-Display last updated time of the page.
+显示页面的最后更新时间。
 
 ```tsx
 import { DocsPage } from 'fumadocs-ui/page';
@@ -118,14 +117,13 @@ import { DocsPage } from 'fumadocs-ui/page';
 <DocsPage lastUpdate={new Date(lastModifiedTime)} />;
 ```
 
-Since you might use different version controls (e.g. Github) or CMS like Sanity, Fumadocs UI doesn't display the last updated time by
-default.
+由于您可能使用不同的版本控制系统（例如 GitHub）或像 Sanity 这样的 CMS，Fumadocs UI 默认不显示最后更新时间。
 
 <Tabs items={['Fumadocs MDX', 'GitHub API']}>
 
     <Tab>
 
-You can enable [`lastModifiedTime`](/docs/mdx/last-modified).
+您可以启用 [`lastModifiedTime`](/docs/mdx/last-modified)。
 
 ```tsx
 import { DocsPage } from 'fumadocs-ui/page';
@@ -139,8 +137,8 @@ const page = source.getPage(['...']);
 
     <Tab>
 
-For Github hosted documents, you can use
-the [`getGithubLastEdit`](/docs/headless/utils/git-last-edit) utility.
+对于托管在 Github 上的文档，您可以使用
+[`getGithubLastEdit`](/docs/headless/utils/git-last-edit) 工具函数。
 
 ```tsx
 import { DocsPage } from 'fumadocs-ui/page';
@@ -159,11 +157,11 @@ const time = await getGithubLastEdit({
 
 </Tabs>
 
-### Footer
+### 页脚
 
-Footer is a navigation element that has two buttons to jump to the next and previous pages. When not specified, it shows the neighbour pages found from page tree.
+页脚是一个导航元素，包含两个按钮用于跳转到下一页和上一页。当未指定时，它会显示从页面树中找到的相邻页面。
 
-Customise the footer with the `footer` option.
+使用 `footer` 选项自定义页脚。
 
 ```tsx
 import { DocsPage, DocsBody } from 'fumadocs-ui/page';
@@ -175,8 +173,8 @@ import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 
 <AutoTypeTable path="./content/docs/ui/props.ts" name="FooterProps" />
 
-### Breadcrumb
+### 面包屑导航
 
-A navigation element, shown only when user is navigating in folders.
+一个导航元素，仅在用户在文件夹中导航时显示。
 
 <AutoTypeTable path="./content/docs/ui/props.ts" name="BreadcrumbProps" />

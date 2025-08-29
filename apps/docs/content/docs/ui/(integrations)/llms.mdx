@@ -1,21 +1,21 @@
 ---
 title: AI
-description: Integrate AI functionality to Fumadocs.
+description: 为 Fumadocs 集成 AI 功能。
 ---
 
-## Docs for LLM
+## 面向大语言模型的文档
 
-You can make your docs site more AI-friendly with dedicated docs content for large language models.
+您可以通过专门为大语言模型准备的文档内容，使您的文档站点更加 AI 友好。
 
-First, make a `getLLMText` function that converts pages into static MDX content:
+首先，创建一个 `getLLMText` 函数，将页面转换为静态 MDX 内容：
 
 <include meta='title="lib/get-llm-text.ts"'>./get-llm-text.ts</include>
 
-> Modify it to include other remark plugins.
+> 修改它以包含其他 remark 插件。
 
 ### `llms-full.txt`
 
-A version of docs for AIs to read.
+供 AI 阅读的文档版本。
 
 <include meta='tab="Next.js" title="app/llms-full.txt/route.ts"'>
   ./llms.txt.ts
@@ -50,9 +50,9 @@ export const ServerRoute = createServerFileRoute('/llms-full.txt').methods({
 
 ### `*.mdx`
 
-Allow people to append `.mdx` to a page to get its Markdown/MDX content.
+允许用户在页面 URL 后追加 `.mdx` 来获取其 Markdown/MDX 内容。
 
-On Next.js, you can make a route handler to return page content, and redirect users to that route.
+在 Next.js 中，您可以创建一个路由处理程序来返回页面内容，并将用户重定向到该路由。
 
 <include meta='tab="app/llms.mdx/[[...slug]]/route.ts"'>./llms.mdx.ts</include>
 
@@ -71,17 +71,17 @@ const config: NextConfig = {
 };
 ```
 
-### Page Actions
+### 页面操作
 
-Common page actions for AI, require `*.mdx` to be implemented first.
+AI 的常用页面操作，需要先实现 `*.mdx` 功能。
 
-![AI Page Actions](/docs/ai-page-actions.png)
+![AI 页面操作](/docs/ai-page-actions.png)
 
 ```npm
 npx @fumadocs/cli add ai-page-actions
 ```
 
-Use it in your docs page like:
+在您的文档页面中这样使用：
 
 ```tsx title="app/docs/[[...slug]]/page.tsx"
 <div className="flex flex-row gap-2 items-center border-b pt-2 pb-6">
@@ -93,16 +93,17 @@ Use it in your docs page like:
 </div>
 ```
 
-## AI Search
+## AI 搜索
 
-![AI Search](/docs/ai-search.png)
+![AI 搜索](/docs/ai-search.png)
 
-You can install the AI search dialog using Fumadocs CLI:
+您可以使用 Fumadocs CLI 安装 AI 搜索对话框：
 
 ```package-install
 npx @fumadocs/cli add ai-search
 ```
 
-By default, it's configured for Inkeep AI. Since it's connected via Vercel AI SDK, you can connect to your own AI models easily.
+默认情况下，它配置为使用 Inkeep AI。由于它是通过 Vercel AI SDK 连接的，您可以轻松连接到自己的 AI 模型。
 
-> Note that Fumadocs doesn't provide the AI model, it's up to you.
+> [!NOTE]
+> 请注意 Fumadocs 不提供 AI 模型，这取决于您自己。

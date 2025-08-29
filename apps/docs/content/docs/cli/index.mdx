@@ -1,71 +1,71 @@
 ---
-title: User Guide
-description: The CLI tool that automates setups and installs components.
+title: 用户指南
+description: 自动化设置和安装组件的 CLI 工具。
 ---
 
-## Installation
+## 安装
 
-Initialize a config for CLI:
+为 CLI 初始化配置：
 
 ```package-install
 npx @fumadocs/cli
 ```
 
-You can change the output paths of components in the config.
+您可以在配置中更改组件的输出路径。
 
-### Components
+### 组件
 
-Select and install components.
+选择并安装组件。
 
 ```package-install
 npx @fumadocs/cli add
 ```
 
-You can pass component names directly.
+您可以直接传递组件名称。
 
 ```package-install
 npx @fumadocs/cli add banner files
 ```
 
-#### How the magic works?
+#### 魔法如何运作？
 
-The CLI fetches the latest version of component from the GitHub repository of Fumadocs.
-When you install a component, it is guaranteed to be up-to-date.
+CLI 从 Fumadocs 的 GitHub 仓库获取组件的最新版本。
+当您安装组件时，保证其是最新版本。
 
-In addition, it also transforms import paths.
-Make sure to use the latest version of CLI
+此外，它还会转换导入路径。
+请确保使用最新版本的 CLI
 
-> This is highly inspired by Shadcn UI.
+> 这深受 Shadcn UI 的启发。
 
-### Customise
+### 自定义
 
-A simple way to customise Fumadocs layouts.
+自定义 Fumadocs 布局的简单方法。
 
 ```package-install
 npx @fumadocs/cli customise
 ```
 
-### Tree
+### 树状结构
 
-Generate files tree for Fumadocs UI `Files` component, using the `tree` command from your terminal.
+使用终端中的 `tree` 命令为 Fumadocs UI 的 `Files` 组件生成文件树。
 
 ```package-install
 npx @fumadocs/cli tree ./my-dir ./output.tsx
 ```
 
-You can output MDX files too:
+您也可以输出 MDX 文件：
 
 ```package-install
 npx @fumadocs/cli tree ./my-dir ./output.mdx
 ```
 
-See help for further details:
+查看帮助以获取更多详情：
 
 ```package-install
 npx @fumadocs/cli tree -h
 ```
 
-#### Example Output
+#### 示例输出
 
 ```tsx title="output.tsx"
 import { File, Folder, Files } from 'fumadocs-ui/components/files';

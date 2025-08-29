@@ -1,17 +1,17 @@
 ---
 title: Fumadocs 12.0.5
-description: After the release of Fumadocs 12
+description: Fumadocs 12 发布之后
 date: 2024-06-13
 author: Fuma Nama
 ---
 
-## Some Improvements
+## 一些改进
 
-After releasing Fumadocs 12, some improvements were made to the new UI.
+在发布 Fumadocs 12 之后，我们对新 UI 进行了一些改进。
 
-### TOC Popover
+### 目录弹出框
 
-Previously, this was only available on larger devices. Now, it's collapsed to a popover on smaller devices.
+此前，这仅在较大设备上可用。现在，它在较小设备上折叠为弹出框。
 
 <div className='mx-auto max-w-[400px]'>
 
@@ -19,14 +19,14 @@ Previously, this was only available on larger devices. Now, it's collapsed to a 
 
 </div>
 
-### Links Menu
+### 链接菜单
 
-To make the sidebar look even better, we moved navigation links to the links menu (the three-dots button at the top corner).
+为了让侧边栏看起来更好，我们将导航链接移到了链接菜单（顶部角落的三点按钮）中。
 
-The recommended design is:
+推荐的设计是：
 
-- Docs related links: Use `<RootToggle />` or include it in page trees.
-- Other links: Use the Links API of docs layout.
+- 文档相关链接：使用 `<RootToggle />` 或将其包含在页面树中。
+- 其他链接：使用文档布局的 Links API。
 
 <div className='mx-auto max-w-[400px]'>
 
@@ -34,21 +34,21 @@ The recommended design is:
 
 </div>
 
-### Breadcrumbs
+### 面包屑导航
 
-Removed the duplicated page name from breadcrumbs, now it only shows the folder names.
-Also, you can enable `includeSeparators` to show separators on your breadcrumbs component.
+从面包屑导航中移除了重复的页面名称，现在它只显示文件夹名称。
+此外，您可以启用 `includeSeparators` 以在面包屑组件上显示分隔符。
 
-The new breadcrumbs look cleaner and match the design even better.
+新的面包屑导航看起来更简洁，并且更符合设计。
 
-## Adaption
+## 采用情况
 
-Some docs sites such as https://yeecord.com and https://turbo.build have adopted the new UI, I'm very excited about it.
-Removing the navbar seemed to be a very risky move to me, almost no documentation framework has done it, and I was expecting some complaints about the new design.
+一些文档站点，例如 https://yeecord.com 和 https://turbo.build，已经采用了新的 UI，我对此感到非常兴奋。
+移除导航栏对我来说似乎是一个非常冒险的举动，几乎没有文档框架这样做过，我原本预计会有一些对新设计的抱怨。
 
-Luckily, most people are satisfied with the new UI.
-The new design was originally inspired by Arc, their sidebar looked very impressive to me.
-Although I soon discovered the docs site of Linear also doesn't have a navbar, Arc is still the first inspiration of the redesign.
+幸运的是，大多数人对新的用户界面感到满意。
+新设计最初是受 Arc 的启发，他们的侧边栏给我留下了非常深刻的印象。
+尽管我很快发现 Linear 的文档网站也没有导航栏，但 Arc 仍然是这次重新设计的第一个灵感来源。
 
-I'm grateful that many people gave me their feedback about the new design, so that I can keep making Fumadocs a better framework to use.
-Let's make better docs.
+我很感激许多人就新设计向我提供了反馈，这使我能够继续改进 Fumadocs，使其成为一个更好用的框架。
+让我们共同打造更出色的文档。

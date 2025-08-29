@@ -1,12 +1,12 @@
 ---
-title: Last Modified Time
-description: Output the last modified time of a document
+title: 最后修改时间
+description: 输出文档的最后修改时间
 ---
 
-## Usage
+## 使用方法
 
-This feature is not enabled by default, you can enable this from the config file. Note that it only supports Git as version control.
-Please ensure you have Git installed on your machine, and **the repository is not shallow cloned**, as it relies on your local Git history.
+此功能默认未启用，您可以从配置文件中启用它。请注意，它仅支持 Git 作为版本控制系统。
+请确保您的机器上已安装 Git，并且**仓库不是浅克隆的**，因为它依赖于您的本地 Git 历史记录。
 
 ```ts title="source.config.ts"
 import { defineConfig } from 'fumadocs-mdx/config';
@@ -16,9 +16,9 @@ export default defineConfig({
 });
 ```
 
-### Access the Property
+### 访问属性
 
-After doing this, a `lastModified` number will be exported for each document. You can convert it to a JavaScript Date object.
+完成此操作后，将为每个文档导出一个 `lastModified` 数字。您可以将其转换为 JavaScript Date 对象。
 
 ```ts
 import { source } from '@/lib/source';

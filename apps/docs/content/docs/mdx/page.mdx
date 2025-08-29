@@ -1,13 +1,13 @@
 ---
-title: Use as Page
-description: Use MDX file as a page
+title: 作为页面使用
+description: 将 MDX 文件用作页面
 ---
 
-## Setup
+## 设置
 
-You can use `page.mdx` instead of `page.tsx` for creating a new page under the app directory.
+您可以在 app 目录下使用 `page.mdx` 替代 `page.tsx` 来创建新页面。
 
-However, it doesn't have MDX components by default, so you have to provide them:
+但是，默认情况下它不包含 MDX 组件，因此您需要自行提供：
 
 ```tsx title="mdx-components.tsx"
 import defaultMdxComponents from 'fumadocs-ui/mdx';
@@ -35,7 +35,7 @@ export default defineConfig({
 });
 ```
 
-### Usage
+### 用法
 
 ```mdx title="app/test/page.mdx"
 {/* this will enable Typography styles of Fumadocs UI */}

@@ -1,17 +1,17 @@
 ---
 title: Twoslash
-description: Use Typescript Twoslash in your docs
+description: 在文档中使用 TypeScript Twoslash
 ---
 
-## Usage
+## 使用方法
 
-Thanks to the Twoslash integration of [Shiki](https://github.com/shikijs/shiki), the default code syntax highlighter, it is as simple as adding a transformer.
+得益于默认代码语法高亮器 [Shiki](https://github.com/shikijs/shiki) 的 Twoslash 集成，只需添加一个转换器即可实现。
 
 ```package-install
 fumadocs-twoslash twoslash
 ```
 
-For Next.js, you need to externalize the following deps:
+对于 Next.js，你需要将以下依赖项外部化：
 
 ```js title="next.config.mjs (Next.js)"
 const config = {
@@ -21,7 +21,7 @@ const config = {
 };
 ```
 
-Add to your Shiki transformers.
+添加到你的 Shiki 转换器中。
 
 ```ts twoslash title="source.config.ts (Fumadocs MDX)"
 import { defineConfig } from 'fumadocs-mdx/config';
@@ -44,13 +44,13 @@ export default defineConfig({
 });
 ```
 
-Add styles, Tailwind CSS v4 is required.
+添加样式，需要 Tailwind CSS v4。
 
 ```css title="Tailwind CSS"
 @import 'fumadocs-twoslash/twoslash.css';
 ```
 
-Add MDX components.
+添加 MDX 组件。
 
 ```tsx title="mdx-components.tsx"
 import * as Twoslash from 'fumadocs-twoslash/ui';
@@ -66,7 +66,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 }
 ```
 
-Now you can add `twoslash` meta string to codeblocks.
+现在你可以在代码块中添加 `twoslash` 元字符串。
 
 ````md
 ```ts twoslash
@@ -74,9 +74,9 @@ console.log('Hello World');
 ```
 ````
 
-### Example
+### 示例
 
-Learn more about [Twoslash notations](https://twoslash.netlify.app/refs/notations).
+了解更多关于 [Twoslash 符号](https://twoslash.netlify.app/refs/notations)。
 
 ```ts twoslash title="Test" lineNumbers
 type Player = {
@@ -119,9 +119,9 @@ const a = '123';
 a = 132;
 ```
 
-## Cache
+## 缓存
 
-You can enable filesystem cache with `typesCache` option:
+你可以通过 `typesCache` 选项启用文件系统缓存：
 
 ```ts twoslash title="source.config.ts"
 import { transformerTwoslash } from 'fumadocs-twoslash';

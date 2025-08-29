@@ -1,11 +1,11 @@
 ---
 title: RSS
-description: Generate a RSS feed for your docs/blog.
+description: 为您的文档/博客生成 RSS 订阅源。
 ---
 
-## Setup
+## 设置
 
-You can create the feed object:
+您可以创建源对象：
 
 ```ts title="lib/rss.ts"
 import { Feed } from 'feed';
@@ -45,7 +45,7 @@ export function getRSS() {
 }
 ```
 
-And expose it using a server loader/route handler like:
+并通过服务器加载器/路由处理程序暴露它，例如：
 
 ```ts tab="Next.js" title="app/rss.xml/route.ts"
 import { getRSS } from '@/lib/rss';
@@ -85,9 +85,9 @@ export const ServerRoute = createServerFileRoute('/rss.xml').methods({
 });
 ```
 
-### Next.js Metadata
+### Next.js 元数据
 
-You can add an alternates object to the metadata object with your feed’s title and URL.
+您可以在元数据对象中添加一个 alternates 对象，包含您的源标题和 URL。
 
 ```ts title="app/layout.tsx"
 import type { Metadata } from 'next';

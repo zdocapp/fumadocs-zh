@@ -1,12 +1,12 @@
 ---
-title: Creating Proxy
-description: Avoid CORS problem
+title: 创建代理
+description: 避免 CORS 问题
 ---
 
-## Introduction
+## 介绍
 
-A proxy server is useful for executing HTTP (`fetch`) requests, as it doesn't have CORS constraints like on the browser.
-We can use it for executing HTTP requests on the OpenAPI playground, when the target API endpoints do not have CORS configured correctly.
+代理服务器对于执行 HTTP (`fetch`) 请求非常有用，因为它不像浏览器那样存在 CORS 限制。
+当目标 API 端点未正确配置 CORS 时，我们可以使用它在 OpenAPI 调试工具中执行 HTTP 请求。
 
 <Callout type="warn" title="Warning">
   Do not use this on unreliable sites and API endpoints, the proxy server will
@@ -14,9 +14,9 @@ We can use it for executing HTTP requests on the OpenAPI playground, when the ta
   `Authorization` header.
 </Callout>
 
-### Setup
+### 设置
 
-Create a route handler for proxy server.
+为代理服务器创建路由处理器。
 
 ```ts title="/api/proxy/route.ts"
 import { openapi } from '@/lib/openapi';
@@ -27,9 +27,9 @@ export const { GET, HEAD, PUT, POST, PATCH, DELETE } = openapi.createProxy({
 });
 ```
 
-> Follow the [Getting Started](/docs/ui/openapi) guide if `openapi` server is not yet configured.
+> 如果尚未配置 `openapi` 服务器，请遵循 [入门指南](/docs/ui/openapi)。
 
-And enable the proxy from `createOpenAPI`.
+并通过 `createOpenAPI` 启用代理功能。
 
 ```ts title="lib/source.ts"
 import { createOpenAPI } from 'fumadocs-openapi/server';

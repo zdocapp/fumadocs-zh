@@ -8,24 +8,24 @@ import Logo from '@/public/logo.png';
 export const linkItems: LinkItemType[] = [
   {
     icon: <AlbumIcon />,
-    text: 'Blog',
+    text: '博客',
     url: '/blog',
     active: 'nested-url',
   },
   {
-    text: 'Showcase',
+    text: '案例展示',
     url: '/showcase',
     icon: <LayoutTemplate />,
     active: 'url',
   },
   {
-    text: 'Sponsors',
+    text: '赞助商',
     url: '/sponsors',
     icon: <Heart />,
   },
   {
     type: 'icon',
-    url: 'https://github.com/fuma-nama/fumadocs',
+    url: 'https://github.com/zdocapp/fumadocs-zh',
     text: 'Github',
     icon: (
       <svg role="img" viewBox="0 0 24 24" fill="currentColor">

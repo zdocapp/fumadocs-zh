@@ -1,11 +1,11 @@
 ---
-title: Headings
-description: Process headings from your document
+title: 标题
+description: 处理文档中的标题
 ---
 
 ## Remark Heading
 
-Applies ids to headings.
+为标题应用 id。
 
 ```ts title="MDX Compiler"
 import { compile } from '@mdx-js/mdx';
@@ -16,12 +16,12 @@ await compile('...', {
 });
 ```
 
-> This plugin is included by default on Fumadocs MDX.
+> 该插件默认包含在 Fumadocs MDX 中。
 
-### Extract TOC
+### 提取目录
 
-By default, it extracts the headings (table of contents) of a document to `vfile.data.toc`.
-You can disable it with:
+默认情况下，它会提取文档的标题（目录）到 `vfile.data.toc`。
+您可以通过以下方式禁用它：
 
 ```ts
 import { remarkHeading } from 'fumadocs-core/mdx-plugins';
@@ -31,27 +31,28 @@ export default {
 };
 ```
 
-### Custom Ids [#custom-heading-id]
+### 自定义 ID [#custom-heading-id]
 
-You can customise the heading id with `[#slug]`.
+您可以使用 `[#slug]` 自定义标题 id。
 
 ```md
 # heading [#slug]
 ```
 
-### Output
+### 输出
 
-An array of `TOCItemType`.
+一个 `TOCItemType` 数组。
 
 <AutoTypeTable path="./content/docs/headless/props.ts" name="TOCItemType" />
 
 ## Rehype TOC
 
-Exports table of contents (an array of `TOCItemType`), it allows JSX nodes which is not possible with a Remark plugin.
+导出目录（一个 `TOCItemType` 数组），它允许 JSX 节点，这是 Remark 插件无法实现的。
 
-> It requires MDX.js.
+> [!NOTE]
+> 它需要 MDX.js。
 
-### Usage
+### 用法
 
 ```ts
 import { rehypeToc } from 'fumadocs-core/mdx-plugins';
@@ -61,15 +62,15 @@ export default {
 };
 ```
 
-### Output
+### 输出
 
-For a Markdown document:
+对于 Markdown 文档：
 
 ```md
 ## Hello `code`
 ```
 
-An export will be created:
+将创建一个导出：
 
 ```jsx
 export const toc = [

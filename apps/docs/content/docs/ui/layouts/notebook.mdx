@@ -1,15 +1,15 @@
 ---
-title: Notebook
-description: A more compact version of Docs Layout
+title: 笔记本
+description: 文档布局的更紧凑版本
 ---
 
 <Customisation />
 
 ![Notebook](/docs/notebook.png)
 
-## Usage
+## 使用方法
 
-Enable the notebook layout with `fumadocs-ui/layouts/notebook`, it's a more compact layout than the default one.
+通过 `fumadocs-ui/layouts/notebook` 启用笔记本布局，这是一个比默认布局更紧凑的布局。
 
 ```tsx title="layout.tsx"
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook'; // [!code highlight]
@@ -26,16 +26,16 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-## Configurations
+## 配置
 
-The options are inherited from [Docs Layout](/docs/ui/layouts/docs), with minor differences:
+选项继承自[文档布局](/docs/ui/layouts/docs)，但存在一些细微差异：
 
-- sidebar/navbar cannot be replaced, Notebook layout is more opinionated than the default one.
-- additional options (see below).
+- 侧边栏/导航栏无法替换，笔记本布局比默认布局更具规范性。
+- 附加选项（见下文）。
 
-### Tab Mode
+### 标签模式
 
-Configure the style of sidebar tabs.
+配置侧边栏标签的样式。
 
 ![Notebook](/docs/notebook-tab-mode.png)
 
@@ -58,9 +58,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-### Nav Mode
+### 导航模式
 
-Configure the style of navbar.
+配置导航栏的样式。
 
 ![Notebook](/docs/notebook-nav-mode.png)
 

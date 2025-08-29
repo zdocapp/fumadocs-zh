@@ -1,17 +1,17 @@
 ---
-title: Async Mode
-description: Runtime compilation of content files.
+title: 异步模式
+description: 内容文件的运行时编译。
 ---
 
-## Introduction
+## 介绍
 
-By default, all Markdown and MDX files need to be pre-compiled first. The same constraint also applies to the development server.
+默认情况下，所有 Markdown 和 MDX 文件都需要先进行预编译。同样的约束也适用于开发服务器。
 
-This may result in longer dev server start times for large docs sites. You can enable Async Mode on docs collections to improve this.
+对于大型文档站点，这可能导致开发服务器启动时间较长。您可以在文档集合上启用 Async Mode 来改善此情况。
 
-## Setup
+## 设置
 
-Enable Async Mode.
+启用 Async Mode。
 
 ```ts tab="Docs Collection"
 import { defineDocs } from 'fumadocs-mdx/config';
@@ -38,9 +38,9 @@ export const doc = defineCollections({
 
 ### Next.js
 
-Turbopack doesn't support lazy bundling at the moment, Async Mode works by performing on-demand compilation with MDX Remote.
+Turbopack 目前不支持延迟打包，Async Mode 通过使用 MDX Remote 执行按需编译来实现。
 
-You need to install extra dependencies:
+您需要安装额外的依赖项：
 
 ```npm
 npm i @fumadocs/mdx-remote shiki
@@ -57,7 +57,7 @@ Async Mode comes with some limitations on MDX features for Next.js.
 
 ### Vite
 
-Vite has native support for lazy bundling, you only need to update `loader()` after enabling it.
+Vite 原生支持延迟打包，启用后只需更新 `loader()` 即可。
 
 ```tsx title="lib/source.ts"
 import { loader } from 'fumadocs-core/source';
@@ -72,11 +72,11 @@ export const source = loader({
 });
 ```
 
-## Usage
+## 使用方法
 
-Frontmatter properties are still available on `page` object, but you need to invoke the `load()` async function to load the compiled content (and its exports).
+Frontmatter 属性在 `page` 对象上仍然可用，但您需要调用 `load()` 异步函数来加载编译后的内容（及其导出）。
 
-For example:
+例如：
 
 ```tsx title="page.tsx"
 import { source } from '@/lib/source';
@@ -97,4 +97,4 @@ if (page) {
 }
 ```
 
-When using Async Mode, we highly recommend to use third-party services to implement search, which usually have better capability to handle massive amount of content to index.
+使用 Async Mode 时，我们强烈建议使用第三方服务来实现搜索功能，这些服务通常具有更好的处理海量内容索引的能力。

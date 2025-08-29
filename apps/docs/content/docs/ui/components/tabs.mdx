@@ -1,16 +1,14 @@
 ---
 title: Tabs
-description:
-  A Tabs component built with Radix UI, with additional features such as
-  persistent and shared value.
+description: 基于 Radix UI 构建的 Tabs 组件，提供持久化和共享值等附加功能。
 preview: tabs
 ---
 
 <Installation name="tabs" />
 
-## Usage
+## 使用方法
 
-Add MDX components.
+添加 MDX 组件。
 
 ```tsx title="mdx-components.tsx"
 import defaultMdxComponents from 'fumadocs-ui/mdx';
@@ -26,7 +24,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 }
 ```
 
-And use it like:
+并按如下方式使用：
 
 ```mdx
 <Tabs items={['Javascript', 'Rust']}>
@@ -36,13 +34,13 @@ And use it like:
 ```
 
 <Tabs items={['Javascript', 'Rust']}>
-  <Tab value="Javascript">Javascript is weird</Tab>
-  <Tab value="Rust">Rust is fast</Tab>
+  <Tab value="Javascript">Javascript 很奇怪</Tab>
+  <Tab value="Rust">Rust 很快</Tab>
 </Tabs>
 
-### Without `value`
+### 不使用 `value`
 
-Without a `value`, it detects from the children index. Note that it might cause errors on re-renders, it's not encouraged if the tabs might change.
+若不指定 `value`，则会根据子元素索引自动检测。请注意，这可能在重新渲染时导致错误，如果标签页可能发生变化，不建议使用此方式。
 
 ```mdx
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
@@ -54,14 +52,13 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 ```
 
 <Tabs items={['Javascript', 'Rust']}>
-  <Tab>Javascript is weird</Tab>
-  <Tab>Rust is fast</Tab>
+  <Tab>Javascript 很奇怪</Tab>
+  <Tab>Rust 很快</Tab>
 </Tabs>
 
-### Shared Value
+### 共享值
 
-By passing an `groupId` property, you can share a value across all tabs with the same
-id.
+通过传递 `groupId` 属性，您可以在具有相同 ID 的所有标签页之间共享一个值。
 
 ```mdx
 <Tabs groupId="language" items={['Javascript', 'Rust']}>
@@ -70,10 +67,9 @@ id.
 </Tabs>
 ```
 
-### Persistent
+### 持久化
 
-You can enable persistent by passing a `persist` property. The value will be
-stored in `localStorage`, with its id as the key.
+您可以通过传递 `persist` 属性启用持久化功能。值将存储在 `localStorage` 中，以其 ID 作为键名。
 
 ```mdx
 <Tabs groupId="language" items={['Javascript', 'Rust']} persist>
@@ -82,11 +78,12 @@ stored in `localStorage`, with its id as the key.
 </Tabs>
 ```
 
-> Persistent only works if you have passed an `id`.
+> [!NOTE]
+> 持久化功能仅在传递了 `id` 时才有效。
 
-### Default Value
+### 默认值
 
-Set a default value by passing `defaultIndex`.
+通过传递 `defaultIndex` 来设置默认值。
 
 ```mdx
 <Tabs items={['Javascript', 'Rust']} defaultIndex={1}>
@@ -95,9 +92,9 @@ Set a default value by passing `defaultIndex`.
 </Tabs>
 ```
 
-### Link to Tab
+### 链接到标签页
 
-Use HTML `id` attribute to link to a specific tab.
+使用 HTML `id` 属性链接到特定标签页。
 
 ```mdx
 <Tabs items={['Javascript', 'Rust', 'C++']}>
@@ -109,18 +106,18 @@ Use HTML `id` attribute to link to a specific tab.
 </Tabs>
 ```
 
-You can add the hash `#tab-cpp` to your URL and reload, the C++ tab will be activated.
+您可以在 URL 中添加哈希值 `#tab-cpp` 并重新加载，C++ 标签页将被激活。
 
 <Tabs items={['Javascript', 'Rust', 'C++']}>
-  <Tab value="Javascript">Javascript is weird</Tab>
-  <Tab value="Rust">Rust is fast</Tab>
+  <Tab value="Javascript">Javascript 很奇怪</Tab>
+  <Tab value="Rust">Rust 很快</Tab>
   <Tab id="tab-cpp" value="C++">
     `Hello World`
   </Tab>
 </Tabs>
 
-Additionally, the `updateAnchor` property can be set to `true` in the `Tabs` component
-to automatically update the URL hash whenever time a new tab is selected:
+此外，可以在 `Tabs` 组件中设置 `updateAnchor` 属性为 `true`，
+以便在每次选择新标签时自动更新 URL 哈希：
 
 ```mdx
 <Tabs items={['Javascript', 'Rust', 'C++']} updateAnchor>
@@ -140,16 +137,16 @@ to automatically update the URL hash whenever time a new tab is selected:
 
 <Tabs items={['Hello', 'World']} updateAnchor>
   <Tab id="tab-hello" value="Hello">
-    Hello!
+    你好！
   </Tab>
   <Tab id="tab-world" value="World">
-    World!
+    世界！
   </Tab>
 </Tabs>
 
-## Advanced Usage
+## 高级用法
 
-Use it in the Radix UI primitive way, see [Radix UI](https://radix-ui.com/primitives/docs/components/tabs) for more details.
+以 Radix UI 原始方式使用，更多详情请参阅 [Radix UI](https://radix-ui.com/primitives/docs/components/tabs)。
 
 ```mdx
 <Tabs defaultValue="npm">

@@ -1,18 +1,17 @@
 ---
 title: Algolia
-description: Using Algolia with Fumadocs UI.
+description: 在 Fumadocs UI 中使用 Algolia。
 ---
 
-## Overview
+## 概述
 
-For the setup guide, see [Integrate Algolia Search](/docs/headless/search/algolia).
+有关设置指南，请参阅 [集成 Algolia 搜索](/docs/headless/search/algolia)。
 
-While generally we recommend building your own search with their client-side
-SDK, you can also plug the built-in dialog interface.
+虽然我们通常建议使用他们的客户端 SDK 构建自己的搜索功能，但您也可以插入内置的对话框界面。
 
-## Setup
+## 设置
 
-Create a search dialog, replace `appId`, `apiKey` and `indexName` with your desired values.
+创建一个搜索对话框，将 `appId`、`apiKey` 和 `indexName` 替换为您所需的值。
 
 <include meta='title="components/search.tsx"'>./algolia.tsx</include>
 
@@ -25,8 +24,8 @@ Create a search dialog, replace `appId`, `apiKey` and `indexName` with your desi
 
 <include>.shared.mdx</include>
 
-### Tag Filter
+### 标签筛选
 
-Optionally, you can add UI for filtering results by tags. Configure [Tag Filter](/docs/headless/search/algolia#tag-filter) on search server and add the following:
+可选地，您可以添加按标签筛选结果的 UI。在搜索服务器上配置 [标签筛选器](/docs/headless/search/algolia#tag-filter) 并添加以下内容：
 
 <include>.tag-filter.mdx</include>

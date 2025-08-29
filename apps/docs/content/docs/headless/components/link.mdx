@@ -1,16 +1,16 @@
 ---
 title: Link
-description: A Link component that handles external links
+description: 一个处理外部链接的 Link 组件
 ---
 
-A component that wraps the Link component of your React framework (e.g. `next/link`) and automatically handles external links in the document.~
-When an external URL is detected, it uses `<a>` instead of the Link Component.
+一个包装您 React 框架（例如 `next/link`）的 Link 组件，并自动处理文档中的外部链接。~
+当检测到外部 URL 时，它会使用 `<a>` 标签而不是 Link 组件。
 
-The `rel` property is automatically generated.
+`rel` 属性会自动生成。
 
-## Usage
+## 使用方法
 
-Usage is the same as using `<a>`.
+用法与使用 `<a>` 标签相同。
 
 ```mdx
 import Link from 'fumadocs-core/link';
@@ -18,13 +18,13 @@ import Link from 'fumadocs-core/link';
 <Link href="/docs/components">Click Me</Link>
 ```
 
-### External
+### 外部链接
 
-You can force a URL to be external by passing an `external` prop.
+您可以通过传递 `external` 属性来强制将 URL 视为外部链接。
 
-### Dynamic hrefs
+### 动态 href
 
-You can enable dynamic hrefs by importing `dynamic-link`.
+您可以通过导入 `dynamic-link` 来启用动态 href。
 
 ```mdx
 import { DynamicLink } from 'fumadocs-core/dynamic-link';

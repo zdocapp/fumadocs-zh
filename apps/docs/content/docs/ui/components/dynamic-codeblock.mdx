@@ -1,12 +1,12 @@
 ---
 title: Code Block (Dynamic)
-description: A codeblock that also highlights code
+description: 一个同时支持代码高亮的代码块组件
 preview: dynamicCodeBlock
 ---
 
-## Usage
+## 使用方法
 
-### Client Component
+### 客户端组件
 
 ```tsx
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
@@ -14,15 +14,15 @@ import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 <DynamicCodeBlock lang="ts" code='console.log("Hello World")' />;
 ```
 
-Unlike the MDX [`CodeBlock`](/docs/ui/mdx/codeblock) component, this is a client component that can be used without MDX.
-It highlights the code with Shiki and use the default component to render it.
+与 MDX [`CodeBlock`](/docs/ui/mdx/codeblock) 组件不同，这是一个客户端组件，无需 MDX 即可使用。
+它使用 Shiki 对代码进行高亮显示，并使用默认组件进行渲染。
 
-Features:
+特性：
 
-- Can be pre-rendered on server
-- load languages and themes on browser lazily
+- 可在服务器端预渲染
+- 在浏览器中按需懒加载语言和主题
 
-#### Options
+#### 选项
 
 ```tsx
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
@@ -43,8 +43,8 @@ import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 />;
 ```
 
-### Server Component
+### 服务端组件
 
-For a server component equivalent, you can use the built-in utility from core:
+如需服务端组件等效方案，您可以使用核心内置工具：
 
 <include>./server-codeblock.tsx</include>

@@ -1,31 +1,31 @@
 ---
-title: Feedback
-description: Receive feedback from your users
+title: 用户反馈
+description: 接收来自用户的反馈
 ---
 
-## Overview
+## 概述
 
-Feedback is crucial for knowing what your reader thinks, and help you to further improve documentation content.
+反馈对于了解读者的想法至关重要，能帮助您进一步改进文档内容。
 
-## Installation
+## 安装
 
-Add dependencies:
+添加依赖项：
 
 ```package-install
 class-variance-authority lucide-react
 ```
 
-Copy the component:
+复制组件：
 
 <include cwd meta='title="components/rate.tsx"'>
   ./components/rate.tsx
 </include>
 
-The `@/lib/cn` import specifier may be different for your project, change it to import your `cn()` function if needed. (e.g. like `@/lib/utils`)
+`@/lib/cn` 导入标识符可能因项目而异，如果需要，请将其更改为导入您的 `cn()` 函数（例如像 `@/lib/utils`）。
 
-### How to Use
+### 使用方法
 
-Now add the `<Rate />` component to your docs page:
+现在将 `<Rate />` 组件添加到您的文档页面：
 
 ```tsx
 import { DocsPage } from 'fumadocs-ui/page';
@@ -48,20 +48,20 @@ export default async function Page() {
 }
 ```
 
-On above example, it reports user feedback by capturing a `on_rate_docs` event on PostHog.
+在上面的示例中，它通过在 PostHog 上捕获 `on_rate_docs` 事件来报告用户反馈。
 
-You can specify your own server action to `onRateAction`, and report the feedback to different destinations like database, or GitHub Discussions via their API.
+您可以指定自己的服务器操作到 `onRateAction`，并将反馈报告到不同的目的地，如数据库或通过其 API 到 GitHub Discussions。
 
-### Linking to GitHub Discussion
+### 链接到 GitHub Discussion
 
-To report your feedback to GitHub Discussion, make a custom `onRateAction`.
+要将您的反馈报告到 GitHub Discussion，请创建一个自定义的 `onRateAction`。
 
-You can copy this example as a starting point:
+您可以复制此示例作为起点：
 
 <include cwd meta="lib/github.ts">
   ./lib/github.ts
 </include>
 
-- Create your own GitHub App and obtain its app ID and private key.
-- Fill required environment variables.
-- Replace constants like `owner`, `repo`, and `DocsCategory`.
+- 创建您自己的 GitHub App 并获取其应用 ID 和私钥。
+- 填写所需的环境变量。
+- 替换常量，如 `owner`、`repo` 和 `DocsCategory`。

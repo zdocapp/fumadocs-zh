@@ -1,16 +1,16 @@
 ---
-title: Configurations
-description: Customise Fumadocs OpenAPI
+title: 配置
+description: 自定义 Fumadocs OpenAPI
 ---
 
-## File Generator
+## 文件生成器
 
-Pass options to the `generateFiles` function.
+向 `generateFiles` 函数传递选项。
 
-### Input
+### 输入
 
-- OpenAPI Server object.
-- anything supported by [`input`](#input-1).
+- OpenAPI Server 对象。
+- 任何 [`input`](#input-1) 支持的内容。
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -20,9 +20,9 @@ void generateFiles({
 });
 ```
 
-### Output
+### 输出
 
-The output directory.
+输出目录。
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -32,20 +32,20 @@ void generateFiles({
 });
 ```
 
-### Per
+### 模式
 
-Customise how the page is generated, default to `operation`.
+自定义页面生成方式，默认为 `operation`。
 
 <Callout>
   Operation refers to an API endpoint with specific method like
   `/api/weather:GET`.
 </Callout>
 
-| mode      |                             | output                                |
-| --------- | --------------------------- | ------------------------------------- |
-| tag       | operations with same tag    | `{tag_name}.mdx`                      |
-| file      | operations in schema schema | `{file_name}.mdx`                     |
-| operation | each operation              | `{operationId ?? endpoint_path}.mdx`) |
+| 模式      |                    | 输出                                  |
+| --------- | ------------------ | ------------------------------------- |
+| tag       | 具有相同标签的操作 | `{tag_name}.mdx`                      |
+| file      | 模式中的操作       | `{file_name}.mdx`                     |
+| operation | 每个操作           | `{operationId ?? endpoint_path}.mdx`) |
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -55,15 +55,15 @@ void generateFiles({
 });
 ```
 
-### Group By
+### 分组方式
 
-In `operation` mode, you can group output files with folders.
+在 `operation` 模式下，您可以使用文件夹对输出文件进行分组。
 
-| value | output                                                 |
-| ----- | ------------------------------------------------------ |
-| tag   | `{tag}/{operationId ?? endpoint_path}.mdx`             |
-| route | `{endpoint_path}/{method}.mdx` (ignores `name` option) |
-| none  | `{operationId ?? endpoint_path}.mdx` (default)         |
+| 值    | 输出                                              |
+| ----- | ------------------------------------------------- |
+| tag   | `{tag}/{operationId ?? endpoint_path}.mdx`        |
+| route | `{endpoint_path}/{method}.mdx` (忽略 `name` 选项) |
+| none  | `{operationId ?? endpoint_path}.mdx` (默认)       |
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -74,9 +74,9 @@ void generateFiles({
 });
 ```
 
-### Index
+### 索引
 
-Generate index files with cards linking to generated pages.
+生成索引文件，其中包含指向生成页面的卡片链接。
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -104,9 +104,9 @@ void generateFiles({
 });
 ```
 
-### Imports
+### 导入
 
-Add custom imports to generated MDX files. This is useful for including components, utilities, or other dependencies in your generated documentation.
+向生成的 MDX 文件添加自定义导入。这对于在生成的文档中包含组件、工具或其他依赖项非常有用。
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -131,7 +131,7 @@ void generateFiles({
 });
 ```
 
-This will add the following imports to all generated MDX files:
+这将在所有生成的 MDX 文件中添加以下导入：
 
 ```ts
 import { CustomComponent, AnotherComponent } from '@/components/custom';
@@ -145,9 +145,9 @@ import { API_BASE_URL } from '@/constants';
   navigation functionality to work.
 </Callout>
 
-### Name
+### 名称
 
-A function that controls the output path of MDX pages.
+控制 MDX 页面输出路径的函数。
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -172,17 +172,17 @@ void generateFiles({
 
 ### Frontmatter
 
-Customise the frontmatter of MDX files.
+自定义 MDX 文件的 frontmatter。
 
-By default, it includes:
+默认情况下，包含：
 
-| property      | description                                      |
-| ------------- | ------------------------------------------------ |
-| `title`       | Page title                                       |
-| `description` | Page description                                 |
-| `full`        | Always true, added for Fumadocs UI               |
-| `method`      | Available method of operation (`operation` mode) |
-| `route`       | Route of operation (`operation` mode)            |
+| 属性          | 描述                             |
+| ------------- | -------------------------------- |
+| `title`       | 页面标题                         |
+| `description` | 页面描述                         |
+| `full`        | 始终为 true，为 Fumadocs UI 添加 |
+| `method`      | 可用操作方法 (`operation` 模式)  |
+| `route`       | 操作路由 (`operation` 模式)      |
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -196,9 +196,9 @@ void generateFiles({
 });
 ```
 
-### Add Generated Comment
+### 添加生成注释
 
-Add a comment to the top of generated files indicating they are auto-generated.
+在生成文件的顶部添加注释，表明它们是自动生成的。
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -217,9 +217,9 @@ void generateFiles({
 });
 ```
 
-### Tag Display Name
+### 标签显示名称
 
-Adding `x-displayName` to OpenAPI Schema can control the display name of your tags.
+在 OpenAPI 模式中添加 `x-displayName` 可以控制标签的显示名称。
 
 ```yaml title="openapi.yaml"
 tags:
@@ -228,15 +228,15 @@ tags:
     x-displayName: My Test Name
 ```
 
-## OpenAPI Server
+## OpenAPI 服务器
 
-The server to render pages.
+用于渲染页面的服务器。
 
-### Input
+### 输入
 
-- File Paths (including wildcards)
-- External URLs
-- A function (see below)
+- 文件路径
+- 外部 URL
+- 函数（见下文）
 
 ```ts tab="Basic"
 import { createOpenAPI } from 'fumadocs-openapi/server';
@@ -261,9 +261,9 @@ export const openapi = createOpenAPI({
 });
 ```
 
-### Generate Code Samples
+### 生成代码示例
 
-Generate custom code samples for each API endpoint. Make sure to install the types package to give you type-safety when customising it:
+为每个 API 端点生成自定义代码示例。请确保安装类型包，以便在自定义时获得类型安全：
 
 ```package-install
 openapi-types -D
@@ -285,7 +285,7 @@ export const openapi = createOpenAPI({
 });
 ```
 
-In addition, you can also specify code samples via OpenAPI schema.
+此外，您也可以通过 OpenAPI 模式指定代码示例。
 
 ```yaml
 paths:
@@ -299,9 +299,9 @@ paths:
             planter.list({ unwatered: true });
 ```
 
-#### Disable Code Sample
+#### 禁用代码示例
 
-You can disable the code sample for a specific language, for example, to disable cURL:
+您可以禁用特定语言的代码示例，例如禁用 cURL：
 
 ```ts
 import { createOpenAPI } from 'fumadocs-openapi/server';
@@ -319,9 +319,9 @@ export const openapi = createOpenAPI({
 });
 ```
 
-### Renderer
+### 渲染器
 
-Customise components in the page.
+自定义页面中的组件。
 
 ```ts
 import { createOpenAPI } from 'fumadocs-openapi/server';

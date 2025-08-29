@@ -1,45 +1,45 @@
 ---
 title: Fumadocs OpenAPI v9
-description: Better UI & DX
+description: 更优的用户界面与开发体验
 date: 2025-05-25
 author: Fuma Nama
 ---
 
-## Overview
+## 概述
 
-This breaking change is mainly made to address problems of `generateFiles()` function.
+此次重大变更主要旨在解决 `generateFiles()` 函数的问题。
 
-Previously, it was a simple function to generate multiple MDX files/pages from your OpenAPI schema, same as every docs generator.
-We tested it on public OpenAPI schemas such as Unkey, Vercel and examples from Scalar and Swagger's Museum schema.
+此前，它是一个简单的函数，用于从您的 OpenAPI 模式生成多个 MDX 文件/页面，与每个文档生成器相同。
+我们在公共 OpenAPI 模式（如 Unkey、Vercel 以及 Scalar 和 Swagger 的 Museum 模式示例）上对其进行了测试。
 
-Since these schemas were written for different docs solutions, or even their custom ones.
-We made `generateFiles()` too complicated to be capable of producing best results for various schema styles, and it's even harder to customise the generated file paths of API docs.
+由于这些模式是为不同的文档解决方案编写的，甚至是他们自定义的解决方案。
+我们使得 `generateFiles()` 过于复杂，难以对各种模式风格产生最佳结果，并且更难自定义生成的 API 文档文件路径。
 
-This update also include:
+此更新还包括：
 
-- Better UI for schema & playground body input
-- Improved type-safety for `generateFiles()`
+- 更好的模式与 Playground 主体输入的用户界面
+- 改进的 `generateFiles()` 类型安全性
 
-## Breaking Changes
+## 重大变更
 
-The algorithm for generating file paths is changed:
+生成文件路径的算法已更改：
 
-- `meta.json` will no longer be generated, add as your wanted.
-- `per: operation`: The generated path will be identical to your operation id. If not defined, it takes your endpoint path instead.
+- 将不再生成 `meta.json`，请根据需要自行添加。
+- `per: operation`：生成的路径将与您的操作 ID 相同。如果未定义，则使用您的端点路径。
 
-### Group By
+### 分组方式
 
-The behaviour of `groupBy` API is also changed.
+`groupBy` API 的行为也已更改。
 
-| value | output                                                 |
-| ----- | ------------------------------------------------------ |
-| tag   | `{tag}/{operationId ?? endpoint_path}.mdx`             |
-| route | `{endpoint_path}/{method}.mdx` (ignores `name` option) |
-| none  | `{operationId ?? endpoint_path}.mdx` (default)         |
+| 值    | 输出                                              |
+| ----- | ------------------------------------------------- |
+| tag   | `{tag}/{operationId ?? endpoint_path}.mdx`        |
+| route | `{endpoint_path}/{method}.mdx` (忽略 `name` 选项) |
+| none  | `{operationId ?? endpoint_path}.mdx` (默认)       |
 
-### Customise Output
+### 自定义输出
 
-The usage of `name` option is renewed, it can be used to customise the output path of files.
+`name` 选项的用法已更新，可用于自定义文件的输出路径。
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -55,9 +55,9 @@ void generateFiles({
 });
 ```
 
-## Migration
+## 迁移
 
-You can start using the latest algorithm, or keep the current behaviour with:
+您可以开始使用最新的算法，或者通过以下方式保持当前行为：
 
 ```ts
 import { generateFiles } from 'fumadocs-openapi';
@@ -69,4 +69,4 @@ void generateFiles({
 });
 ```
 
-Note that it won't create `meta.json` anymore even with `algorithm` set to `v1`, you can keep your current generated `meta.json` files.
+请注意，即使将 `algorithm` 设置为 `v1`，也不会再创建 `meta.json`，您可以保留当前生成的 `meta.json` 文件。

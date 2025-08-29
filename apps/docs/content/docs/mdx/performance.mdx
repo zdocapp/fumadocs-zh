@@ -1,21 +1,21 @@
 ---
-title: Performance
-description: The performance of Fumadocs MDX
+title: 性能
+description: Fumadocs MDX 的性能表现
 icon: Rocket
 ---
 
-## Overview
+## 概述
 
-Fumadocs MDX is a bundler plugin, in other words, it has a higher performance bottleneck.
-With bundlers like Webpack and Turbopack, it is enough for large docs sites with nearly 500+ MDX files, which is sufficient for almost all use cases.
+Fumadocs MDX 是一个打包器插件，换句话说，它具有更高的性能瓶颈。
+对于像 Webpack 和 Turbopack 这样的打包器，它足以处理拥有近 500+ 个 MDX 文件的大型文档站点，这几乎可以满足所有用例的需求。
 
-Since Fumadocs MDX works with your bundler, you can import any files including client components in your MDX files.
-This allows high flexibility and ensures everything is optimized by default.
+由于 Fumadocs MDX 与您的打包器协同工作，您可以在 MDX 文件中导入任何文件，包括客户端组件。
+这提供了高度的灵活性，并确保所有内容默认都经过优化。
 
-### Image Optimization
+### 图片优化
 
-Fumadocs MDX resolves images into static imports with [Remark Image](/docs/headless/mdx/remark-image).
-Therefore, your images will be optimized automatically for your React framework (e.g. Next.js Image API).
+Fumadocs MDX 通过 [Remark Image](/docs/headless/mdx/remark-image) 将图像解析为静态导入。
+因此，您的图像将自动针对您的 React 框架（例如 Next.js Image API）进行优化。
 
 ```mdx
 ![Hello](./hello.png)
@@ -25,7 +25,7 @@ or in public folder
 ![Hello](/hello.png)
 ```
 
-Yields:
+生成：
 
 ```mdx
 import HelloImage from './hello.png';
@@ -35,27 +35,27 @@ import HelloImage from './hello.png';
 
 ![Banner](/banner.png)
 
-## Caveats
+## 注意事项
 
-Although Fumadocs MDX can handle nearly 500+ files, it could be slow and inefficient.
-A huge amount of MDX files can cause extremely high memory usage during build and development mode.
+尽管 Fumadocs MDX 可以处理近 500+ 个文件，但它可能会变得缓慢且效率低下。
+大量的 MDX 文件在构建和开发模式下可能导致极高的内存使用率。
 
-This is because of:
+这是因为：
 
-- Bundlers do a lot of work under the hood to bundle MDX and JavaScript files and optimize performance.
-- Bundlers are not supposed to compile hundreds of MDX files.
+- 打包器在底层做了大量工作来打包 MDX 和 JavaScript 文件并优化性能。
+- 打包器本不应编译数百个 MDX 文件。
 
-### Solutions
+### 解决方案
 
-The main solution is to make the compilation on-demand, such that content is only loaded when it's being requested.
+主要的解决方案是按需进行编译，即仅在请求内容时才加载内容。
 
-#### Remote Source
+#### 远程源
 
-Remote sources don't need to pre-compile MDX files, it can compile them on-demand with SSG which can **highly increase your build speed.**
-However, you cannot use import in MDX files anymore.
+远程源无需预编译 MDX 文件，它可以通过 SSG 按需编译，这能**显著提升构建速度**。
+但您将无法再在 MDX 文件中使用 import 语句。
 
-See [Custom Source](/docs/headless/custom-source) for configuring remote sources.
+请参阅[自定义源](/docs/headless/custom-source)来配置远程源。
 
-#### Async Mode
+#### 异步模式
 
-See [Async Mode](/docs/mdx/async).
+请参阅[异步模式](/docs/mdx/async)。

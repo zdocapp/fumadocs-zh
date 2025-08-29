@@ -1,15 +1,15 @@
 ---
-title: Docs Layout
-description: The layout of documentation
+title: 文档布局
+description: 文档的布局结构
 ---
 
 <Customisation />
 
-The layout of documentation pages, it includes a sidebar and mobile-only navbar.
+文档页面的布局，包含侧边栏和仅限移动端的导航栏。
 
-## Usage
+## 使用方法
 
-Pass your page tree to the component.
+将您的页面树传递给该组件。
 
 ```tsx title="layout.tsx"
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   type="Omit<DocsLayoutProps, 'children' | 'disableThemeSwitch'>"
 />
 
-## Sidebar
+## 侧边栏
 
 ```tsx title="layout.tsx"
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
@@ -44,13 +44,13 @@ import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 />;
 ```
 
-> See [Sidebar Links](/docs/ui/navigation/sidebar) for customising sidebar items.
+> 查看[侧边栏链接](/docs/ui/navigation/sidebar)以自定义侧边栏项目。
 
 <AutoTypeTable path="./content/docs/ui/props.ts" name="SidebarProps" />
 
-## Nav
+## 导航栏
 
-A mobile-only navbar, the `nav` prop is also reusable on other Fumadocs layouts.
+仅限移动端的导航栏，`nav` 属性也可在其他 Fumadocs 布局中重复使用。
 
 <div className='max-w-[460px] mx-auto'>
 
@@ -85,9 +85,9 @@ export default function Layout({ children }: { children: ReactNode }) {
   type="Omit<NavbarProps, 'children'>"
 />
 
-### Transparent Mode
+### 透明模式
 
-To make the navbar background transparent, you can configure transparent mode.
+要使导航栏背景透明，您可以配置透明模式。
 
 ```tsx
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
@@ -99,15 +99,15 @@ export const baseOptions: BaseLayoutProps = {
 };
 ```
 
-| Mode     | Description                              |
-| -------- | ---------------------------------------- |
-| `always` | Always use a transparent background      |
-| `top`    | When at the top of page                  |
-| `none`   | Disable transparent background (default) |
+| 模式     | 描述                 |
+| -------- | -------------------- |
+| `always` | 始终使用透明背景     |
+| `top`    | 当位于页面顶部时     |
+| `none`   | 禁用透明背景（默认） |
 
-### Replace Navbar
+### 替换导航栏
 
-To replace the navbar in Docs Layout, set `nav.component` to your own component.
+要替换 Docs Layout 中的导航栏，将 `nav.component` 设置为您自己的组件。
 
 ```tsx title="layout.tsx"
 import { baseOptions } from '@/lib/layout.shared';
@@ -128,9 +128,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-Fumadocs uses **CSS Variables** to share the size of layout components, and fit each layout component into appropriate position.
+Fumadocs 使用 **CSS 变量** 来共享布局组件的尺寸，并将每个布局组件适配到适当的位置。
 
-You need to override `--fd-nav-height` to the exact height of your custom navbar, this can be done with a CSS stylesheet (e.g. in `global.css`):
+您需要将 `--fd-nav-height` 覆盖为您自定义导航栏的确切高度，这可以通过 CSS 样式表（例如在 `global.css` 中）完成：
 
 ```css
 :root {
@@ -138,16 +138,16 @@ You need to override `--fd-nav-height` to the exact height of your custom navbar
 }
 ```
 
-## Advanced
+## 高级
 
-### Disable Prefetching
+### 禁用预取
 
-By default, it uses the `<Link />` component of your React framework with prefetch enabled.
+默认情况下，它使用您 React 框架的 `<Link />` 组件并启用预取功能。
 
-On Vercel, prefetch requests may cause a higher usage of serverless functions and Data Cache.
-It can also hit the limits of some other hosting platforms.
+在 Vercel 上，预取请求可能导致无服务器函数和数据缓存的使用量增加。
+它也可能达到其他一些托管平台的限制。
 
-You can disable prefetching to reduce the amount of prefetch requests.
+您可以禁用预取功能以减少预取请求的数量。
 
 ```tsx
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';

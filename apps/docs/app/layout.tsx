@@ -8,8 +8,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 export const metadata = createMetadata({
   title: {
-    template: '%s | Fumadocs',
-    default: 'Fumadocs',
+    template: '%s | Fumadocs 中文文档',
+    default: 'Fumadocs 中文文档',
   },
   description: 'The Next.js framework for building documentation sites',
   metadataBase: baseUrl,
@@ -35,7 +35,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="zh"
       className={`${geist.variable} ${mono.variable}`}
       suppressHydrationWarning
     >

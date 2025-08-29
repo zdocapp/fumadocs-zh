@@ -1,14 +1,14 @@
 ---
 title: Steps
-description: Adding steps to your docs
+description: 在文档中添加步骤说明
 preview: steps
 ---
 
 <Installation name="steps" />
 
-## Usage
+## 使用方法
 
-Put your steps into the `Steps` container.
+将您的步骤放入 `Steps` 容器中。
 
 ```mdx
 import { Step, Steps } from 'fumadocs-ui/components/steps';
@@ -28,11 +28,11 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 </Steps>
 ```
 
-> We recommend using Tailwind CSS utility classes directly on Tailwind CSS projects.
+> 我们建议在 Tailwind CSS 项目中直接使用 Tailwind CSS 工具类。
 
-### Without imports
+### 无需导入
 
-You can use the Tailwind CSS utilities without importing it.
+您可以在不导入的情况下使用 Tailwind CSS 工具类。
 
 ```mdx
 <div className="fd-steps">
@@ -40,7 +40,7 @@ You can use the Tailwind CSS utilities without importing it.
 </div>
 ```
 
-It supports adding step styles to only headings with arbitrary variants.
+它支持仅通过任意变体为标题添加步骤样式。
 
 ```mdx
 <div className='fd-steps [&_h3]:fd-step'>

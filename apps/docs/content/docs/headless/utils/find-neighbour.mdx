@@ -1,14 +1,13 @@
 ---
-title: Find Neighbours
-description: Find the neighbours of a page from the page tree
+title: 查找相邻页面
+description: 从页面树中查找页面的相邻页面
 ---
 
-Find the neighbours of a page from the page tree, it returns the next and
-previous page of a given page. It is useful for implementing a footer.
+从页面树中查找页面的相邻页面，它返回给定页面的下一页和上一页。这对于实现页脚非常有用。
 
-## Usage
+## 使用方法
 
-It requires a page tree and the url of page.
+它需要一个页面树和页面的URL。
 
 ```ts
 import { findNeighbour } from 'fumadocs-core/server';
@@ -17,7 +16,7 @@ import { pageTree } from '@/lib/source';
 const neighbours = findNeighbour(pageTree, '/url/to/page');
 ```
 
-| Parameter | Type       | Description     |
-| --------- | ---------- | --------------- |
-| tree      | `PageTree` | The page tree   |
-| url       | `string`   | The url of page |
+| 参数 | 类型       | 描述      |
+| ---- | ---------- | --------- |
+| tree | `PageTree` | 页面树    |
+| url  | `string`   | 页面的URL |

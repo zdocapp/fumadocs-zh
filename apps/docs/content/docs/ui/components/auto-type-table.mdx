@@ -1,6 +1,6 @@
 ---
 title: Auto Type Table
-description: Auto-generated type table
+description: 自动生成的类型表格
 ---
 
 <Wrapper>
@@ -36,15 +36,15 @@ You cannot use this in a client component.
 
 </Callout>
 
-It generates a table for your docs based on TypeScript definitions.
+它根据 TypeScript 定义生成文档表格。
 
-## Usage
+## 使用方法
 
 ```package-install
 fumadocs-typescript
 ```
 
-Initialize the TypeScript compiler and add it as a MDX component.
+初始化 TypeScript 编译器并将其添加为 MDX 组件。
 
 ```tsx title="mdx-components.tsx"
 import defaultComponents from 'fumadocs-ui/mdx';
@@ -65,9 +65,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 }
 ```
 
-### From File
+### 从文件生成
 
-It accepts a `path` prop that points to a typescript file, and `name` for the exported type name.
+它接受指向 TypeScript 文件的 `path` 属性和导出类型名称的 `name` 属性。
 
 ```ts title="path/to/file.ts"
 export interface MyInterface {
@@ -79,11 +79,11 @@ export interface MyInterface {
 <AutoTypeTable path="./path/to/file.ts" name="MyInterface" />
 ```
 
-The path is relative to your project directory (`cwd`), because `AutoTypeTable` is a React Server Component, it cannot access build-time information like MDX file path.
+路径相对于您的项目目录（`cwd`），因为 `AutoTypeTable` 是 React 服务器组件，无法访问像 MDX 文件路径这样的构建时信息。
 
-### From Type
+### 从类型生成
 
-You can specify the type to generate, without an actual TypeScript file.
+您可以指定要生成的类型，无需实际的 TypeScript 文件。
 
 ```mdx
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
@@ -91,7 +91,7 @@ import { AutoTypeTable } from 'fumadocs-typescript/ui';
 <AutoTypeTable type="{ hello: string }" />
 ```
 
-When a `path` is given, it shares the same context as the TypeScript file.
+当提供 `path` 时，它与 TypeScript 文件共享相同的上下文。
 
 ```ts title="file.ts"
 export type A = { hello: string };
@@ -101,7 +101,7 @@ export type A = { hello: string };
 <AutoTypeTable path="file.ts" type="A & { world: string }" />
 ```
 
-When `type` has multiple lines, the export statement and `name` prop are required.
+当 `type` 有多行时，需要导出语句和 `name` 属性。
 
 ```mdx
 <AutoTypeTable
@@ -114,9 +114,9 @@ export type B = ReactNode | { world: string }
 />
 ```
 
-### Functions
+### 函数处理
 
-Notice that only object type is allowed. For functions, you should wrap them into an object instead.
+请注意，仅允许对象类型。对于函数，应将其包装到对象中。
 
 ```ts
 export interface MyInterface {
@@ -124,19 +124,19 @@ export interface MyInterface {
 }
 ```
 
-### References
+### 引用说明
 
 <auto-type-table path="../props.ts" name="AutoTypeTableProps" />
 
-### File System
+### 文件系统
 
-It relies on the file system, hence, the page referencing this component must be built in **build time**. Rendering the component on serverless runtime may cause problems.
+它依赖于文件系统，因此引用此组件的页面必须在**构建时**构建。在无服务器运行时渲染组件可能会导致问题。
 
-### Deep Dive
+### 深入探讨
 
-Under the hood, it uses the [Typescript Compiler API](https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API) to extract type information.
-Your `tsconfig.json` file in the current working directory will be loaded.
+底层实现使用 [TypeScript 编译器 API](https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API) 提取类型信息。
+当前工作目录中的 `tsconfig.json` 文件将被加载。
 
-To change the compiler settings, pass a `options` prop to the component.
+要更改编译器设置，请向组件传递一个 `options` 属性。
 
-Learn more about [Typescript Docs Generation](/docs/ui/typescript).
+了解更多关于 [Typescript 文档生成](/docs/ui/typescript) 的信息。

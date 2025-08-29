@@ -1,17 +1,17 @@
 ---
-title: Introduction
-description: Getting started with core library
+title: 简介
+description: 核心库入门指南
 icon: Album
 ---
 
-## What is this?
+## 这是什么？
 
-Fumadocs Core offers server-side functions and headless components to build docs on any React.js frameworks like Next.js.
+Fumadocs Core 提供服务器端功能和无头组件，可在任何 React.js 框架（如 Next.js）上构建文档。
 
-- Search (built-in: Orama, Algolia Search)
-- Breadcrumb, Sidebar, TOC Components
-- Remark/Rehype Plugins
-- Additional utilities
+- 搜索（内置：Orama、Algolia Search）
+- 面包屑、侧边栏、目录组件
+- Remark/Rehype 插件
+- 附加工具
 
 <Callout title="Tip">
 
@@ -21,15 +21,15 @@ Fumadocs Core offers server-side functions and headless components to build docs
 
 </Callout>
 
-## Installation
+## 安装
 
-No other dependencies required.
+无需其他依赖项。
 
 ```package-install
 fumadocs-core
 ```
 
-For some components, a framework provider is needed:
+对于某些组件，需要框架提供程序：
 
 ```tsx tab="Next.js"
 import type { ReactNode } from 'react';
@@ -68,8 +68,7 @@ export function Root({ children }: { children: ReactNode }) {
 }
 ```
 
-It offers simple document searching as well as components for building a
-good docs.
+它提供简单的文档搜索功能以及用于构建优质文档的组件。
 
 <Cards>
 

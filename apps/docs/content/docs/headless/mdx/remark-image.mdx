@@ -1,13 +1,13 @@
 ---
-title: Remark Image
-description: Adding size attributes to images.
+title: 图像尺寸标注
+description: 为图像添加尺寸属性。
 ---
 
-This plugin adds `width` and `height` attributes to your image elements, which is needed for Image Optimization on Next.js and some other frameworks.
+该插件为您的图片元素添加 `width` 和 `height` 属性，这是 Next.js 和其他一些框架进行图片优化所必需的。
 
-## Usage
+## 使用方法
 
-Add it to your Remark plugins.
+将其添加到您的 Remark 插件中。
 
 ```ts title="MDX Compiler"
 import { compile } from '@mdx-js/mdx';
@@ -18,36 +18,36 @@ await compile('...', {
 });
 ```
 
-> This plugin is included by default on Fumadocs MDX.
+> 该插件默认包含在 Fumadocs MDX 中。
 
-Supported:
+支持：
 
-- Local Images
-- External URLs
-- Next.js static imports
+- 本地图片
+- 外部 URL
+- Next.js 静态导入
 
-### How It Works
+### 工作原理
 
-For Next.js, it uses **static imports** to import local images, which supports the `placeholder` option of Next.js Image.
-Next.js can handle image imports with its built-in image loader.
+对于 Next.js，它使用**静态导入**来导入本地图片，这支持 Next.js Image 的 `placeholder` 选项。
+Next.js 可以使用其内置的图片加载器处理图片导入。
 
-Otherwise, it uses the file system or an HTTP request to download the image and obtain its size.
+否则，它将使用文件系统或 HTTP 请求下载图片并获取其尺寸。
 
-### Options
+### 选项
 
 <AutoTypeTable
   path="./content/docs/headless/props.ts"
   name="RemarkImageOptions"
 />
 
-### Example: With Imports
+### 示例：使用导入
 
 ```mdx
 ![Hello](/hello.png)
 ![Test](https://example.com/image.png)
 ```
 
-Yields:
+生成：
 
 ```mdx
 import HelloImage from './public/hello.png';
@@ -61,11 +61,11 @@ import HelloImage from './public/hello.png';
 />
 ```
 
-Where `./public/hello.png` points to the image in public directory.
+其中 `./public/hello.png` 指向公共目录中的图片。
 
-### Example: Without Imports
+### 示例：不使用导入
 
-For Next.js, you can disable static imports on local images.
+对于 Next.js，您可以禁用本地图片的静态导入。
 
 ```ts
 import { remarkImage } from 'fumadocs-core/mdx-plugins';
@@ -80,7 +80,7 @@ export default {
 ![Test](https://example.com/image.png)
 ```
 
-Yields:
+生成：
 
 ```mdx
 <img alt="Hello" src="/hello.png" width="1980" height="1080" />
@@ -92,21 +92,21 @@ Yields:
 />
 ```
 
-### Example: Relative Paths
+### 示例：相对路径
 
-When `useImport` is enabled, you can reference local images using relative paths.
+当启用 `useImport` 时，您可以使用相对路径引用本地图片。
 
 ```mdx
 ![Hello](./hello.png)
 ```
 
-Be careful that using it with `useImport` disabled **doesn't work**.
-Next.js will not add the image to public assets unless you have imported it in code.
-For images in public directory, you can just reference them without relative paths.
+请注意，在禁用 `useImport` 的情况下使用它**不起作用**。
+除非您在代码中导入了图片，否则 Next.js 不会将图片添加到公共资源中。
+对于公共目录中的图片，您可以直接引用它们而无需使用相对路径。
 
-### Example: Public Directory
+### 示例：公共目录
 
-Customise the path of public directory
+自定义公共目录的路径
 
 ```ts
 import { remarkImage } from 'fumadocs-core/mdx-plugins';
@@ -122,7 +122,7 @@ export default {
 };
 ```
 
-You can pass a URL too.
+您也可以传递一个 URL。
 
 ```ts
 import { remarkImage } from 'fumadocs-core/mdx-plugins';

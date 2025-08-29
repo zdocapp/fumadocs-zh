@@ -1,6 +1,6 @@
 ---
-title: Algolia Search
-description: Integrate Algolia Search with Fumadocs
+title: Algolia 搜索
+description: 将 Algolia 搜索与 Fumadocs 集成
 ---
 
 <Callout title="Notice">
@@ -8,42 +8,39 @@ description: Integrate Algolia Search with Fumadocs
   search dialog](https://algolia.com/policies/free-services-terms).
 </Callout>
 
-## Introduction
+## 介绍
 
-The Algolia Integration automatically configures Algolia Search for document search.
+Algolia 集成会自动为文档搜索配置 Algolia Search。
 
-It creates a record for **each paragraph** in your document, it is also recommended by Algolia.
+它会为文档中的**每个段落**创建一条记录，这也是 Algolia 推荐的做法。
 
-Each record contains searchable attributes:
+每条记录包含以下可搜索属性：
 
-| Attribute | Description           |
-| --------- | --------------------- |
-| `title`   | Page Title            |
-| `section` | Heading ID (nullable) |
-| `content` | Paragraph content     |
+| 属性      | 描述              |
+| --------- | ----------------- |
+| `title`   | 页面标题          |
+| `section` | 标题 ID（可为空） |
+| `content` | 段落内容          |
 
-The `section` field only exists in paragraphs under a heading. Headings and
-paragraphs are indexed as an individual record, grouped by their page ID.
+`section` 字段仅存在于标题下的段落中。标题和段落会被索引为单独的记录，并按页面 ID 分组。
 
-Notice that it expects the `url` property of a page to be unique, you shouldn't have two pages with the same
-url.
+请注意，它期望页面的 `url` 属性是唯一的，您不应有两个具有相同 URL 的页面。
 
-## Setup
+## 设置
 
-Install dependencies:
+安装依赖：
 
 ```package-install
 algoliasearch
 ```
 
-### Sign up on Algolia
+### 在 Algolia 上注册
 
-Sign up and obtain the app id and API keys for your search. Store these
-credentials in environment variables.
+注册并获取用于搜索的应用 ID 和 API 密钥。将这些凭据存储在环境变量中。
 
-### Sync Search Indexes
+### 同步搜索索引
 
-Pre-render a static route `/static.json` to export search indexes into production build:
+预渲染一个静态路由 `/static.json`，将搜索索引导出到生产构建中：
 
 ```ts title="lib/export-search-indexes.ts"
 import { source } from '@/lib/source';
@@ -68,7 +65,7 @@ export async function exportSearchIndexes() {
 
 <include>.static-route-example.mdx</include>
 
-Make a script to sync search indexes:
+创建一个脚本来同步搜索索引：
 
 ```ts title="scripts/sync-content.ts" twoslash
 import { algoliasearch } from 'algoliasearch';
@@ -95,7 +92,7 @@ void sync(client, {
 });
 ```
 
-Now run the script after build:
+现在在构建后运行该脚本：
 
 ```json title="package.json"
 {
@@ -105,16 +102,16 @@ Now run the script after build:
 }
 ```
 
-### Workflow
+### 工作流程
 
-You may manually upload search indexes with the script, or integrate it with your CI/CD pipeline.
+您可以使用脚本手动上传搜索索引，或将其与 CI/CD 流水线集成。
 
-### Search UI
+### 搜索界面
 
-You can consider different options for implementing the UI:
+您可以考虑不同的选项来实现用户界面：
 
-- Using [Fumadocs UI search dialog](/docs/ui/search/algolia).
-- Build your own using the built-in search client hook:
+- 使用 [Fumadocs UI 搜索对话框](/docs/ui/search/algolia)。
+- 使用内置搜索客户端钩子构建自己的搜索功能：
 
   ```ts twoslash
   import { liteClient } from 'algoliasearch/lite';
@@ -129,13 +126,13 @@ You can consider different options for implementing the UI:
   });
   ```
 
-- Use their official clients directly.
+- 直接使用他们的官方客户端。
 
-## Options
+## 选项
 
-### Tag Filter
+### 标签筛选
 
-To configure tag filtering, add a `tag` value to indexes.
+要配置标签筛选，请向索引添加 `tag` 值。
 
 ```ts title="lib/export-search-indexes.ts"
 import { source } from '@/lib/source';
@@ -160,10 +157,10 @@ export async function exportSearchIndexes() {
 }
 ```
 
-And update your search client:
+并更新您的搜索客户端：
 
-- **Fumadocs UI**: Enable [Tag Filter](/docs/ui/search/algolia#tag-filter) on Search UI.
-- **Search Client**: You can add the tag filter like:
+- **Fumadocs UI**：在搜索界面上启用[标签筛选](/docs/ui/search/algolia#tag-filter)。
+- **搜索客户端**：您可以像这样添加标签筛选器：
 
   ```ts
   import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -174,4 +171,4 @@ And update your search client:
   });
   ```
 
-The `tag` field is an attribute for faceting. You can also use the filter `tag:value` on Algolia search clients.
+`tag` 字段是一个用于分面的属性。您也可以在 Algolia 搜索客户端上使用筛选器 `tag:value`。

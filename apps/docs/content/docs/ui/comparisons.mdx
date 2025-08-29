@@ -1,71 +1,70 @@
 ---
-title: Comparisons
-description: How is Fumadocs different from other existing frameworks?
+title: 对比分析
+description: Fumadocs 与其他现有框架有何不同？
 icon: GitCompareArrows
 ---
 
 ## Nextra
 
-Fumadocs is highly inspired by Nextra. For example, the Routing Conventions. That is why
-`meta.json` also exists in Fumadocs.
+Fumadocs 深受 Nextra 的启发。例如，路由约定。这就是为什么
+`meta.json` 也存在于 Fumadocs 中。
 
-Nextra is more opinionated than Fumadocs, as a side effect, you have to
-configure things manually compared to simply editing a configuration file.
+Nextra 比 Fumadocs 更具规范性，因此，与简单地编辑配置文件相比，
+您必须手动配置各项内容。
 
-Fumadocs works great if you want more control over everything, such as
-adding it to an existing codebase or implementing advanced routing.
+如果您希望对所有内容拥有更多控制权，例如将其添加到现有代码库中
+或实现高级路由，Fumadocs 会表现得非常出色。
 
-### Feature Table
+### 功能对比表
 
-| Feature             | Fumadocs     | Nextra                    |
-| ------------------- | ------------ | ------------------------- |
-| Static Generation   | Yes          | Yes                       |
-| Cached              | Yes          | Yes                       |
-| Light/Dark Mode     | Yes          | Yes                       |
-| Syntax Highlighting | Yes          | Yes                       |
-| Table of Contents   | Yes          | Yes                       |
-| Full-text Search    | Yes          | Yes                       |
-| i18n                | Yes          | Yes                       |
-| Last Git Edit Time  | Yes          | Yes                       |
-| Page Icons          | Yes          | Yes, via `_meta.js` files |
-| RSC                 | Yes          | Yes                       |
-| Remote Source       | Yes          | Yes                       |
-| SEO                 | Via Metadata | Yes                       |
-| Built-in Components | Yes          | Yes                       |
-| RTL Layout          | Yes          | Yes                       |
+| 特性              | Fumadocs   | Nextra                   |
+| ----------------- | ---------- | ------------------------ |
+| 静态生成          | 是         | 是                       |
+| 缓存              | 是         | 是                       |
+| 亮色/暗色模式     | 是         | 是                       |
+| 语法高亮          | 是         | 是                       |
+| 目录              | 是         | 是                       |
+| 全文搜索          | 是         | 是                       |
+| 国际化(i18n)      | 是         | 是                       |
+| 最后 Git 编辑时间 | 是         | 是                       |
+| 页面图标          | 是         | 是，通过 `_meta.js` 文件 |
+| RSC               | 是         | 是                       |
+| 远程源            | 是         | 是                       |
+| SEO               | 通过元数据 | 是                       |
+| 内置组件          | 是         | 是                       |
+| RTL 布局          | 是         | 是                       |
 
-### Additional Features
+### 附加特性
 
-Features supported via 3rd party libraries like [TypeDoc](https://typedoc.org) will not be listed here.
+通过第三方库（如 [TypeDoc](https://typedoc.org)）支持的特性不在此列出。
 
-| Feature                    | Fumadocs | Nextra |
-| -------------------------- | -------- | ------ |
-| OpenAPI Integration        | Yes      | No     |
-| TypeScript Docs Generation | Yes      | No     |
-| TypeScript Twoslash        | Yes      | Yes    |
+| 特性                | Fumadocs | Nextra |
+| ------------------- | -------- | ------ |
+| OpenAPI 集成        | 是       | 否     |
+| TypeScript 文档生成 | 是       | 否     |
+| TypeScript Twoslash | 是       | 是     |
 
 ## Mintlify
 
-Mintlify is a documentation service, as compared to Fumadocs, it offers a free tier but isn't completely free and open source.
+Mintlify 是一项文档服务，与 Fumadocs 相比，它提供免费套餐但并非完全免费和开源。
 
-Fumadocs is not as powerful as Mintlify, for example, the OpenAPI integration of Mintlify.
-As the creator of Fumadocs, I wouldn't recommend switching to Fumadocs from Mintlify if you're satisfied with the current way you build docs.
-However, I believe Fumadocs is a suitable tool for all React.js developers who want to have elegant docs.
+Fumadocs 不如 Mintlify 功能强大，例如 Mintlify 的 OpenAPI 集成。
+作为 Fumadocs 的创建者，如果您对当前构建文档的方式感到满意，我不建议从 Mintlify 切换到 Fumadocs。
+然而，我相信 Fumadocs 对于所有希望拥有优雅文档的 React.js 开发者来说都是一个合适的工具。
 
 ## Docusaurus
 
-Docusaurus is a powerful framework based on React.js. It offers many cool
-features with plugins and custom themes.
+Docusaurus 是一个基于 React.js 的强大框架。它通过插件和自定义主题提供了许多出色的功能。
 
-### Lower Complexity
+### 更低的复杂度
 
-As Fumadocs is designed to integrate with React frameworks, you may need more knowledge of React.js to get started.
-In return, Fumadocs have better customizability.
+由于 Fumadocs 设计为与 React 框架集成，您可能需要更多 React.js 知识才能开始使用。
+作为回报，Fumadocs 具有更好的可定制性。
 
-For a simple docs, Docusaurus might be a better choice if you don't need any framework-specific functionality.
+对于简单的文档，如果您不需要任何框架特定功能，Docusaurus 可能是更好的选择。
 
-### Plugins
+### 插件
 
-You can easily achieve many things with plugins, their ecosystem is indeed larger and maintained by many contributors.
+您可以通过插件轻松实现许多功能，其生态系统确实更大并由许多贡献者维护。
 
-In comparison, the flexibility of Fumadocs allows you to implement them on your own, it may take longer to tune it to your satisfaction.
+相比之下，Fumadocs 的灵活性允许您自行实现这些功能，可能需要更长时间才能调整到令您满意的程度。

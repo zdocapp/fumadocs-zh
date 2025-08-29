@@ -1,105 +1,105 @@
 ---
-title: How Fumadocs works
-description: The framework for building documentation
+title: Fumadocs 工作原理
+description: 构建文档的框架
 author: Fuma Nama
 date: 2024-05-15
 ---
 
-1 year ago, I was having fun with Next.js App Router.
-While experimenting with it on my toy [No Deploy](https://nodeploy-neon.vercel.app), I planned to build documentation.
-However, Nextra does not support App Router.
+一年前，我在愉快地使用 Next.js App Router。
+当我在我的玩具项目 [No Deploy](https://nodeploy-neon.vercel.app) 上试验它时，我计划构建文档。
+然而，Nextra 不支持 App Router。
 
-To handle this, I implemented a small documentation site with solely Contentlayer and the new features from App Router.
-It was working great, looked blazing-fast and minimal.
-I cloned the logic from No Deploy and built this documentation framework.
-With a few months of development, it soon became powerful and stable.
+为了解决这个问题，我仅使用 Contentlayer 和 App Router 的新功能实现了一个小型文档站点。
+它运行得很好，看起来极快且简约。
+我克隆了 No Deploy 的逻辑，并构建了这个文档框架。
+经过几个月的开发，它很快变得强大而稳定。
 
-It was originally named `next-docs`, I renamed it to Fumadocs as it conflicts with Next.js Docs.
+它最初命名为 `next-docs`，由于与 Next.js Docs 冲突，我将其重命名为 Fumadocs。
 
-Thanks to the support from **Next.js** community, I've received a lot of suggestions along the way.
-[Fumadocs](https://fumadocs.vercel.app) is now a framework used by my libraries and some other amazing projects.
+感谢 **Next.js** 社区的支持，我在此过程中收到了很多建议。
+[Fumadocs](https://fumadocs.vercel.app) 现在是一个被我的库和其他一些优秀项目使用的框架。
 
-## My Opinion
+## 我的观点
 
-In Web development, most _"robust"_ frameworks/libraries are incredibly heavy and fabulous, but it has indeed made our developer experience fancy.
+在 Web 开发中，大多数“健壮”的框架/库都非常重且华丽，但这确实让我们的开发体验变得花哨。
 
-On top of Javascript, people built bundlers, transpilers, and even Typescript.
-It feels very surprising that Javascript, a high-level scripting language, is more similar to assembly code in modern Web development.
-We rarely use them without things like Webpack. This also applies to CSS, at least in my experience, I seldom use CSS without PostCSS.
+在 JavaScript 之上，人们构建了打包工具、转译器，甚至 TypeScript。
+令人惊讶的是，在现代 Web 开发中，JavaScript 这种高级脚本语言反而更类似于汇编代码。
+我们很少在没有像 Webpack 这样的工具的情况下直接使用它们。这也适用于 CSS，至少在我的经验中，我很少在没有 PostCSS 的情况下直接使用 CSS。
 
-While they might be necessary for compatibility and DX, the landing of React Server Component and Next.js App Router made the experience even more mindblowing.
-It feels like magic. These cunning magical frameworks, and web development miracles.
-This kind of design is insane, but it also makes us mindlessly forget the boundaries.
+虽然这些工具对于兼容性和开发体验可能是必要的，但 React 服务器组件和 Next.js App Router 的落地让体验更加令人惊叹。
+感觉就像魔法一样。这些巧妙的魔法框架，以及 Web 开发的奇迹。
+这种设计虽然疯狂，但也让我们不知不觉地忘记了边界。
 
-Beginners use Metadata API, while they have no idea how meta tag works.
-They put server-side logic in a server component, while they have no idea how expensive the calculation is.
-Even when we looked at the code, we can't predict the result without running it in production mode.
-I saw too many of these misconceptions.
+初学者使用 Metadata API，却不知道 meta 标签的工作原理。
+他们将服务器端逻辑放在服务器组件中，却不知道计算成本有多高。
+即使我们查看代码，如果不以生产模式运行，也无法预测结果。
+我见过太多这样的误解。
 
-This happens on many frameworks, they are overly magical.
-**I wanted to make it less-magic, and straightforward at least for most Next.js developers.**
+这种情况在许多框架中都会发生，它们过于魔法化。
+**我希望让它不那么魔法化，至少对大多数 Next.js 开发者来说更加直观明了。**
 
 ## Fumadocs MDX
 
-As the recommended content source, It is actually a webpack hack.
-Since Next.js could only optimize static imports, it first transforms your `.map.ts` to a file that roughly yields:
+作为推荐的内容源，它实际上是一个 webpack 技巧。
+由于 Next.js 只能优化静态导入，它首先将你的 `.map.ts` 文件转换为大致生成如下内容的文件：
 
 ```ts
 export default [import("./my/file.mdx"), ...];
 ```
 
-And then transforms MDX files with a custom loader. It makes all magic possible, but it doesn't have the ability of lazy-loading MDX files.
-Comparing to Nextra, it might be a suboptimal approach.
+然后通过自定义加载器转换 MDX 文件。它实现了所有魔法功能，但不支持 MDX 文件的懒加载。
+与 Nextra 相比，这可能是一种次优方案。
 
-Nextra does it even easier, it directly transforms MDX files into pages. Because the Pages Router adapts Javascript files as a single page, it is possible.
-In App Router, this is not possible anymore. Therefore, I didn't take this approach.
+Nextra 的处理方式更加简单，它直接将 MDX 文件转换为页面。由于 Pages Router 将 JavaScript 文件适配为单个页面，这种方式是可行的。
+但在 App Router 中，这种方法不再适用。因此，我没有采用这种方案。
 
-## Fumadocs Core
+## Fumadocs 核心
 
-The core of Fumadocs is a bunch of utilities and MDX plugins.
+Fumadocs 的核心是一系列实用工具和 MDX 插件。
 
-- **Source API** construct page trees from content source, integrated with other content providers.
-- **Headless components** accelerate Fumadocs UI and other custom UI implementations.
-- **MDX plugins** bring a perfect developer experience to all integrations.
-- **Search utilities** make it way easier to implement document search.
+- **Source API** 从内容源构建页面树，并与其他内容提供者集成。
+- **Headless 组件** 加速 Fumadocs UI 及其他自定义 UI 的实现。
+- **MDX 插件** 为所有集成提供完美的开发者体验。
+- **搜索工具** 使文档搜索的实现更加便捷。
 
-In addition, it has also established the definitions of Page Tree and Page Conventions.
-Overall, it is not yet a framework without Fumadocs UI.
+此外，它还建立了页面树和页面约定的定义。
+总体而言，没有 Fumadocs UI 的情况下，它还不能算是一个完整的框架。
 
-In my opinion, the most valuable part of the codebase is MDX plugins.
-I learned a lot more about ASTs and the eco-system of remark/rehype while working on them.
-Absolutely an amazing experience.
+在我看来，代码库中最有价值的部分是 MDX 插件。
+在开发过程中，我对 AST 以及 remark/rehype 生态系统有了更深入的理解。
+这绝对是一次令人惊叹的体验。
 
 ## Fumadocs UI
 
-The UI implementation of Fumadocs using Tailwind CSS and Radix UI.
-Its design system was inspired by Shadcn UI, using CSS variables for color utilities.
+这是使用 Tailwind CSS 和 Radix UI 实现的 Fumadocs 用户界面。
+其设计系统受到 Shadcn UI 的启发，使用 CSS 变量来实现色彩工具。
 
-Although the structure of Fumadocs UI is even simpler than core, I've used some subtle hacks to solve the problem of `"use client"` directive.
-The bundler I am using, [TSX](https://github.com/privatenumber/tsx), can't handle nested structures like client components imported from a server component.
-Therefore, I made a little hack to build server components and client components as an individual entry, then inject import statements after the process.
+尽管 Fumadocs UI 的结构比核心更简单，但我使用了一些巧妙的技巧来解决 `"use client"` 指令的问题。
+我使用的打包工具 [TSX](https://github.com/privatenumber/tsx) 无法处理像从服务器组件导入客户端组件这样的嵌套结构。
+因此，我做了一个小技巧，将服务器组件和客户端组件作为单独的入口进行构建，然后在处理完成后注入导入语句。
 
-Also it took me some time to come up with the [preset approach](https://fumadocs.vercel.app/docs/ui/theme#docsui-plugin) for integrating Fumadocs UI with Tailwind CSS projects.
+另外，我还花了一些时间想出了[预设方法](https://fumadocs.vercel.app/docs/ui/theme#docsui-plugin)来将 Fumadocs UI 与 Tailwind CSS 项目集成。
 
-## Docs Generators
+## 文档生成器
 
-We have a few built-in integrations, like `fumadocs-openapi` which takes an OpenAPI schema and output MDX files.
+我们有一些内置的集成，比如 `fumadocs-openapi`，它接收 OpenAPI 模式并输出 MDX 文件。
 
-For the OpenAPI one, it simply parses the schema and convert it to MDX file through string templates.
+对于 OpenAPI 集成，它只是解析模式并通过字符串模板将其转换为 MDX 文件。
 
-The Typescript integration does a bit more, it obtains type information with [Typescript Compiler API](https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API). Based on the information, it yields MDX files.
-You can use it inside a server component, which is how `<AutoTypeTable />` works.
+TypeScript 集成做得更多一些，它使用 [TypeScript 编译器 API](https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API) 获取类型信息。基于这些信息，它生成 MDX 文件。
+你可以在服务器组件中使用它，这也是 `<AutoTypeTable />` 的工作原理。
 
 ## CI/CD
 
-As a project with very few contributors, I built the CI/CD process as convenient as possible for a better efficiency.
-The entire release process is handled by [Changesets](https://github.com/changesets/changesets), and I wrote the scripts to update [the template repository](https://github.com/fuma-nama/fumadocs-ui-template) automatically.
-It worked great so far.
+作为一个贡献者极少的项目，我构建了尽可能便捷的CI/CD流程以提高效率。
+整个发布过程由 [Changesets](https://github.com/changesets/changesets) 处理，并且我编写了脚本来自动更新 [模板仓库](https://github.com/fuma-nama/fumadocs-ui-template)。
+到目前为止，它运行得非常出色。
 
-## Thanks
+## 致谢
 
-[The Github repository of Fumadocs](https://github.com/fuma-nama/fumadocs) has reached 300 stars in 2024 March, it is a new achievement for me.
-Welcome to give it a star to support my work!
+[Fumadocs的Github仓库](https://github.com/fuma-nama/fumadocs) 在2024年3月达到了300星，这对我来说是一个新的成就。
+欢迎给它一个星标来支持我的工作！
 
-> Original
+> 原文
 > https://fuma-nama.vercel.app/blog/fumadocs

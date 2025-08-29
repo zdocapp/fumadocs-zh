@@ -1,21 +1,21 @@
 ---
-title: Typescript
-description: Generate docs from Typescript definitions
+title: TypeScript
+description: 从 TypeScript 定义生成文档
 ---
 
-## Usage
+## 使用方法
 
 ```package-install
 fumadocs-typescript
 ```
 
-### UI Integration
+### UI 集成
 
-It comes with the `AutoTypeTable` component. Learn more about [Auto Type Table](/docs/ui/components/auto-type-table).
+它附带 `AutoTypeTable` 组件。了解更多关于 [Auto Type Table](/docs/ui/components/auto-type-table) 的信息。
 
-### MDX Integration
+### MDX 集成
 
-You can use it as a remark plugin:
+您可以将其用作 remark 插件：
 
 ```ts title="source.config.ts" tab="Fumadocs MDX"
 import { remarkAutoTypeTable, createGenerator } from 'fumadocs-typescript';
@@ -41,13 +41,13 @@ await compile('...', {
 });
 ```
 
-It gives you a `auto-type-table` component.
+它为您提供了一个 `auto-type-table` 组件。
 
-You can use it like [Auto Type Table](/docs/ui/components/auto-type-table), but with additional rules:
+您可以像使用 [Auto Type Table](/docs/ui/components/auto-type-table) 一样使用它，但有一些额外的规则：
 
-- The value of attributes must be string.
-- `path` accepts a path relative to the MDX file itself.
-- You also need to add [`TypeTable`](/docs/ui/components/type-table) to MDX components.
+- 属性值必须是字符串。
+- `path` 接受相对于 MDX 文件本身的路径。
+- 您还需要将 [`TypeTable`](/docs/ui/components/type-table) 添加到 MDX 组件中。
 
 ```ts title="path/to/file.ts"
 export interface MyInterface {
@@ -59,11 +59,11 @@ export interface MyInterface {
 <auto-type-table path="./path/to/file.ts" name="MyInterface" />
 ```
 
-## Annotations
+## 注解
 
-### Hide
+### 隐藏
 
-Hide a field by adding `@internal` tsdoc tag.
+通过添加 `@internal` tsdoc 标签来隐藏字段。
 
 ```ts
 interface MyInterface {
@@ -74,9 +74,9 @@ interface MyInterface {
 }
 ```
 
-### Specify Type Name
+### 指定类型名称
 
-You can specify the name of a type with the `@remarks` tsdoc tag.
+您可以使用 `@remarks` tsdoc 标签指定类型的名称。
 
 ```ts
 interface MyInterface {
@@ -87,4 +87,4 @@ interface MyInterface {
 }
 ```
 
-This will make the type of `time` property to be shown as `timestamp`.
+这将使 `time` 属性的类型显示为 `timestamp`。

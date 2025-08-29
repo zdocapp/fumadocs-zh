@@ -1,19 +1,19 @@
 ---
 title: MDX
-description: Default MDX Components
+description: 默认 MDX 组件
 ---
 
-## Usage
+## 使用方法
 
-The default MDX components include Cards, Callouts, Code Blocks and Headings.
+默认的 MDX 组件包括卡片（Cards）、提示框（Callouts）、代码块（Code Blocks）和标题（Headings）。
 
 ```ts
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 ```
 
-### Relative Link
+### 相对链接
 
-To support links with relative file path in `href`, override the default `a` component with:
+为了支持在 `href` 中使用相对文件路径的链接，请通过以下方式覆盖默认的 `a` 组件：
 
 ```tsx title="app/docs/[[...slug]]/page.tsx"
 import { createRelativeLink } from 'fumadocs-ui/mdx';
@@ -36,6 +36,6 @@ return (
 [My Link](./file.mdx)
 ```
 
-[Example: `../(integrations)/open-graph.mdx`](<../(integrations)/open-graph.mdx>)
+[示例：`../(integrations)/open-graph.mdx`](<../(integrations)/open-graph.mdx>)
 
-<Callout type="warn">Server Component only.</Callout>
+<Callout type="warn">仅限服务器组件。</Callout>

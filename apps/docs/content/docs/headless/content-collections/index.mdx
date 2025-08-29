@@ -1,33 +1,33 @@
 ---
-title: Content Collections
-description: Use Content Collections for Fumadocs
+title: 内容集合
+description: 在 Fumadocs 中使用内容集合
 ---
 
-[Content Collections](https://www.content-collections.dev) is a library that transforms your content into type-safe data collections.
+[Content Collections](https://www.content-collections.dev) 是一个将您的内容转换为类型安全数据集合的库。
 
-## Setup
+## 设置
 
-Follow their [official guide](https://content-collections.dev/docs) to setup Content Collections for your React framework.
+按照他们的[官方指南](https://content-collections.dev/docs)为您的 React 框架设置 Content Collections。
 
-Make sure you have MDX configured:
+确保您已配置 MDX：
 
 ```npm
 npm i @content-collections/mdx
 ```
 
-To integrate with Fumadocs, add the following to your `content-collections.ts`.
+要与 Fumadocs 集成，请将以下内容添加到您的 `content-collections.ts` 中。
 
 <include cwd meta='title="content-collections.ts"'>
   ../../examples/content-collections/content-collections.ts
 </include>
 
-And pass it to `loader()`.
+并将其传递给 `loader()`。
 
 <include cwd meta='title="lib/source.ts"'>
   ../../examples/content-collections/lib/source.ts
 </include>
 
-Done! You can access the pages and generated page tree from Source API.
+完成！您可以从 Source API 访问页面和生成的页面树。
 
 ```ts
 import { getPage } from '@/lib/source';
@@ -44,9 +44,9 @@ page?.data.toc;
 page?.data.structuredData;
 ```
 
-### MDX Options
+### MDX 选项
 
-You can customise MDX options in the `transformMDX` function.
+您可以在 `transformMDX` 函数中自定义 MDX 选项。
 
 ```ts
 import { defineCollection } from '@content-collections/core';
@@ -60,9 +60,9 @@ const docs = defineCollection({
 });
 ```
 
-### Import Components
+### 导入组件
 
-To use components from other packages like Fumadocs UI, pass them to your `<MDXContent />` component.
+要使用来自其他包（如 Fumadocs UI）的组件，请将它们传递给您的 `<MDXContent />` 组件。
 
 ```tsx
 import { MDXContent } from '@content-collections/mdx/react';
@@ -71,7 +71,7 @@ import { getMDXComponents } from '@/mdx-components';
 return <MDXContent code={page.data.body} components={getMDXComponents()} />;
 ```
 
-You can also import them in MDX Files, but it is not recommended.
+您也可以在 MDX 文件中导入它们，但不推荐这样做。
 
 <Callout title='Deep Dive: Why?'>
     Content Collections uses `mdx-bundler` to bundle MDX files.

@@ -24,15 +24,15 @@ export default function Layout({ children }: LayoutProps<'/'>) {
         {
           type: 'menu',
           on: 'menu',
-          text: 'Documentation',
+          text: '文档',
           items: [
             {
-              text: 'Getting Started',
+              text: '快速开始',
               url: '/docs/ui',
               icon: <Book />,
             },
             {
-              text: 'Components',
+              text: '组件',
               url: '/docs/ui/components',
               icon: <ComponentIcon />,
             },
@@ -44,7 +44,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
           children: (
             <NavbarMenu>
               <NavbarMenuTrigger>
-                <Link href="/docs/ui">Documentation</Link>
+                <Link href="/docs/ui">文档</Link>
               </NavbarMenuTrigger>
               <NavbarMenuContent className="text-[15px]">
                 <NavbarMenuLink href="/docs/ui" className="md:row-span-2">
@@ -59,9 +59,9 @@ export default function Layout({ children }: LayoutProps<'/'>) {
                       }}
                     />
                   </div>
-                  <p className="font-medium">Getting Started</p>
+                  <p className="font-medium">快速开始</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    Learn to use Fumadocs on your docs site.
+                    在你的文档站点上学习使用 Fumadocs
                   </p>
                 </NavbarMenuLink>
 
@@ -70,9 +70,9 @@ export default function Layout({ children }: LayoutProps<'/'>) {
                   className="lg:col-start-2"
                 >
                   <ComponentIcon className="bg-fd-primary text-fd-primary-foreground p-1 mb-2 rounded-md" />
-                  <p className="font-medium">Components</p>
+                  <p className="font-medium">组件</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    Add interactive experience to your docs.
+                    为你的文档添加交互体验
                   </p>
                 </NavbarMenuLink>
 
@@ -83,8 +83,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
                   <Server className="bg-fd-primary text-fd-primary-foreground p-1 mb-2 rounded-md" />
                   <p className="font-medium">OpenAPI</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    Generate interactive playgrounds and docs for your OpenAPI
-                    schema.
+                    为你的 OpenAPI 架构生成交互式演示和文档
                   </p>
                 </NavbarMenuLink>
 
@@ -95,7 +94,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
                   <Pencil className="bg-fd-primary text-fd-primary-foreground p-1 mb-2 rounded-md" />
                   <p className="font-medium">Markdown</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    Learn the writing format/syntax of Fumadocs.
+                    学习 Fumadocs 的编写格式与语法
                   </p>
                 </NavbarMenuLink>
 
@@ -104,9 +103,9 @@ export default function Layout({ children }: LayoutProps<'/'>) {
                   className="lg:col-start-3 lg:row-start-2"
                 >
                   <PlusIcon className="bg-fd-primary text-fd-primary-foreground p-1 mb-2 rounded-md" />
-                  <p className="font-medium">Manual Installation</p>
+                  <p className="font-medium">手动安装</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    Setup Fumadocs for your existing Next.js app.
+                    为你现有的 Next.js 应用配置 Fumadocs
                   </p>
                 </NavbarMenuLink>
               </NavbarMenuContent>
@@ -130,7 +129,7 @@ function Footer() {
         <div>
           <p className="mb-1 text-sm font-semibold">Fumadocs</p>
           <p className="text-xs">
-            Built with ❤️ by{' '}
+            由 ❤️{' '}
             <a
               href="https://fuma-dev.vercel.app"
               rel="noreferrer noopener"
@@ -138,7 +137,20 @@ function Footer() {
               className="font-medium"
             >
               Fuma
-            </a>
+            </a>{' '}
+            构建
+          </p>
+          <p className="text-xs">
+            由{' '}
+            <a
+              href="https://zdoc.app"
+              rel="noreferrer noopener"
+              target="_blank"
+              className="font-medium"
+            >
+              zdoc.app
+            </a>{' '}
+            翻译
           </p>
         </div>
       </div>

@@ -1,12 +1,11 @@
 ---
-title: Root Provider
-description: The context provider of Fumadocs UI.
+title: 根提供者
+description: Fumadocs UI 的上下文提供者。
 ---
 
-The context provider of all the components, including `next-themes` and context
-for search dialog. It should be located at the root layout.
+所有组件的上下文提供者，包括 `next-themes` 和搜索对话框的上下文。它应位于根布局中。
 
-## Usage
+## 使用方法
 
 ```jsx
 import { RootProvider } from 'fumadocs-ui/provider';
@@ -22,9 +21,9 @@ export default function Layout({ children }) {
 }
 ```
 
-### Search Dialog
+### 搜索对话框
 
-Customize or disable the search dialog with `search` option.
+使用 `search` 选项自定义或禁用搜索对话框。
 
 ```jsx
 <RootProvider
@@ -36,12 +35,11 @@ Customize or disable the search dialog with `search` option.
 </RootProvider>
 ```
 
-Learn more from [Search](/docs/ui/search).
+了解更多信息，请参阅[搜索](/docs/ui/search)。
 
-### Theme Provider
+### 主题提供者
 
-Fumadocs supports light/dark modes with [`next-themes`](https://github.com/pacocoursey/next-themes).
-Customise or disable it with `theme` option.
+Fumadocs 通过 [`next-themes`](https://github.com/pacocoursey/next-themes) 支持浅色/深色模式。使用 `theme` 选项自定义或禁用它。
 
 ```jsx
 <RootProvider

@@ -1,11 +1,11 @@
 ---
-title: Collections
-description: Collection of content data for your app
+title: 内容集合
+description: 为您的应用程序收集内容数据
 ---
 
-## Define Collections
+## 定义集合
 
-Define a collection to parse a certain set of files.
+定义一个集合来解析特定的文件集。
 
 ```ts
 import { defineCollections } from 'fumadocs-mdx/config';
@@ -23,7 +23,7 @@ export const blog = defineCollections({
 
 ### `type`
 
-The accepted type of collection.
+集合的接受类型。
 
 ```ts
 import { defineCollections } from 'fumadocs-mdx/config';
@@ -37,23 +37,23 @@ export const metaFiles = defineCollections({
 
 - `type: meta`
 
-  Accept JSON/YAML files, available options:
+  接受 JSON/YAML 文件，可用选项：
 
   <AutoTypeTable path="./content/docs/mdx/props.ts" name="MetaCollection" />
 
 - `type: doc`
 
-  Markdown/MDX documents, available options:
+  Markdown/MDX 文档，可用选项：
 
   <AutoTypeTable path="./content/docs/mdx/props.ts" name="DocCollection" />
 
 ### `dir`
 
-Directories to scan for input files.
+扫描输入文件的目录。
 
 ### `schema`
 
-The schema to validate file data (frontmatter on `doc` type, content on `meta` type).
+用于验证文件数据的模式（`doc` 类型的前言数据，`meta` 类型的内容）。
 
 ```ts
 import { defineCollections } from 'fumadocs-mdx/config';
@@ -68,10 +68,10 @@ export const blog = defineCollections({
 });
 ```
 
-> [Standard Schema](https://standardschema.dev) compatible libraries, including Zod, are supported.
+> 支持 [Standard Schema](https://standardschema.dev) 兼容库，包括 Zod。
 
-Note that the validation is done at build time, hence the output must be serializable.
-You can also pass a function that receives the transform context.
+请注意，验证在构建时进行，因此输出必须是可序列化的。
+你也可以传递一个接收转换上下文的函数。
 
 ```ts
 import { defineCollections } from 'fumadocs-mdx/config';
@@ -94,7 +94,7 @@ export const blog = defineCollections({
 
 ### `mdxOptions`
 
-Customise MDX options at the collection level.
+在集合级别自定义 MDX 选项。
 
 ```ts title="source.config.ts"
 import { defineCollections, getDefaultMDXOptions } from 'fumadocs-mdx/config';
@@ -107,10 +107,10 @@ export const blog = defineCollections({
 });
 ```
 
-By design, this will remove all default settings applied by your global config and Fumadocs MDX.
-You have full control over MDX options.
+根据设计，这将移除全局配置和 Fumadocs MDX 应用的所有默认设置。
+你可以完全控制 MDX 选项。
 
-You can use `getDefaultMDXOptions` to apply default configurations, it accepts the [extended MDX Options](/docs/mdx/mdx#extended).
+你可以使用 `getDefaultMDXOptions` 来应用默认配置，它接受[扩展的 MDX 选项](/docs/mdx/mdx#extended)。
 
 ```ts title="source.config.ts"
 import { defineCollections, getDefaultMDXOptions } from 'fumadocs-mdx/config';
@@ -123,11 +123,11 @@ export const blog = defineCollections({
 });
 ```
 
-> This API is only available on `doc` type.
+> 此 API 仅在 `doc` 类型中可用。
 
-## Define Docs
+## 定义文档
 
-Define a collection for Fumadocs.
+为 Fumadocs 定义一个集合。
 
 ```ts
 import { defineDocs } from 'fumadocs-mdx/config';
@@ -145,7 +145,7 @@ export const docs = defineDocs({
 
 ### `dir`
 
-Instead of per collection, you should customise `dir` from `defineDocs`:
+不应按集合自定义，而应从 `defineDocs` 自定义 `dir`：
 
 ```ts
 import { defineDocs } from 'fumadocs-mdx/config';
@@ -157,7 +157,7 @@ export const docs = defineDocs({
 
 ### `schema`
 
-You can extend the default Zod schema of `docs` and `meta`.
+您可以扩展 `docs` 和 `meta` 的默认 Zod schema。
 
 ```ts
 import { frontmatterSchema, metaSchema, defineDocs } from 'fumadocs-mdx/config';

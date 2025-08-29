@@ -1,38 +1,38 @@
 ---
 title: Tanstack Start
-description: Use Fumadocs MDX with Tanstack Start & Router
+description: 在 Tanstack Start 和 Router 中使用 Fumadocs MDX
 ---
 
-## Setup
+## 设置
 
 ```npm
 npm i fumadocs-mdx fumadocs-core @types/mdx
 ```
 
-Create the configuration file:
+创建配置文件：
 
 <include cwd meta='title="source.config.ts"'>
   ../../examples/tanstack-start/source.config.ts
 </include>
 
-Add the Vite plugin:
+添加 Vite 插件：
 
 <include cwd meta='title="vite.config.ts"'>
   ../../examples/tanstack-start/vite.config.ts
 </include>
 
-A `source.generated.ts` file will be generated when you run development server or production build.
+运行开发服务器或生产构建时，将生成一个 `source.generated.ts` 文件。
 
-### Accessing Content
+### 访问内容
 
-You can import the `source.generated.ts` file directly.
+您可以直接导入 `source.generated.ts` 文件。
 
 ```ts
 import { docs } from './source.generated';
 console.log(docs);
 ```
 
-To integrate with Fumadocs, create a docs collection and use:
+要与 Fumadocs 集成，请创建一个文档集合并使用：
 
 ```ts title="src/lib/source.ts"
 import { loader } from 'fumadocs-core/source';
@@ -44,11 +44,11 @@ export const source = loader({
 });
 ```
 
-### Rendering Content
+### 渲染内容
 
-As Tanstack Start doesn't support RSC at the moment, use `createClientLoader()` to lazy load MDX content as a component on browser.
+由于 Tanstack Start 目前不支持 RSC，请使用 `createClientLoader()` 在浏览器中懒加载 MDX 内容作为组件。
 
-For example:
+例如：
 
 ```tsx title="src/routes/docs/$.tsx"
 import { createFileRoute, notFound } from '@tanstack/react-router';

@@ -1,27 +1,27 @@
 ---
 title: Mermaid
-description: Rendering diagrams in your docs
+description: 在文档中渲染图表
 ---
 
-Fumadocs doesn't have a built-in Mermaid wrapper provided, we recommend using `mermaid` directly.
+Fumadocs 没有提供内置的 Mermaid 包装器，我们建议直接使用 `mermaid`。
 
-## Setup
+## 设置
 
-Install the required dependencies, `next-themes` is used with Fumadocs to manage the light/dark mode.
+安装所需的依赖项，`next-themes` 与 Fumadocs 一起用于管理浅色/深色模式。
 
 ```package-install
 mermaid next-themes
 ```
 
-Create the Mermaid component:
+创建 Mermaid 组件：
 
 <include cwd meta='title="components/mdx/mermaid.tsx"'>
   ./components/mdx/mermaid.tsx
 </include>
 
-> This is originally inspired by [remark-mermaid](https://github.com/the-guild-org/docs/blob/main/packages/remark-mermaid/src/mermaid.tsx).
+> 这最初是受 [remark-mermaid](https://github.com/the-guild-org/docs/blob/main/packages/remark-mermaid/src/mermaid.tsx) 的启发。
 
-Add the component as a MDX component:
+将该组件添加为 MDX 组件：
 
 ```tsx title="mdx-components.tsx"
 import defaultMdxComponents from 'fumadocs-ui/mdx';
@@ -37,9 +37,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 }
 ```
 
-## Usage
+## 使用方法
 
-Use it in MDX files.
+在 MDX 文件中使用它。
 
 ```mdx
 <Mermaid
@@ -65,19 +65,19 @@ Z --> G;"
 />
 ```
 
-<Tabs items={['Diagram', 'User Journey']}>
+<Tabs items={['图表', '用户旅程']}>
 
     <Tab>
     <Mermaid
         chart="
 
 graph TD;
-subgraph AA [Consumers]
-A[Mobile app];
-B[Web app];
-C[Node.js client];
+subgraph AA [消费者]
+A[移动应用];
+B[Web应用];
+C[Node.js客户端];
 end
-subgraph BB [Services]
+subgraph BB [服务]
 E[REST API];
 F[GraphQL API];
 G[SOAP API];
@@ -98,14 +98,14 @@ Z --> G;"
             chart="
 
 journey
-title My working day
-section Go to work
-Make tea: 5: Me
-Go upstairs: 3: Me
-Do work: 1: Me, Cat
-section Go home
-Go downstairs: 5: Me
-Sit down: 5: Me
+title 我的工作日
+section 去上班
+泡茶: 5: 我
+上楼: 3: 我
+工作: 1: 我, 猫
+section 回家
+下楼: 5: 我
+坐下: 5: 我
 "
 />
 

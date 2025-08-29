@@ -1,21 +1,21 @@
 ---
 title: Fumadocs v14
-description: Introducing Fumadocs v14
+description: Fumadocs v14 版本介绍
 author: Fuma Nama
 date: 2024-09-19
 ---
 
-## Why?
+## 为什么？
 
-Taking some inspirations from [Shadcn UI](https://ui.shadcn.com), I decided to make Fumadocs easier to use, with more APIs that simplify the design.
+受到 [Shadcn UI](https://ui.shadcn.com) 的启发，我决定让 Fumadocs 更易于使用，提供更多简化设计的 API。
 
-This is a large update.
+这是一个重大更新。
 
-## New Features
+## 新特性
 
 ### Fumadocs CLI
 
-Clone Fumadocs UI components to your workspace and modify them.
+将 Fumadocs UI 组件克隆到您的工作区并进行修改。
 
 ```package-install
 npm install @fumadocs/cli --save-dev
@@ -25,14 +25,14 @@ npm install @fumadocs/cli --save-dev
 pnpm fumadocs add
 ```
 
-See [docs](/docs/cli) for details.
+详情请参阅[文档](/docs/cli)。
 
-### Sidebar Tabs
+### 侧边栏选项卡
 
-Previously, multiple page tree is implemented with Fumadocs UI `RootToggle` component.
-You have to add it to the sidebar banner which isn't as intuitive as other APIs.
+之前，多页面树是通过 Fumadocs UI 的 `RootToggle` 组件实现的。
+您必须将其添加到侧边栏横幅中，这不如其他 API 直观。
 
-With Sidebar Tabs, by creating a root folder, Fumadocs will immediately add a tabs component to the sidebar.
+通过侧边栏选项卡，只需创建一个根文件夹，Fumadocs 就会立即在侧边栏中添加一个选项卡组件。
 
 ```json title="meta.json"
 {
@@ -45,11 +45,11 @@ With Sidebar Tabs, by creating a root folder, Fumadocs will immediately add a ta
 
 ### Orama
 
-We migrated the built-in search from Flexsearch to Orama, the same search engine that powers the Node.js docs site.
-It is open source, and also have their Cloud integration.
+我们将内置搜索从 Flexsearch 迁移到了 Orama，这是为 Node.js 文档网站提供支持的相同搜索引擎。
+它是开源的，并且还提供云集成。
 
-No changes required.
-You can use our new `createFromSource` API to create the route handler, which offers i18n support without any configurations.
+无需任何更改。
+您可以使用我们新的 `createFromSource` API 来创建路由处理程序，该 API 无需任何配置即可提供国际化支持。
 
 ```ts
 import { source } from '@/lib/source';
@@ -58,8 +58,8 @@ import { createFromSource } from 'fumadocs-core/search/server';
 export const { GET } = createFromSource(source);
 ```
 
-In favour of this, the new search client of Fumadocs is introduced with support for different API clients.
-This includes Algolia, Orama (static and dynamic with route handlers).
+为此，Fumadocs 引入了新的搜索客户端，支持不同的 API 客户端。
+这包括 Algolia、Orama（静态和通过路由处理程序的动态搜索）。
 
 ```ts
 import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -69,27 +69,27 @@ const client = useDocsSearch({
 });
 ```
 
-See [Search API](/docs/headless/search).
+请参阅[搜索 API](/docs/headless/search)。
 
-### Static Search
+### 静态搜索
 
-For sites with static export, you cannot use route handlers.
-We now support client-side search using search indexes generated during build time.
+对于静态导出的站点，您无法使用路由处理器。
+我们现在支持使用构建时生成的搜索索引进行客户端搜索。
 
-See [Static Search](/docs/headless/search/orama#static-export).
+参见[静态搜索](/docs/headless/search/orama#static-export)。
 
-### Less Dependencies
+### 更少的依赖
 
-I'm always working to reduce the dependencies required for Fumadocs, that is one reason why we separated Fumadocs into different packages.
+我一直在努力减少 Fumadocs 所需的依赖项，这也是我们将 Fumadocs 拆分为不同包的原因之一。
 
-Fumadocs UI now bundles icons from `lucide-react`, for Next.js apps that is not using Lucide, they can avoid downloading the entire icon library.
+Fumadocs UI 现在捆绑了来自 `lucide-react` 的图标，对于不使用 Lucide 的 Next.js 应用，它们可以避免下载整个图标库。
 
-And `swr` is no longer used for search client, we implemented a light `useQuery` hook with extra care on React performance optimization.
+并且搜索客户端不再使用 `swr`，我们实现了一个轻量级的 `useQuery` hook，特别注重 React 性能优化。
 
-### New Metadata Image API
+### 新的元数据图像 API
 
-To improve code organization, we made a Metadata Image API on Fumadocs Core.
-It is a tiny wrapper over Next.js Metadata API, composes seamlessly with Source API.
+为了改进代码组织，我们在 Fumadocs Core 上创建了一个元数据图像 API。
+它是 Next.js 元数据 API 的一个微小封装，与源 API 无缝组合。
 
 ```ts title="lib/metadata.ts"
 import { createMetadataImage } from 'fumadocs-core/server';
@@ -134,14 +134,14 @@ export function generateMetadata({ params }: { params: { slug?: string[] } }) {
 }
 ```
 
-In favour of this, the `getImageMeta` function from `fumadocs-ui/og` has been removed.
+为此，`fumadocs-ui/og` 中的 `getImageMeta` 函数已被移除。
 
-### Shorthands
+### 简写形式
 
-As you may notice, we introduced more abstractions to reduce the setup steps required for enabling some features.
-It is also required for the code generator from Fumadocs CLI to work.
+您可能已经注意到，我们引入了更多抽象来减少启用某些功能所需的设置步骤。
+这也是 Fumadocs CLI 代码生成器正常工作所必需的。
 
-Like the `generateParams` function, it enables zero-configuration i18n support for Next.js `generateStaticParams`.
+就像 `generateParams` 函数，它为 Next.js 的 `generateStaticParams` 提供了零配置的国际化支持。
 
 ```ts
 import { source } from '@/lib/source';
@@ -151,10 +151,10 @@ export function generateStaticParams() {
 }
 ```
 
-### Better Card Component
+### 更好的卡片组件
 
-Fumadocs UI Card can now support usage without `href`.
-You can pass children as React node, Typography styles will be applied correctly.
+Fumadocs UI 卡片现在支持不带 `href` 的使用方式。
+您可以将子元素作为 React 节点传递，排版样式将正确应用。
 
 ```mdx
 <Card icon={<Database />} title='Content Source'>
@@ -164,11 +164,11 @@ The input/source of your content, it can be a CMS, or local data layers like [Co
 </Card>
 ```
 
-### Better Category Component
+### 更优的分类组件
 
-The original `DocsCategory` component was copied from our official docs, which is a very simple implementation that doesn't take page tree into account.
+原有的 `DocsCategory` 组件是从我们的官方文档中复制的，这是一个非常简单的实现，没有考虑页面树结构。
 
-Now it accepts the source object via `from` prop.
+现在它通过 `from` 属性接受源对象。
 
 ```tsx title="page.tsx"
 import { source } from '@/lib/source';
@@ -179,8 +179,8 @@ const page = source.getPage(params.slug);
 <DocsCategory page={page} from={source} />;
 ```
 
-By default, it takes the `locale` property from `page` to find the corresponding page tree to traverse.
-You can also force a page tree.
+默认情况下，它会从 `page` 中获取 `locale` 属性来查找对应的页面树进行遍历。
+您也可以强制指定一个页面树。
 
 ```tsx title="page.tsx (i18n enabled)"
 import { source } from '@/lib/source';
@@ -191,9 +191,9 @@ const page = source.getPage(params.slug, params.lang);
 <DocsCategory page={page} from={source} tree={source.pageTree['en']} />;
 ```
 
-### OpenAPI Tag Display Name
+### OpenAPI 标签显示名称
 
-Change the display name with `x-displayName`.
+使用 `x-displayName` 更改显示名称。
 
 ```yaml title="openapi.yaml"
 tags:
@@ -202,9 +202,9 @@ tags:
     x-displayName: My Test Name
 ```
 
-### Better TypeScript Docs Automation
+### 更优的 TypeScript 文档自动化
 
-The `AutoTypeTable` component now supports a `type` prop, you can use TypeScript inside the field:
+`AutoTypeTable` 组件现在支持 `type` 属性，您可以在字段内使用 TypeScript：
 
 ```mdx
 <AutoTypeTable
@@ -217,33 +217,33 @@ export type B = ReactNode | { world: string }
 />
 ```
 
-And code highlighting in typedoc is also supported with Shiki.
+并且通过 Shiki 支持了 typedoc 中的代码高亮。
 
-We **highly recommend** to use `createTypeTable` instead of importing the component in MDX files, this allows a single instance of TypeScript Compiler API to be shared.
-See [Auto Type Table](/docs/ui/components/auto-type-table).
+我们**强烈建议**使用 `createTypeTable` 而不是在 MDX 文件中导入组件，这样可以共享单个 TypeScript 编译器 API 实例。
+请参阅 [自动类型表格](/docs/ui/components/auto-type-table)。
 
 ### Next.js 15
 
-Fumadocs v14 is compatible with Next.js 15, supporting sync and async usages of dynamic APIs.
+Fumadocs v14 与 Next.js 15 兼容，支持动态 API 的同步和异步使用。
 
 <Callout type="info" title="Backward compatible">
   Next.js 14 is also supported, notice that guides/tutorials in the docs are
   mainly for Next.js 15.
 </Callout>
 
-## UI Improvements
+## UI 改进
 
-### Navbar Links
+### 导航栏链接
 
-The navigation menu on Home layout is redesigned, with better animation and flexibility.
+首页布局中的导航菜单经过重新设计，具有更好的动画效果和灵活性。
 
-See the [new API](/docs/ui/navigation).
+请参阅[新 API](/docs/ui/navigation)。
 
-![New Navbar](/blog/v14-navbar.png)
+![新导航栏](/blog/v14-navbar.png)
 
-### Link Styles
+### 链接样式
 
-You can escape Tailwind CSS Typography styles for the `a` tag with `data-card` attribute.
+您可以通过 `data-card` 属性为 `a` 标签转义 Tailwind CSS Typography 样式。
 
 ```jsx
 <a data-card="">
@@ -251,13 +251,13 @@ You can escape Tailwind CSS Typography styles for the `a` tag with `data-card` a
 </a>
 ```
 
-### Disable Theme Switch
+### 禁用主题切换
 
-You can disable the default theme switcher with `disableThemeSwitch` on layouts.
+您可以在布局中使用 `disableThemeSwitch` 来禁用默认的主题切换器。
 
-## Breaking Changes
+## 重大变更
 
-### Move `dir` option from `defineDocs`
+### 从 `defineDocs` 中移除 `dir` 选项
 
 ```ts
 import { defineDocs } from 'fumadocs-mdx/config';
@@ -267,9 +267,9 @@ export const { docs, meta } = defineDocs({
 });
 ```
 
-### Refactor Imports
+### 重构导入
 
-**Previous**
+**先前版本**
 
 ```ts
 import { DocsLayout } from 'fumadocs-ui/layout';
@@ -277,7 +277,7 @@ import { HomeLayout } from 'fumadocs-ui/home-layout';
 import { HomeLayoutProps } from 'fumadocs-ui/home-layout';
 ```
 
-**New Import Path**
+**新的导入路径**
 
 ```ts
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
@@ -287,10 +287,10 @@ import { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 ### Twoslash UI
 
-We moved Twoslash UI components to `fumadocs-twoslash`.
-This isolates some logic from Fumadocs UI, allowing a better code organization.
+我们将 Twoslash UI 组件迁移到了 `fumadocs-twoslash`。
+这从 Fumadocs UI 中分离了一些逻辑，实现了更好的代码组织。
 
-Import the CSS styles and `Popup` component differently.
+请以不同方式导入 CSS 样式和 `Popup` 组件。
 
 ```ts
 import 'fumadocs-twoslash/twoslash.css';
@@ -298,11 +298,11 @@ import 'fumadocs-twoslash/twoslash.css';
 import { Popup } from 'fumadocs-twoslash/ui';
 ```
 
-<Callout>It requires Tailwind CSS.</Callout>
+<Callout>此功能需要 Tailwind CSS。</Callout>
 
-### Remove Deprecated APIs
+### 移除已弃用的 API
 
-The previous `createI18nSearchAPIExperimental` is now renamed to `createI18nSearchAPI`.
-It takes the i18n config instead of scattering the options everywhere.
+之前的 `createI18nSearchAPIExperimental` 现已重命名为 `createI18nSearchAPI`。
+它现在接收 i18n 配置，而不是将选项分散在各处。
 
-The types from `fumadocs-core/search/shared` is moved to `fumadocs-core/server`.
+`fumadocs-core/search/shared` 中的类型已移至 `fumadocs-core/server`。

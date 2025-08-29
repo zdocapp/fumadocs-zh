@@ -1,15 +1,15 @@
 ---
 title: Accordion
-description: Add Accordions to your documentation
+description: 为您的文档添加手风琴式折叠面板
 preview: accordion
 ---
 
 <Installation name="accordion" />
 
-## Usage
+## 使用方法
 
-Based on
-[Radix UI Accordion](https://www.radix-ui.com/primitives/docs/components/accordion), useful for FAQ sections.
+基于
+[Radix UI Accordion](https://www.radix-ui.com/primitives/docs/components/accordion)，适用于常见问题解答部分。
 
 ```mdx
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
@@ -19,17 +19,17 @@ import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 </Accordions>
 ```
 
-### Accordions
+### 手风琴式折叠面板
 
 <AutoTypeTable path="./content/docs/ui/props.ts" name="AccordionsProps" />
 
-### Accordion
+### 手风琴式折叠面板
 
 <AutoTypeTable path="./content/docs/ui/props.ts" name="AccordionProps" />
 
-### Linking to Accordion
+### 链接到手风琴式折叠面板
 
-You can specify an `id` for accordion. The accordion will automatically open when the user is navigating to the page with the specified `id` in hash parameter.
+您可以为手风琴式折叠面板指定一个 `id`。当用户通过哈希参数导航到带有指定 `id` 的页面时，该折叠面板将自动展开。
 
 ```mdx
 <Accordions>
@@ -41,4 +41,4 @@ My Content
 </Accordions>
 ```
 
-> The value of accordion is same as title by default. When an id presents, it will be used as the value instead.
+> 手风琴式折叠面板的值默认与标题相同。当存在 id 时，将使用 id 作为值。

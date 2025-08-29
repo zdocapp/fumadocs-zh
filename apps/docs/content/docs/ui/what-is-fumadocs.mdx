@@ -1,71 +1,70 @@
 ---
-title: What is Fumadocs
-description: Introducing Fumadocs, a docs framework that you can break.
+title: 什么是 Fumadocs
+description: 介绍 Fumadocs，一个你可以打破的文档框架。
 icon: CircleQuestionMark
 ---
 
-Fumadocs was created because the creator Fuma wanted a more customisable experience for building docs, to be a docs framework that is not opinionated, **a "framework" that you can break**.
+Fumadocs 的诞生是因为创作者 Fuma 希望获得更可定制的文档构建体验，成为一个不固执己见的文档框架，**一个你可以打破的“框架”**。
 
-## Philosophy
+## 理念
 
-### Less Abstraction
+### 更少的抽象
 
-While most frameworks are configured with a configuration file, they usually lack flexibility when you hope to tune its details.
-You can’t control how they render the page nor the internal logic.
+虽然大多数框架通过配置文件进行配置，但当你希望调整其细节时，它们通常缺乏灵活性。
+你无法控制它们如何渲染页面，也无法控制内部逻辑。
 
-Fumadocs expects you to write code and cooperate with the rest of your software, it shows you how the app works and fully customisable, instead of a configuration file.
+Fumadocs 期望你编写代码并与你的其他软件协同工作，它向你展示应用程序的工作原理并且完全可定制，而不是依赖配置文件。
 
-### Seamless Integration
+### 无缝集成
 
-Fumadocs integrates tightly with your React framework, bringing useful utilities and a good-looking UI.
+Fumadocs 与你的 React 框架紧密集成，带来实用的工具和美观的用户界面。
 
-For Next.js developers, you are still using features of App Router, like **Static Site Generation**. There is nothing new for Next.js developers, that everything is familiar to you.
+对于 Next.js 开发者来说，你仍然在使用 App Router 的功能，比如**静态站点生成**。对于 Next.js 开发者来说没有任何新东西，一切都是你所熟悉的。
 
-### Composable UI
+### 可组合的 UI
 
-The only thing Fumadocs UI (the default theme) offers is **User Interface**. The UI is opinionated for bringing better mobile responsiveness and user experience.
+Fumadocs UI（默认主题）提供的唯一东西就是**用户界面**。该 UI 为了带来更好的移动响应性和用户体验而具有固执己见的设计。
 
-Instead, we follow a much more flexible approach inspired by Shadcn UI — [Fumadocs CLI](/docs/cli), allowing you to "fork" a part of Fumadocs UI, and fully customise it.
+相反，我们遵循了一种受 Shadcn UI 启发的更灵活的方法——[Fumadocs CLI](/docs/cli)，允许你“分叉” Fumadocs UI 的一部分，并完全自定义它。
 
-### Server-first Approach
+### 服务端优先方案
 
-Traditionally, static site generators are **static**.
+传统上，静态站点生成器是**静态的**。
 
-However, Fumadocs introduce a server-first approach powered by React Server Component.
-With perfect server-client boundary, content becomes dynamic and interactive.
+然而，Fumadocs 引入了由 React Server Component 驱动的服务端优先方案。
+凭借完美的服务端-客户端边界，内容变得动态且可交互。
 
-You can fetch data from server to display content, or integrate with CMS receiving realtime updates. It is always up-to-date and easy to maintain.
+您可以从服务器获取数据以显示内容，或与接收实时更新的 CMS 集成。它始终保持最新且易于维护。
 
-### Minimal
+### 极简主义
 
-Fumadocs is maintained by Fuma and many contributors, with care on the maintainability of codebase.
+Fumadocs 由 Fuma 和众多贡献者维护，注重代码库的可维护性。
 
-While we don't aim to offer every functionality people wanted, we're more focused on making basic features perfect and well-maintained.
-You can also help Fumadocs to be more useful by contributing!
+虽然我们不旨在提供人们想要的所有功能，但我们更专注于使基本功能完美且得到良好维护。
+您也可以通过贡献来帮助 Fumadocs 变得更有用！
 
-## When to use Fumadocs
+## 何时使用 Fumadocs
 
-Fumadocs is designed with flexibility in mind, it is not limited to certain usages.
+Fumadocs 在设计时考虑了灵活性，它不限于特定用途。
 
-- `fumadocs-core` is a headless UI library for building docs.
-- `fumadocs-mdx` is a useful library to handle MDX content.
+- `fumadocs-core` 是一个用于构建文档的无头 UI 库。
+- `fumadocs-mdx` 是一个处理 MDX 内容的有用库。
 
-For most of the web applications, vanilla React.js is no longer enough.
-Nowadays, we also wish to have a blog, a showcase page, a FAQ page, etc. In these cases, Fumadocs can help you build the
-docs easier, with less boilerplate.
+对于大多数 Web 应用程序，纯 React.js 已不再足够。
+如今，我们还希望拥有博客、展示页面、常见问题页面等。在这些情况下，Fumadocs 可以帮助您更轻松地构建文档，减少样板代码。
 
-You can read [Comparisons](/docs/ui/comparisons) if you're interested.
+如果您感兴趣，可以阅读[比较](/docs/ui/comparisons)。
 
-### Documentation
+### 文档编写
 
-Fumadocs focuses on **authoring experience**, it provides a beautiful theme and many docs automation tools.
+Fumadocs 专注于**编写体验**，它提供了美观的主题和许多文档自动化工具。
 
-It helps you to iterate your codebase faster while never leaving your docs behind.
-You can take this site as an example of docs site built with Fumadocs.
+它帮助您更快地迭代代码库，同时确保文档始终同步更新。  
+您可以将本网站视为使用 Fumadocs 构建的文档站点示例。
 
-### Blog sites
+### 博客站点
 
-Most React.js frameworks can already suffice the needs of a blog site.
+大多数 React.js 框架已能满足博客站点的需求。
 
-Fumadocs provides additional tooling, including syntax highlighting, document search, and a default theme (Fumadocs UI).
-It helps you to avoid reinventing the wheels.
+Fumadocs 提供了额外的工具，包括语法高亮、文档搜索和默认主题（Fumadocs UI）。  
+它帮助您避免重复造轮子。

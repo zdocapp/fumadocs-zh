@@ -1,11 +1,11 @@
 ---
 title: TOC
-description: Table of Contents
+description: 目录
 ---
 
-A Table of Contents with active anchor observer and auto scroll.
+带有活动锚点观察器和自动滚动的目录。
 
-## Usage
+## 使用方法
 
 ```tsx
 import * as Base from 'fumadocs-core/toc';
@@ -20,32 +20,32 @@ return (
 );
 ```
 
-### Anchor Provider
+### 锚点提供器
 
-Watches for the active anchor using the Intersection Observer API.
+使用 Intersection Observer API 监视活动锚点。
 
 <AutoTypeTable
   path="./content/docs/headless/props.ts"
   name="AnchorProviderProps"
 />
 
-### Scroll Provider
+### 滚动提供器
 
-Scrolls the scroll container to the active anchor.
+将滚动容器滚动到活动锚点。
 
 <AutoTypeTable
   path="./content/docs/headless/props.ts"
   name="ScrollProviderProps"
 />
 
-### TOC Item
+### 目录项
 
-An anchor item for jumping to the target anchor.
+用于跳转到目标锚点的锚点项。
 
-| Data Attribute | Values        | Description          |
-| -------------- | ------------- | -------------------- |
-| `data-active`  | `true, false` | Is the anchor active |
+| 数据属性      | 值            | 描述                 |
+| ------------- | ------------- | -------------------- |
+| `data-active` | `true, false` | 锚点是否处于活动状态 |
 
-## Example
+## 示例
 
 <include>./toc-example.tsx</include>

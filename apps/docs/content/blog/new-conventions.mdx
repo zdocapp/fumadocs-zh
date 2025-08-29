@@ -1,23 +1,23 @@
 ---
-title: Adding new Conventions
-description: Some changes on the docs.
+title: 添加新约定
+description: 文档中的一些变更。
 date: 2025-04-08
 author: Fuma Nama
 ---
 
 ## `mdx-component.tsx`
 
-Sometimes there are questions raised by beginners confused about where to add MDX components.
-Although it's simply located in `page.tsx`, which shouldn't be difficult to find, I think some kind of conventions may help, so I decided to add back `mdx-components.tsx`.
+有时会有初学者提出疑问，对在哪里添加 MDX 组件感到困惑。
+虽然它简单地位于 `page.tsx` 中，这应该不难找到，但我认为某种约定可能会有所帮助，因此我决定重新添加 `mdx-components.tsx`。
 
-I love to have fewer files, but considering `create-fumadocs-app` should also act as a starting point for beginners who may not be familiar with MDX, it's much more helpful to provide it by default.
+我喜欢更少的文件，但考虑到 `create-fumadocs-app` 也应该作为初学者的起点，他们可能不熟悉 MDX，默认提供它会更有帮助。
 
-### Existing Projects
+### 现有项目
 
-The convention is optional (only to make the learning curve smoother).
-For existing users, you probably knew how to pass MDX components, and no further change is needed.
+该约定是可选的（仅为了使学习曲线更平滑）。
+对于现有用户，您可能已经知道如何传递 MDX 组件，无需进一步更改。
 
-But you can still make one:
+但您仍然可以创建一个：
 
 ```tsx title="mdx-components.tsx"
 import defaultMdxComponents from 'fumadocs-ui/mdx';
@@ -31,7 +31,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 }
 ```
 
-And use it in your MDX component.
+并在您的 MDX 组件中使用它。
 
 ```tsx title="page.tsx"
 import { getMDXComponents } from '@/mdx-components';
@@ -43,9 +43,9 @@ import { getMDXComponents } from '@/mdx-components';
 />;
 ```
 
-## Deprecating `<I18nProvider />`
+## 弃用 `<I18nProvider />`
 
-We now prefer a single `<RootProvider />` for everything, replacing the need for `<I18nProvider />` with a `i18n` prop.
+我们现在更倾向于使用单一的 `<RootProvider />` 来处理所有事情，通过 `i18n` 属性取代了 `<I18nProvider />` 的需求。
 
 ```tsx
 <RootProvider
@@ -57,7 +57,7 @@ We now prefer a single `<RootProvider />` for everything, replacing the need for
 </RootProvider>
 ```
 
-This allows Root Provider to handle the hierarchy correctly without revealing too much complexity, for example, the correct order should be:
+这使得根提供者能够正确处理层次结构，而不会暴露太多复杂性，例如，正确的顺序应该是：
 
 ```tsx
 <FrameworkProvider>
@@ -71,6 +71,6 @@ This allows Root Provider to handle the hierarchy correctly without revealing to
 </FrameworkProvider>
 ```
 
-Changing the hierarchy of different providers may result in problems since they actually rely on each other, now it is all integrated into `<RootProvider />`, including I18n configuration.
+更改不同提供者的层次结构可能会导致问题，因为它们实际上相互依赖，现在所有内容都集成到 `<RootProvider />` 中，包括 I18n 配置。
 
-The new [Internationalization](/docs/ui/internationalization) guide requires Fumadocs 15.2.3 or above.
+新的[国际化](/docs/ui/internationalization)指南要求 Fumadocs 15.2.3 或更高版本。

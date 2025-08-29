@@ -1,23 +1,23 @@
 ---
-title: Orama (default)
-description: The default search engine powered by Orama.
+title: Orama (默认)
+description: 由 Orama 驱动的默认搜索引擎。
 ---
 
-## Overview
+## 概述
 
-Fumadocs configures [Orama search engine](/docs/headless/search/orama) out-of-the-box.
+Fumadocs 开箱即用地配置了 [Orama 搜索引擎](/docs/headless/search/orama)。
 
-It works through a API endpoint (running on server), or a statically cached JSON file for static websites.
+它通过 API 端点（在服务器上运行）工作，或者为静态网站使用静态缓存的 JSON 文件。
 
-## Setup
+## 设置
 
-Create a search dialog.
+创建搜索对话框。
 
-<Tabs items={['fetch (default)', 'static']}>
+<Tabs items={['fetch (默认)', 'static']}>
 
     <Tab>
 
-The UI has been configured by default, you can also re-create it for further customisations:
+UI 已默认配置，您也可以重新创建以进行进一步自定义：
 
 <include meta='title="components/search.tsx"'>fetch.tsx</include>
 
@@ -25,7 +25,7 @@ The UI has been configured by default, you can also re-create it for further cus
 
     <Tab id='static'>
 
-For Static Export, you can configure [static mode](/docs/headless/search/orama#static-export) on search server, and use the `static` client:
+对于静态导出，您可以在搜索服务器上配置[静态模式](/docs/headless/search/orama#static-export)，并使用 `static` 客户端：
 
 ```package-install
 @orama/orama
@@ -39,8 +39,8 @@ For Static Export, you can configure [static mode](/docs/headless/search/orama#s
 
 <include>.shared.mdx</include>
 
-### Tag Filter
+### 标签筛选
 
-Optionally, you can add UI for filtering results by tags. Configure [Tag Filter](/docs/headless/search/orama#tag-filter) on search server and add the following:
+可选地，您可以添加按标签筛选结果的 UI。在搜索服务器上配置[标签筛选器](/docs/headless/search/orama#tag-filter)并添加以下内容：
 
 <include>.tag-filter.mdx</include>

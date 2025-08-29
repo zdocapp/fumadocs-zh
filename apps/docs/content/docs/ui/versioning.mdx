@@ -1,19 +1,19 @@
 ---
-title: Versioning
-description: Implementing multi-version in your docs.
+title: 版本控制
+description: 在文档中实现多版本支持。
 ---
 
-## Overview
+## 概述
 
-It's common for developer tool related docs to version their docs, such as different docs for v1 and v2 of the same tool.
+开发者工具相关的文档通常需要进行版本管理，例如为同一工具的 v1 和 v2 版本提供不同的文档。
 
-Fumadocs provide the primitives for you to implement versioning on your own way.
+Fumadocs 提供了基础工具，让您能够以自己的方式实现版本管理。
 
-## Partial Versioning
+## 部分版本管理
 
-When versioning only applies to part of your docs, You can separate them by folders.
+当版本管理仅适用于文档的部分内容时，您可以通过文件夹进行分隔。
 
-For example:
+例如：
 
 <Files>
   <Folder name="java-sdk" defaultOpen>
@@ -31,14 +31,14 @@ For example:
   Tabs](/docs/ui/navigation/sidebar#sidebar-tabs).
 </Callout>
 
-## Full Versioning
+## 完整版本管理
 
-Sometimes you want to version the entire website, such as https://v14.fumadocs.dev (Fumadocs v14) and https://fumadocs.dev (Latest Fumadocs).
+有时您希望对整个网站进行版本管理，例如 https://v14.fumadocs.dev (Fumadocs v14) 和 https://fumadocs.dev (最新版 Fumadocs)。
 
-You can create a Git branch for a version of docs (call it `v2` for example), and deploy it as a separate app on another subdomain like `v2.my-site.com`.
+您可以为某个版本的文档创建一个 Git 分支（例如命名为 `v2`），并将其作为独立应用部署到另一个子域名上，如 `v2.my-site.com`。
 
-Optionally, you can link to the other versions from your docs.
-This design allows some advantages over partial versioning:
+可选地，您可以从文档中链接到其他版本。
+这种设计相比部分版本管理具有一些优势：
 
-- Easy maintenance: Old docs/branches won't be affected when you iterate or upgrade dependencies.
-- Better consistency: Not just the docs itself, your landing page (and other pages) will also be versioned.
+- 易于维护：当您迭代或升级依赖时，旧文档/分支不会受到影响。
+- 更好的一致性：不仅是文档本身，您的着陆页（和其他页面）也会进行版本管理。

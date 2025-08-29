@@ -1,13 +1,13 @@
 ---
-title: Include
-description: Reuse content from other files.
+title: 包含
+description: 复用其他文件中的内容。
 ---
 
-## Usage
+## 使用方法
 
 ### Markdown
 
-To display content from another Markdown/MDX file, specify its path relative to the file itself in the `<include>` tag.
+要显示来自另一个 Markdown/MDX 文件的内容，请在 `<include>` 标签中指定相对于文件本身的路径。
 
 ```mdx title="page.mdx"
 <include>./another.mdx</include>
@@ -20,7 +20,7 @@ To display content from another Markdown/MDX file, specify its path relative to 
 
 ### CodeBlock
 
-For other types of files, it will become a codeblock:
+对于其他类型的文件，它将变为代码块：
 
 ```mdx title="page.mdx"
 <include>./script.ts</include>
@@ -32,7 +32,7 @@ For other types of files, it will become a codeblock:
 
 ### `cwd`
 
-Resolve relative paths from cwd instead of the Markdown file:
+从 cwd 而非 Markdown 文件解析相对路径：
 
 ```mdx
 <include cwd lang="tsx" meta='title="lib.ts"'>
@@ -42,7 +42,7 @@ Resolve relative paths from cwd instead of the Markdown file:
 
 ### Section
 
-For Markdown files, you can copy a section of it:
+对于 Markdown 文件，您可以复制其中的一个部分：
 
 ```mdx title="a.mdx"
 <section id="test">

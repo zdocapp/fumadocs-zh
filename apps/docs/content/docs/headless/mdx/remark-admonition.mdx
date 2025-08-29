@@ -1,13 +1,13 @@
 ---
-title: Remark Admonition
-description: Use Admonition in Fumadocs
+title: Remark 提示框
+description: 在 Fumadocs 中使用提示框
 ---
 
-In Docusaurus, there's an [Admonition syntax](https://docusaurus.io/docs/markdown-features/admonitions).
+在 Docusaurus 中，有一个 [Admonition 语法](https://docusaurus.io/docs/markdown-features/admonitions)。
 
-For people migrating from Docusaurus, you can enable this remark plugin to support the Admonition syntax.
+对于从 Docusaurus 迁移的用户，您可以启用此 remark 插件以支持 Admonition 语法。
 
-## Usage
+## 使用方法
 
 ```ts title="source.config.ts" tab="Fumadocs MDX"
 import { remarkAdmonition } from 'fumadocs-core/mdx-plugins';
@@ -29,7 +29,7 @@ await compile('...', {
 });
 ```
 
-### Input
+### 输入
 
 ```md
 :::warning
@@ -37,7 +37,7 @@ Hello World
 :::
 ```
 
-### Output
+### 输出
 
 ```mdx
 <Callout type='warn'>
@@ -47,10 +47,10 @@ Hello World
 </Callout>
 ```
 
-### When to use
+### 使用时机
 
-We highly recommend using the JSX syntax of MDX instead.
-It's more flexible, some editors support IntelliSense in MDX files.
+我们强烈建议使用 MDX 的 JSX 语法替代。
+它更加灵活，一些编辑器在 MDX 文件中支持智能感知。
 
 ```mdx
 <Callout type='warn'>

@@ -1,12 +1,12 @@
 ---
-title: Getting Started
-description: Introducing Fumadocs MDX, the official content source of Fumadocs.
+title: 入门指南
+description: 介绍 Fumadocs 官方内容源 Fumadocs MDX。
 icon: Album
 ---
 
-## Quick Start
+## 快速开始
 
-Get started with Fumadocs MDX:
+开始使用 Fumadocs MDX：
 
 <Cards>
   <Card title="Next.js" href="/docs/mdx/next">
@@ -20,23 +20,23 @@ Get started with Fumadocs MDX:
   </Card>
 </Cards>
 
-## Introduction
+## 介绍
 
-Fumadocs MDX is a tool to transform content into type-safe data, similar to Content Collections.
+Fumadocs MDX 是一个将内容转换为类型安全数据的工具，类似于内容集合（Content Collections）。
 
-It is not a full CMS but rather a content compiler + validator, you can use it to handle blog posts and other contents.
+它不是一个完整的内容管理系统（CMS），而是一个内容编译器 + 验证器，您可以使用它来处理博客文章和其他内容。
 
-### Defining Collections
+### 定义集合
 
-**Collection** refers to a collection containing a certain type of files. You can define collections in the config file (`source.config.ts`).
+**集合**（Collection）指的是包含特定类型文件的集合。您可以在配置文件（`source.config.ts`）中定义集合。
 
-Fumadocs MDX transforms collections into type-safe data, accessible in your app. Available collections:
+Fumadocs MDX 将集合转换为类型安全的数据，可在您的应用程序中访问。可用的集合：
 
 <Tabs items={["doc", "meta", 'docs']}>
 
     <Tab value='doc'>
 
-Compile Markdown & MDX files into a React Server Component, with useful properties like **Table of Contents**.
+将 Markdown 和 MDX 文件编译为 React 服务器组件，并提供**目录**等实用属性。
 
 ```ts title="source.config.ts"
 import { defineCollections } from 'fumadocs-mdx/config';
@@ -51,7 +51,7 @@ export const test = defineCollections({
 
     <Tab value='meta'>
 
-Transform YAML/JSON files into an array of data.
+将 YAML/JSON 文件转换为数据数组。
 
 ```ts title="source.config.ts"
 import { defineCollections } from 'fumadocs-mdx/config';
@@ -65,7 +65,7 @@ export const test = defineCollections({
     </Tab>
     <Tab value='docs'>
 
-Combination of `meta` and `doc` collections, which is needed for Fumadocs.
+`meta` 和 `doc` 集合的组合，这是 Fumadocs 所需的。
 
 ```ts title="source.config.ts"
 import { defineDocs } from 'fumadocs-mdx/config';
@@ -73,10 +73,10 @@ import { defineDocs } from 'fumadocs-mdx/config';
 export const docs = defineDocs({
   dir: 'content/docs',
   docs: {
-    // options for `doc` collection
+    // `doc` 集合的选项
   },
   meta: {
-    // options for `meta` collection
+    // `meta` 集合的选项
   },
 });
 ```
@@ -85,7 +85,7 @@ export const docs = defineDocs({
 
 </Tabs>
 
-For example, a `doc` collection will transform the `.md` and `.mdx` files:
+例如，`doc` 集合将转换 `.md` 和 `.mdx` 文件：
 
 <Files>
   <Folder name="folder" defaultOpen>
@@ -100,30 +100,30 @@ For example, a `doc` collection will transform the `.md` and `.mdx` files:
   />
 </Files>
 
-### Accessing Collections
+### 访问集合
 
-Collections will be compiled into JavaScript files that your app can access, the output format varies according to the framework you use.
+集合将被编译成 JavaScript 文件供您的应用程序访问，输出格式根据您使用的框架而异。
 
-[Get started](#quickstart) with your framework to learn more.
+[开始使用](#quickstart)您的框架以了解更多信息。
 
-## FAQ
+## 常见问题
 
-### Built-in Properties
+### 内置属性
 
-These properties are exported from MDX files by default.
+这些属性默认从 MDX 文件中导出。
 
-| Property         | Description                                     |
-| ---------------- | ----------------------------------------------- |
-| `frontmatter`    | Frontmatter                                     |
-| `toc`            | Table of Contents                               |
-| `structuredData` | Structured Data, useful for implementing search |
+| Property         | Description                    |
+| ---------------- | ------------------------------ |
+| `frontmatter`    | Frontmatter                    |
+| `toc`            | 目录                           |
+| `structuredData` | 结构化数据，适用于实现搜索功能 |
 
-### Customise Frontmatter
+### 自定义 Frontmatter
 
-Use the [`schema`](/docs/mdx/collections#schema-1) option to pass a validation schema to validate frontmatter and define its output properties.
+使用 [`schema`](/docs/mdx/collections#schema-1) 选项传递验证模式，以验证 frontmatter 并定义其输出属性。
 
-### MDX Plugins
+### MDX 插件
 
-Fumadocs MDX uses [MDX Compiler](https://mdxjs.com/packages/mdx) to compile MDX files into JavaScript files.
+Fumadocs MDX 使用 [MDX Compiler](https://mdxjs.com/packages/mdx) 将 MDX 文件编译为 JavaScript 文件。
 
-You can customise it on [Global Config](/docs/mdx/global#mdx-options) or [Collection Config](/docs/mdx/collections#mdxoptions).
+您可以在 [全局配置](/docs/mdx/global#mdx-options) 或 [集合配置](/docs/mdx/collections#mdxoptions) 中自定义它。

@@ -1,12 +1,12 @@
 ---
-title: Page Tree
-description: The structure of page tree.
+title: 页面树
+description: 页面树的结构。
 ---
 
-Page tree is a tree structure that describes all navigation links, with other items like separator and folders.
+页面树是一种树状结构，用于描述所有导航链接，以及其他项目如分隔符和文件夹。
 
-It will be sent to the client and being referenced in navigation elements including the sidebar and breadcrumb.
-Hence, you shouldn't store any sensitive or large data in page tree.
+它将被发送到客户端，并在包括侧边栏和面包屑在内的导航元素中被引用。
+因此，您不应在页面树中存储任何敏感或大型数据。
 
 <Callout title="Note">
 
@@ -16,10 +16,10 @@ Unserializable data such as functions can't be passed to page tree.
 
 </Callout>
 
-## Conventions
+## 约定
 
-The type definitions of page tree, for people who want to hardcode/generate it.
-You can also import the type from Fumadocs.
+页面树的类型定义，适用于希望硬编码/生成它的人员。
+您也可以从 Fumadocs 导入该类型。
 
 ```ts
 import type { PageTree } from 'fumadocs-core/server';
@@ -29,15 +29,15 @@ const tree: PageTree.Root = {
 };
 ```
 
-Certain nodes contain a `$ref` property, they are internal and not used when hardcoding it.
+某些节点包含一个 `$ref` 属性，它们是内部使用的，在硬编码时不使用。
 
-### Root
+### 根节点
 
-The initial root of page trees.
+页面树的初始根节点。
 
 <AutoTypeTable path="./content/docs/headless/props.ts" name="PageTreeRoot" />
 
-### Page
+### 页面
 
 ```json
 {
@@ -47,11 +47,11 @@ The initial root of page trees.
 }
 ```
 
-> External urls are also supported
+> 也支持外部 URL
 
 <AutoTypeTable path="./content/docs/headless/props.ts" name="PageTreeItem" />
 
-### Folder
+### 文件夹
 
 ```json
 {
@@ -69,9 +69,9 @@ The initial root of page trees.
 
 <AutoTypeTable path="./content/docs/headless/props.ts" name="PageTreeFolder" />
 
-### Separator
+### 分隔符
 
-A label between items.
+项目之间的标签。
 
 ```json
 {
@@ -85,6 +85,6 @@ A label between items.
   name="PageTreeSeparator"
 />
 
-## Icons
+## 图标
 
-Icon is a `ReactElement`, supported by pages and folders.
+图标是一个 `ReactElement`，由页面和文件夹支持。

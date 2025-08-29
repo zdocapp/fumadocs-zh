@@ -1,16 +1,16 @@
 ---
-title: Media Adapters
-description: Support other media types
+title: 媒体适配器
+description: 支持其他媒体类型
 ---
 
-## Overview
+## 概述
 
-A media adapter in Fumadocs supports:
+Fumadocs 中的媒体适配器支持：
 
-- Converting value into `fetch()` body compatible with corresponding media type.
-- Generate code example based on different programming language/tool.
+- 将值转换为与相应媒体类型兼容的 `fetch()` 请求体。
+- 根据不同编程语言/工具生成代码示例。
 
-Put your media adapters in a separate file.
+将您的媒体适配器放在单独的文件中。
 
 ```ts tab="lib/media-adapters.ts" twoslash
 import type { MediaAdapter } from 'fumadocs-openapi';
@@ -45,7 +45,7 @@ export const myAdapter: MediaAdapter = {
 export { myAdapter } from './media-adapters';
 ```
 
-Pass the adapter.
+传递适配器。
 
 ```ts title="lib/source.ts"
 import { createOpenAPI } from 'fumadocs-openapi/server';

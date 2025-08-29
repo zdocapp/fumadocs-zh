@@ -1,15 +1,15 @@
 ---
 title: Breadcrumb
-description: The navigation component at the top of the screen
+description: 位于屏幕顶部的导航组件
 ---
 
-A hook for implementing Breadcrumb in your documentation. It returns breadcrumb items for a page based on the given page tree.
+用于在文档中实现面包屑导航的钩子。它根据给定的页面树返回页面的面包屑项目。
 
-> If present, the index page of a folder will be used as the item.
+> 如果存在，文件夹的索引页面将被用作项目。
 
-## Usage
+## 使用方法
 
-It exports a `useBreadcrumb` hook:
+它导出一个 `useBreadcrumb` 钩子：
 
 ```ts twoslash
 declare const tree: any;
@@ -23,9 +23,9 @@ const items = useBreadcrumb(pathname, tree);
 //    ^?
 ```
 
-### Example
+### 示例
 
-A styled example for Next.js.
+一个适用于 Next.js 的样式化示例。
 
 ```tsx
 'use client';
@@ -66,8 +66,8 @@ export function Breadcrumb({ tree }: { tree: PageTree.Root }) {
 }
 ```
 
-You can use it by passing the page tree via `tree` prop in a server component.
+您可以通过在服务器组件中使用 `tree` 属性传递页面树来使用它。
 
-### Breadcrumb Item
+### 面包屑项目
 
 <AutoTypeTable path="./content/docs/headless/props.ts" name="BreadcrumbItem" />

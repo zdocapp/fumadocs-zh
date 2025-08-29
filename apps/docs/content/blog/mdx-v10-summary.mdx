@@ -1,24 +1,24 @@
 ---
-title: Fumadocs MDX v10 Summary
-description: Migration Guide and Summary
+title: Fumadocs MDX v10 摘要
+description: 迁移指南与摘要
 date: 2024-11-24
 author: Fuma Nama
 ---
 
-## Features
+## 功能特性
 
-- More customisations via `source.config.ts`, a new config file for your content.
-- Introduced **collections**.
-- Turbopack support.
-- Build-time data validation support.
+- 通过 `source.config.ts`（您内容的新配置文件）实现更多自定义选项。
+- 引入**集合（collections）**。
+- 支持 Turbopack。
+- 支持构建时数据验证。
 
-## Migrate from v9
+## 从 v9 迁移
 
-### Refactor Imports
+### 重构导入
 
-Refactor the import in `next.config`.
+重构 `next.config` 中的导入。
 
-**From:**
+**从:**
 
 ```ts
 import createMDX from 'fumadocs-mdx/config';
@@ -33,7 +33,7 @@ const config = {
 export default withMDX(config);
 ```
 
-**To:**
+**到:**
 
 ```ts
 import { createMDX } from 'fumadocs-mdx/next';
@@ -48,9 +48,9 @@ const config = {
 export default withMDX(config);
 ```
 
-### Remove `mdx-components.tsx`
+### 移除 `mdx-components.tsx`
 
-`mdx-components.tsx` is no longer used. It now allows only MDX components passed from `MDX` body's `components` prop.
+`mdx-components.tsx` 不再使用。现在仅允许通过 MDX 主体的 `components` 属性传递 MDX 组件。
 
 ```tsx
 import defaultMdxComponents from 'fumadocs-ui/mdx';
@@ -61,19 +61,19 @@ const MDX = page.data.body;
 <MDX components={{ ...defaultMdxComponents }} />;
 ```
 
-This encourages explicit import of MDX components.
+这鼓励显式导入 MDX 组件。
 
-Previously, `mdx-components.tsx` worked by injecting an import to every compiled Markdown/MDX file.
-It's somewhat unnecessary because you can always import the components explicitly, or replace default HTML tags like `img` from MDX body's `components` prop.
+以前，`mdx-components.tsx` 通过向每个编译后的 Markdown/MDX 文件注入导入来工作。
+这有些多余，因为您始终可以显式导入组件，或者通过 MDX 主体的 `components` 属性替换默认的 HTML 标签（如 `img`）。
 
-### Define Collections
+### 定义集合
 
-Collection is now introduced on source config file (`source.config.ts`).
-It refers to a collection of files/content, such as Markdown files or JSON/YAML files.
+集合现在在源配置文件（`source.config.ts`）中引入。
+它指的是文件/内容的集合，例如 Markdown 文件或 JSON/YAML 文件。
 
-Every collection has its own config, you can have customised Zod schema to validate its data, or collection-level MDX options for content collections.
+每个集合都有自己的配置，您可以使用自定义的 Zod 模式来验证其数据，或者为内容集合设置集合级别的 MDX 选项。
 
-You can create a source config file, and add the following:
+您可以创建一个源配置文件，并添加以下内容：
 
 ```ts
 import { defineDocs } from 'fumadocs-mdx/config';
@@ -83,9 +83,9 @@ export const { docs, meta } = defineDocs({
 });
 ```
 
-`defineDocs` declares two collections, one with `doc` type that scans content files (e.g. `md/mdx`), one with `meta` type that scans meta files (e.g. `json`).
+`defineDocs` 声明了两个集合：一个使用 `doc` 类型扫描内容文件（例如 `md/mdx`），另一个使用 `meta` 类型扫描元数据文件（例如 `json`）。
 
-Now you can generate types using `fumadocs-mdx` command, it's recommended to set it as a `postinstall` script.
+现在你可以使用 `fumadocs-mdx` 命令生成类型，建议将其设置为 `postinstall` 脚本。
 
 ```json title="package.json"
 {
@@ -95,16 +95,16 @@ Now you can generate types using `fumadocs-mdx` command, it's recommended to set
 }
 ```
 
-When starting the development server, a `.source` folder will be generated, it contains all parsed collections/files.
-You can add it to `.gitignore`, it will replace the old `.map` file.
+启动开发服务器时，将生成一个 `.source` 文件夹，其中包含所有已解析的集合/文件。
+你可以将其添加到 `.gitignore`，它将取代旧的 `.map` 文件。
 
-To access the collections, import them from the folder with their original name in `source.config.ts`.
+要访问这些集合，请从 `source.config.ts` 中按其原始名称导入它们。
 
 ```ts
 import { docs, meta } from '@/.source';
 ```
 
-Now to integrate it with Fumadocs framework, change your `source.ts` from:
+现在要将其与 Fumadocs 框架集成，请将你的 `source.ts` 从：
 
 ```ts
 import { map } from '@/.map';
@@ -118,7 +118,7 @@ export const { getPage, getPages, pageTree } = loader({
 });
 ```
 
-to:
+改为：
 
 ```ts
 import { docs, meta } from '@/.source';
@@ -131,24 +131,24 @@ export const source = loader({
 });
 ```
 
-- we now recommend exporting the output of `loader` directly as a single variable.
-- schema option is no longer defined in `source.ts`, it's handled by `source.config.ts`.
-- it takes two collections: `docs` (content) and `meta` (`meta.json`).
-  You can leave `meta` as an empty array if it is unused, so you can define only a collection for `docs`.
+- 我们现在建议将 `loader` 的输出直接作为单个变量导出。
+- `schema` 选项不再在 `source.ts` 中定义，而是由 `source.config.ts` 处理。
+- 它接受两个集合：`docs`（内容）和 `meta`（`meta.json`）。
+  如果未使用 `meta`，可以将其留空数组，这样你可以仅定义 `docs` 的集合。
 
 ### `page.data`
 
-When using with `loader`, you no longer need `data.frontmatter` to access frontmatter data.
-It is merged into the `page.data` object.
+与 `loader` 一起使用时，你不再需要 `data.frontmatter` 来访问 frontmatter 数据。
+它已合并到 `page.data` 对象中。
 
 ```ts
 page.data.frontmatter.title; // [!code --]
 page.data.title; // [!code ++]
 ```
 
-### MDX Options
+### MDX 选项
 
-Instead of passing them to `next.config` file, define a global config in `source.config.ts`:
+不再将它们传递给 `next.config` 文件，而是在 `source.config.ts` 中定义一个全局配置：
 
 ```ts
 import { defineConfig } from 'fumadocs-mdx/config';
@@ -160,15 +160,15 @@ export default defineConfig({
 });
 ```
 
-### Collection Schema
+### 集合模式
 
-The `schema` option of collection allow you to customise the validation schema, it accepts a Zod type.
+集合的 `schema` 选项允许你自定义验证模式，它接受一个 Zod 类型。
 
-For `defineDocs`, see [`schema`](/docs/mdx/collections#schema-1).
+对于 `defineDocs`，请参阅 [`schema`](/docs/mdx/collections#schema-1)。
 
-### Multiple Types
+### 多种类型
 
-Same as before, you can call `loader` multiple times for different types (e.g. for docs and blog).
+与之前相同，您可以为不同类型（例如文档和博客）多次调用 `loader`。
 
 ```ts
 import { createMDXSource } from 'fumadocs-mdx';
@@ -191,7 +191,7 @@ export type DocsPage = InferPageType<typeof source>;
 export type DocsMeta = InferMetaType<typeof source>;
 ```
 
-and the corresponding `source.config.ts`:
+以及相应的 `source.config.ts`：
 
 ```ts
 import {
@@ -215,9 +215,9 @@ export const blog = defineCollections({
 });
 ```
 
-### Further Readings
+### 延伸阅读
 
-You can read the latest docs of Fumadocs MDX for details.
+您可以阅读 Fumadocs MDX 的最新文档以获取详细信息。
 
 <Cards>
   <Card href="/docs/mdx" title="Fumadocs MDX">

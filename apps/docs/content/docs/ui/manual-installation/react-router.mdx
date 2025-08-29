@@ -1,26 +1,26 @@
 ---
 title: React Router
-description: Setup Fumadocs on React Router.
+description: 在 React Router 上设置 Fumadocs。
 ---
 
-## Getting Started
+## 开始使用
 
-Before continuing, make sure to configure:
+继续之前，请确保已配置：
 
-- Tailwind CSS 4.
+- Tailwind CSS 4。
 
-### Installation
+### 安装
 
 ```npm
 npm i fumadocs-core fumadocs-ui fumadocs-mdx @types/mdx
 ```
 
-Then, [configure Fumadocs MDX](/docs/mdx/vite/react-router) on your React Router app.
-Make sure essential files like `lib/source.ts` are created correctly.
+然后，在您的 React Router 应用中[配置 Fumadocs MDX](/docs/mdx/vite/react-router)。
+确保正确创建了 `lib/source.ts` 等必要文件。
 
-### Styles
+### 样式
 
-Add the following to your Tailwind CSS file:
+将以下内容添加到您的 Tailwind CSS 文件中：
 
 ```css title="app/app.css"
 @import 'tailwindcss';
@@ -28,9 +28,9 @@ Add the following to your Tailwind CSS file:
 @import 'fumadocs-ui/css/preset.css';
 ```
 
-### Create Pages
+### 创建页面
 
-Update your routes:
+更新您的路由：
 
 ```ts title="routes.ts"
 import { type RouteConfig, index, route } from '@react-router/dev/routes';
@@ -43,19 +43,21 @@ export default [
 ] satisfies RouteConfig;
 ```
 
-Create the following files:
+创建以下文件：
 
 <include cwd meta='tab="app/lib/layout.shared.tsx"'>
   ../../examples/react-router/app/lib/layout.shared.tsx
 </include>
+
 <include cwd meta='tab="app/docs/page.tsx"'>
   ../../examples/react-router/app/docs/page.tsx
 </include>
+
 <include cwd meta='tab="app/docs/search.ts"'>
   ../../examples/react-router/app/docs/search.ts
 </include>
 
-Wrap your entire app under Fumadocs providers:
+将整个应用包裹在 Fumadocs 提供者下：
 
 ```tsx title="root.tsx"
 import { Links, Meta, Scripts, ScrollRestoration } from 'react-router';
@@ -85,9 +87,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Done
+### 完成
 
-You can start writing documents at `content/docs`:
+您可以在 `content/docs` 目录下开始编写文档：
 
 ```mdx title="content/docs/index.mdx"
 ---

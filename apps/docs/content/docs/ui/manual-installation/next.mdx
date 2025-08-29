@@ -1,14 +1,14 @@
 ---
 title: Next.js
-description: Setup Fumadocs on Next.js.
+description: 在 Next.js 上设置 Fumadocs。
 ---
 
-Before continuing, make sure you have configured:
+在继续之前，请确保已配置：
 
-- Next.js 15.
-- Tailwind CSS 4.
+- Next.js 15。
+- Tailwind CSS 4。
 
-## Getting Started
+## 开始使用
 
 ```npm
 npm i fumadocs-ui fumadocs-core fumadocs-mdx @types/mdx
@@ -21,7 +21,7 @@ In this guide, we will use Fumadocs MDX.
 
 </Callout>
 
-Update the following files:
+更新以下文件：
 
 ```js tab="next.config.mjs"
 import { createMDX } from 'fumadocs-mdx/next';
@@ -44,7 +44,7 @@ export default withMDX(config);
 }
 ```
 
-Create the following files:
+创建以下文件：
 
 <include cwd meta='tab="mdx-components.tsx"'>
   ../../examples/next-mdx/mdx-components.tsx
@@ -69,9 +69,9 @@ export const source = loader({
 });
 ```
 
-### Root Layout
+### 根布局
 
-Wrap the entire application inside [Root Provider](/docs/ui/layouts/root-provider), and add required styles to `body`.
+将整个应用程序包装在 [根提供器](/docs/ui/layouts/root-provider) 内，并向 `body` 添加必要的样式。
 
 ```tsx title="app/layout.tsx"
 import { RootProvider } from 'fumadocs-ui/provider';
@@ -95,9 +95,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-### Styles
+### 样式
 
-Add the following Tailwind CSS styles to `global.css`.
+将以下 Tailwind CSS 样式添加到 `global.css`。
 
 ```css title="global.css"
 @import 'tailwindcss';
@@ -105,17 +105,17 @@ Add the following Tailwind CSS styles to `global.css`.
 @import 'fumadocs-ui/css/preset.css';
 ```
 
-> It doesn't come with a default font, you may choose one from `next/font`.
+> 它不附带默认字体，您可以从 `next/font` 中选择一个。
 
-### Routes
+### 路由
 
-Create a `lib/layout.shared.tsx` file to put the shared options for our layouts.
+创建一个 `lib/layout.shared.tsx` 文件，用于存放我们布局的共享选项。
 
 <include cwd meta='title="lib/layout.shared.tsx"'>
   ../../examples/next-mdx/lib/layout.shared.tsx
 </include>
 
-Create the following routes:
+创建以下路由：
 
 <include cwd meta='tab="app/docs/layout.tsx"'>
   ../../examples/next-mdx/app/docs/layout.tsx
@@ -129,11 +129,11 @@ Create the following routes:
   ../../examples/next-mdx/app/api/search/route.ts
 </include>
 
-> The search is powered by Orama, learn more about [Document Search](/docs/headless/search).
+> 搜索功能由 Orama 提供支持，了解更多关于 [文档搜索](/docs/headless/search)。
 
-### Done
+### 完成
 
-You can start the dev server and create MDX files.
+您可以启动开发服务器并创建 MDX 文件。
 
 ```mdx title="content/docs/index.mdx"
 ---
@@ -145,18 +145,18 @@ title: Hello World
 I love Anime.
 ```
 
-## Deploying
+## 部署
 
-It should work out-of-the-box with Vercel & Netlify.
+它应该与 Vercel 和 Netlify 开箱即用。
 
 ### Cloudflare
 
-Use https://opennext.js.org/cloudflare, Fumadocs doesn't work on Edge runtime.
+使用 https://opennext.js.org/cloudflare，Fumadocs 不适用于 Edge 运行时。
 
-### Docker Deployment
+### Docker 部署
 
-If you want to deploy your Fumadocs app using Docker with **Fumadocs MDX configured**, make sure to add the `source.config.ts` file to the `WORKDIR` in the Dockerfile.
-The following snippet is taken from the official [Next.js Dockerfile Example](https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile):
+如果您想使用 Docker 部署 **已配置 Fumadocs MDX** 的 Fumadocs 应用，请确保将 `source.config.ts` 文件添加到 Dockerfile 的 `WORKDIR` 中。
+以下代码片段取自官方的 [Next.js Dockerfile 示例](https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile)：
 
 ```zsh title="Dockerfile"
 # syntax=docker.io/docker/dockerfile:1
@@ -227,4 +227,4 @@ ENV HOSTNAME="0.0.0.0"
 CMD ["node", "server.js"]
 ```
 
-This ensures Fumadocs MDX can access your configuration file during builds.
+这确保了 Fumadocs MDX 在构建过程中能够访问您的配置文件。

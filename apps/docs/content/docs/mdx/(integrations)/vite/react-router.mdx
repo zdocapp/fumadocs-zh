@@ -1,49 +1,49 @@
 ---
 title: React Router
-description: Use Fumadocs MDX with React Router
+description: 在 React Router 中使用 Fumadocs MDX
 ---
 
-## Setup
+## 设置
 
 ```npm
 npm i fumadocs-mdx fumadocs-core @types/mdx
 ```
 
-Create the configuration file:
+创建配置文件：
 
 <include cwd meta='title="source.config.ts"'>
   ../../examples/react-router/source.config.ts
 </include>
 
-Add the Vite plugin:
+添加 Vite 插件：
 
 <include cwd meta='title="vite.config.ts"'>
   ../../examples/react-router/vite.config.ts
 </include>
 
-A `source.generated.ts` file will be generated when you run development server or production build.
+运行开发服务器或生产构建时，将生成一个 `source.generated.ts` 文件。
 
-### Accessing Content
+### 访问内容
 
-You can import the `source.generated.ts` file directly.
+您可以直接导入 `source.generated.ts` 文件。
 
 ```ts
 import { docs } from './source.generated';
 console.log(docs);
 ```
 
-To integrate with Fumadocs, create a docs collection and use:
+要与 Fumadocs 集成，请创建一个文档集合并使用：
 
 <include cwd meta='title="app/lib/source.ts"'>
   ../../examples/react-router/app/lib/source.ts
 </include>
 
-### Rendering Content
+### 渲染内容
 
-Rendering page content may different because React Router doesn't support RSC at the moment.
-Instead, use `toClientRenderer()` to lazy load MDX content as a component on browser.
+由于 React Router 目前不支持 RSC，页面内容的渲染方式可能有所不同。
+请改用 `toClientRenderer()` 在浏览器中懒加载 MDX 内容作为组件。
 
-For example:
+例如：
 
 ```tsx
 import type { Route } from './+types/page';

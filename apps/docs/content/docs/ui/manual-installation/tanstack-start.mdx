@@ -1,26 +1,26 @@
 ---
 title: Tanstack Start
-description: Setup Fumadocs on Tanstack Start.
+description: 在 Tanstack Start 上设置 Fumadocs。
 ---
 
-## Getting Started
+## 开始使用
 
-Before continuing, make sure to configure:
+继续之前，请确保已配置：
 
-- Tailwind CSS 4.
+- Tailwind CSS 4。
 
-### Installation
+### 安装
 
 ```npm
 npm i fumadocs-core fumadocs-ui fumadocs-mdx @types/mdx
 ```
 
-Then, [configure Fumadocs MDX](/docs/mdx/vite/tanstack) on your Tanstack Start app.
-Make sure essential files like `lib/source.ts` are created correctly.
+然后，在您的 Tanstack Start 应用中[配置 Fumadocs MDX](/docs/mdx/vite/tanstack)。
+确保正确创建了 `lib/source.ts` 等必要文件。
 
-### Styles
+### 样式
 
-Add the following to your Tailwind CSS file:
+将以下内容添加到您的 Tailwind CSS 文件中：
 
 ```css title="styles/app.css"
 @import 'tailwindcss';
@@ -28,21 +28,23 @@ Add the following to your Tailwind CSS file:
 @import 'fumadocs-ui/css/preset.css';
 ```
 
-### Create Pages
+### 创建页面
 
-Create the following routes:
+创建以下路由：
 
 <include cwd meta='tab="lib/layout.shared.tsx"'>
   ../../examples/tanstack-start/src/lib/layout.shared.tsx
 </include>
+
 <include cwd meta='tab="routes/docs/$.tsx"'>
   ../../examples/tanstack-start/src/routes/docs/$.tsx
 </include>
+
 <include cwd meta='tab="routes/api/search.ts"'>
   ../../examples/tanstack-start/src/routes/api/search.ts
 </include>
 
-Wrap your entire app under Fumadocs providers:
+将整个应用包裹在 Fumadocs 提供者下：
 
 ```tsx title="__root.tsx"
 import {
@@ -85,9 +87,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Done
+### 完成
 
-You can start writing documents at `content/docs`:
+您可以在 `content/docs` 目录下开始编写文档：
 
 ```mdx title="content/docs/index.mdx"
 ---

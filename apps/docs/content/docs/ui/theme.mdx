@@ -1,11 +1,11 @@
 ---
-title: Themes
-description: Add Theme to Fumadocs UI
+title: 主题
+description: 为 Fumadocs UI 添加主题
 ---
 
-## Usage
+## 使用方法
 
-Only Tailwind CSS v4 is supported, the preset will also include source to Fumadocs UI itself:
+仅支持 Tailwind CSS v4，预设还将包含 Fumadocs UI 本身的源码：
 
 ```css title="Tailwind CSS"
 @import 'tailwindcss';
@@ -13,22 +13,21 @@ Only Tailwind CSS v4 is supported, the preset will also include source to Fumado
 @import 'fumadocs-ui/css/preset.css';
 ```
 
-### Preflight Changes
+### 预检更改
 
-By using the Tailwind CSS plugin, or the pre-built stylesheet, your default border, text and background
-colors will be changed.
+通过使用 Tailwind CSS 插件或预构建的样式表，您的默认边框、文本和背景颜色将被更改。
 
-### Light/Dark Modes
+### 亮色/暗色模式
 
-Fumadocs supports light/dark modes with [`next-themes`](https://github.com/pacocoursey/next-themes), it is included in Root Provider.
+Fumadocs 通过 [`next-themes`](https://github.com/pacocoursey/next-themes) 支持亮色/暗色模式，该功能已包含在根提供程序中。
 
-See [Root Provider](/docs/ui/layouts/root-provider#theme-provider) to learn more.
+请参阅 [根提供程序](/docs/ui/layouts/root-provider#theme-provider) 了解更多信息。
 
-### RTL Layout
+### RTL 布局
 
-RTL (Right-to-left) layout is supported.
+支持 RTL（从右到左）布局。
 
-To enable RTL, set the `dir` prop to `rtl` in body and root provider (required for Radix UI).
+要启用 RTL，请在 body 和根提供程序中设置 `dir` 属性为 `rtl`（Radix UI 需要此设置）。
 
 ```tsx
 import { RootProvider } from 'fumadocs-ui/provider';
@@ -45,9 +44,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 }
 ```
 
-### Layout Width
+### 布局宽度
 
-Customise the max width of docs layout with CSS Variables.
+使用 CSS 变量自定义文档布局的最大宽度。
 
 ```css
 :root {
@@ -57,13 +56,13 @@ Customise the max width of docs layout with CSS Variables.
 
 <WidthTrigger />
 
-## Tailwind CSS Preset
+## Tailwind CSS 预设
 
-Fumadocs UI adds its own colors, animations, and utilities with Tailwind CSS preset.
+Fumadocs UI 通过 Tailwind CSS 预设添加了自己的颜色、动画和实用工具。
 
-### Colors
+### 颜色
 
-It comes with many themes out-of-the-box, you can pick one you prefer.
+它自带多种开箱即用的主题，您可以选择自己喜欢的主题。
 
 ```css
 @import 'fumadocs-ui/css/<theme>.css';
@@ -116,7 +115,7 @@ It comes with many themes out-of-the-box, you can pick one you prefer.
 
 </Tabs>
 
-The design system was inspired by [Shadcn UI](https://ui.shadcn.com), you can also customize the colors using CSS variables.
+该设计系统灵感来源于 [Shadcn UI](https://ui.shadcn.com)，你也可以使用 CSS 变量来自定义颜色。
 
 ```css title="global.css"
 :root {
@@ -128,8 +127,8 @@ The design system was inspired by [Shadcn UI](https://ui.shadcn.com), you can al
 }
 ```
 
-For Shadcn UI, you can use the `shadcn` preset instead.
-It uses colors from your Shadcn UI theme.
+对于 Shadcn UI，你可以改用 `shadcn` 预设。
+它会使用你 Shadcn UI 主题中的颜色。
 
 ```css
 @import 'tailwindcss';
@@ -137,11 +136,11 @@ It uses colors from your Shadcn UI theme.
 @import 'fumadocs-ui/css/preset.css';
 ```
 
-### Typography
+### 排版
 
-We have a built-in plugin forked from [Tailwind CSS Typography](https://tailwindcss.com/docs/typography-plugin).
+我们内置了一个从 [Tailwind CSS Typography](https://tailwindcss.com/docs/typography-plugin) 分叉而来的插件。
 
-The plugin adds a `prose` class and variants to customise it.
+该插件添加了一个 `prose` 类及其变体用于自定义样式。
 
 ```tsx
 <div className="prose">
@@ -149,5 +148,6 @@ The plugin adds a `prose` class and variants to customise it.
 </div>
 ```
 
-> The plugin works with and only with Fumadocs UI's MDX components, it may conflict with `@tailwindcss/typography`.
-> If you need to use `@tailwindcss/typography` over the default plugin, [set a class name option](https://github.com/tailwindlabs/tailwindcss-typography/blob/main/README.md#changing-the-default-class-name) to avoid conflicts.
+> [!NOTE]
+> 该插件仅适用于 Fumadocs UI 的 MDX 组件，可能与 `@tailwindcss/typography` 产生冲突。
+> 如果你需要使用 `@tailwindcss/typography` 替代默认插件，请[设置一个类名选项](https://github.com/tailwindlabs/tailwindcss-typography/blob/main/README.md#changing-the-default-class-name)以避免冲突。

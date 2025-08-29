@@ -1,11 +1,11 @@
 ---
 title: React Router
-description: Support i18n routing on your React Router + Fumadocs app.
+description: 在您的 React Router + Fumadocs 应用中支持国际化路由。
 ---
 
-## Setup
+## 设置
 
-Define the i18n configurations in a file, we will import it with `@/lib/i18n` in this guide.
+在一个文件中定义国际化配置，本指南中我们将通过 `@/lib/i18n` 导入它。
 
 ```ts title="app/lib/i18n.ts"
 import { defineI18n } from 'fumadocs-core/i18n';
@@ -16,11 +16,11 @@ export const i18n = defineI18n({
 });
 ```
 
-> See [available options](/docs/headless/internationalization) for i18n config.
+> 查看国际化配置的[可用选项](/docs/headless/internationalization)。
 
-### Routing
+### 路由
 
-Add `:lang` prefix to all your pages.
+为所有页面添加 `:lang` 前缀。
 
 ```ts title="app/routes.ts"
 import { route, type RouteConfig } from '@react-router/dev/routes';
@@ -33,9 +33,9 @@ export default [
 ] satisfies RouteConfig;
 ```
 
-#### Make locale optional
+#### 使语言环境可选
 
-You can also use `:lang?` prefix, and update the i18n config:
+您也可以使用 `:lang?` 前缀，并更新国际化配置：
 
 ```ts tab="app/lib/i18n.ts"
 import { defineI18n } from 'fumadocs-core/i18n';
@@ -59,9 +59,9 @@ export default [
 ] satisfies RouteConfig;
 ```
 
-### Pages
+### 页面
 
-Provide UI translations and other config to `<RootProvider />`, the English translations are used as fallbacks.
+向 `<RootProvider />` 提供 UI 翻译和其他配置，英文翻译将用作后备方案。
 
 ```tsx title="app/root.tsx"
 import {
@@ -118,9 +118,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Pass Locale
+### 传递区域设置
 
-Add `locale` parameter to `baseOptions()` and include `i18n` in props:
+向 `baseOptions()` 添加 `locale` 参数，并在 props 中包含 `i18n`：
 
 ```tsx title="app/lib/layout.shared.tsx"
 import { i18n } from '@/lib/i18n';
@@ -134,7 +134,7 @@ export function baseOptions(locale: string): BaseLayoutProps {
 }
 ```
 
-Pass the locale to Fumadocs in your pages and layouts.
+在您的页面和布局中将区域设置传递给 Fumadocs。
 
 ```ts tab="app/lib/source.ts"
 import { i18n } from '@/lib/i18n';
@@ -196,21 +196,21 @@ export default function Page({ loaderData, params }: Route.ComponentProps) {
 }
 ```
 
-### Search
+### 搜索
 
-Configure i18n on your search solution.
+在您的搜索解决方案上配置国际化。
 
-- **Built-in Search (Orama):** See [Internationalization](/docs/headless/search/orama#internationalization).
-- **Cloud Solutions (e.g. Algolia):** They usually have official support for multilingual.
+- **内置搜索 (Orama):** 参见[国际化](/docs/headless/search/orama#internationalization)。
+- **云解决方案 (例如 Algolia):** 它们通常官方支持多语言。
 
-## Writing Documents
+## 编写文档
 
-See [i18n routing](/docs/ui/page-conventions#i18n-routing) to learn how to create pages for specific locales.
+查看[国际化路由](/docs/ui/page-conventions#i18n-routing)了解如何为特定区域创建页面。
 
-### Navigation
+### 导航
 
-Fumadocs only handles navigation for its own layouts (e.g. sidebar).
-For other places, you can use the `useParams` hook to get the locale from url.
+Fumadocs 仅处理其自身布局（例如侧边栏）的导航。
+对于其他位置，您可以使用 `useParams` 钩子从 URL 获取区域设置。
 
 ```tsx
 import { Link, useParams } from 'react-router';
@@ -220,8 +220,8 @@ const { lang } = useParams();
 <Link to={`/${lang}/about`}>About Us</Link>;
 ```
 
-In addition, the [`fumadocs-core/dynamic-link`](/docs/headless/components/link#dynamic-hrefs) component supports dynamic hrefs, you can use it to attend the locale prefix.
-It is useful for Markdown/MDX content.
+此外，[`fumadocs-core/dynamic-link`](/docs/headless/components/link#dynamic-hrefs) 组件支持动态 href，您可以使用它来附加区域设置前缀。
+这对于 Markdown/MDX 内容非常有用。
 
 ```mdx title="content.mdx"
 import { DynamicLink } from 'fumadocs-core/dynamic-link';

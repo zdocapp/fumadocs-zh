@@ -1,31 +1,31 @@
 ---
 title: Waku
-description: Use Fumadocs MDX with Waku
+description: 在 Waku 中使用 Fumadocs MDX
 ---
 
-## Setup
+## 设置
 
-Install dependencies:
+安装依赖：
 
 ```npm
 npm i fumadocs-mdx fumadocs-core fumadocs-ui @types/mdx
 ```
 
-Create the configuration file:
+创建配置文件：
 
 <include cwd meta='title="source.config.ts"'>
   ../../examples/waku/source.config.ts
 </include>
 
-Create the content source:
+创建内容源：
 
 <include cwd meta='title="src/source.ts"'>
   ../../examples/waku/src/source.ts
 </include>
 
-### Rendering Pages
+### 渲染页面
 
-Since Waku supports RSC, you can use the exported `default` component directly.
+由于 Waku 支持 RSC，您可以直接使用导出的 `default` 组件。
 
 ```tsx
 import { source } from '@/lib/source';

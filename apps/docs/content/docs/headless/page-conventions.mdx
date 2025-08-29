@@ -1,6 +1,6 @@
 ---
-title: Routing
-description: A shared convention for organizing your documents
+title: 路由
+description: 用于组织文档的共享约定
 ---
 
 <Callout title='Before reading'>
@@ -9,11 +9,11 @@ description: A shared convention for organizing your documents
 
 </Callout>
 
-## Overview
+## 概述
 
-While your React framework handles routing, Fumadocs generates **page slugs** and **sidebar items** (page tree) from your content directory using [`loader()`](/docs/headless/source-api).
+虽然您的 React 框架处理路由，但 Fumadocs 使用 [`loader()`](/docs/headless/source-api) 从您的内容目录生成**页面 slugs** 和**侧边栏项**（页面树）。
 
-You can define folders and pages similar to file-system based routing.
+您可以定义类似于基于文件系统的路由的文件夹和页面。
 
 <Files>
   <Folder name="content/docs (content directory)" defaultOpen>
@@ -22,9 +22,9 @@ You can define folders and pages similar to file-system based routing.
   </Folder>
 </Files>
 
-## File
+## 文件
 
-A [MDX](https://mdxjs.com) or Markdown file, you can customise its frontmatter.
+一个 [MDX](https://mdxjs.com) 或 Markdown 文件，您可以自定义其 frontmatter。
 
 ```mdx
 ---
@@ -36,11 +36,11 @@ icon: HomeIcon
 ## Learn More
 ```
 
-| name          | description                           |
-| ------------- | ------------------------------------- |
-| `title`       | The title of page                     |
-| `description` | The description of page               |
-| `icon`        | The name of icon, see [Icons](#icons) |
+| 名称          | 描述                          |
+| ------------- | ----------------------------- |
+| `title`       | 页面标题                      |
+| `description` | 页面描述                      |
+| `icon`        | 图标名称，参见 [图标](#icons) |
 
 <Callout title='Fumadocs MDX'>
 
@@ -50,29 +50,29 @@ icon: HomeIcon
 
 ### Slugs
 
-The slugs of a page are generated from its file path.
+页面的 slugs 是根据其文件路径生成的。
 
-| path (relative to content folder) | slugs             |
-| --------------------------------- | ----------------- |
-| `./dir/page.mdx`                  | `['dir', 'page']` |
-| `./dir/index.mdx`                 | `['dir']`         |
+| 路径（相对于内容文件夹） | slugs             |
+| ------------------------ | ----------------- |
+| `./dir/page.mdx`         | `['dir', 'page']` |
+| `./dir/index.mdx`        | `['dir']`         |
 
-## Folder
+## 文件夹
 
-Organize multiple pages, you can create a [Meta file](#meta) to customise folders.
+组织多个页面，您可以创建一个 [元文件](#meta) 来自定义文件夹。
 
-### Folder Group
+### 文件夹组
 
-By default, putting a file into folder will change its slugs.
-You can wrap the folder name in parentheses to avoid impacting the slugs of child files.
+默认情况下，将文件放入文件夹会更改其 slugs。
+您可以将文件夹名称用括号括起来，以避免影响子文件的 slugs。
 
-| path (relative to content folder) | slugs      |
-| --------------------------------- | ---------- |
-| `./(group-name)/page.mdx`         | `['page']` |
+| 路径（相对于内容文件夹） | 路径段     |
+| ------------------------ | ---------- |
+| `./(分组名称)/page.mdx`  | `['page']` |
 
-### Root Folder
+### 根文件夹
 
-Marks the folder as a root folder, only items in the opened root folder will be visible.
+将文件夹标记为根文件夹，只有已打开的根文件夹中的项目才会显示。
 
 ```json title="meta.json"
 {
@@ -82,7 +82,7 @@ Marks the folder as a root folder, only items in the opened root folder will be 
 }
 ```
 
-For example, when you are opening root folder `framework`, the other folders (e.g. `headless`) are not shown on the sidebar and other navigation elements.
+例如，当您打开根文件夹 `framework` 时，其他文件夹（例如 `headless`）不会显示在侧边栏和其他导航元素上。
 
 <Files>
   <Folder name="framework" defaultOpen>
@@ -104,9 +104,9 @@ Fumadocs UI renders root folders as [Sidebar Tabs](/docs/ui/navigation/sidebar#s
 
 </Callout>
 
-## Meta
+## 元数据
 
-Customise folders by creating a `meta.json` file in the folder.
+通过在文件夹中创建 `meta.json` 文件来自定义文件夹。
 
 ```json title="meta.json"
 {
@@ -117,16 +117,16 @@ Customise folders by creating a `meta.json` file in the folder.
 }
 ```
 
-| name          | description                           |
-| ------------- | ------------------------------------- |
-| `title`       | Display name                          |
-| `icon`        | The name of icon, see [Icons](#icons) |
-| `pages`       | Folder items (see below)              |
-| `defaultOpen` | Open the folder by default            |
+| 名称          | 描述                          |
+| ------------- | ----------------------------- |
+| `title`       | 显示名称                      |
+| `icon`        | 图标名称，参见 [图标](#icons) |
+| `pages`       | 文件夹项目（见下文）          |
+| `defaultOpen` | 默认打开文件夹                |
 
-### Pages
+### 页面
 
-Folder items are sorted alphabetically by default, you can add or control the order of items using `pages`.
+文件夹项目默认按字母顺序排序，您可以使用 `pages` 添加或控制项目的顺序。
 
 ```json title="meta.json"
 {
@@ -134,17 +134,18 @@ Folder items are sorted alphabetically by default, you can add or control the or
 }
 ```
 
-> When specified, items are not included unless they are listed in `pages`.
+> [!NOTE]
+> 当指定时，除非项目列在 `pages` 中，否则不会包含它们。
 
-- **Path**: a path to page or folder, like`./nested/page`.
-- **Separator** (`---Label---`): a separator between two sections, use `---[Icon]Label---` to include icons.
-- **Link** (`[Text](url)`): insert links, use `[Icon][Text](url)` to include icons.
+- **路径**：指向页面或文件夹的路径，例如 `./nested/page`。
+- **分隔符** (`---标签---`)：两个部分之间的分隔符，使用 `---[图标]标签---` 来包含图标。
+- **链接** (`[文本](url)`)：插入链接，使用 `[图标][文本](url)` 来包含图标。
 
-Special Items:
+特殊项目：
 
-- **Rest** (`...`): include remaining pages (sorted alphabetically).
-- **Reversed Rest** (`z...a`): reversed **Rest** item,
-- **Extract** (`...folder`): extract the items from a folder.
+- **Rest** (`...`): 包含剩余页面（按字母顺序排序）。
+- **Reversed Rest** (`z...a`): 反向的 **Rest** 项，
+- **Extract** (`...folder`): 从文件夹中提取项目。
 
 ```json title="meta.json"
 {
@@ -159,15 +160,15 @@ Special Items:
 }
 ```
 
-## Icons
+## 图标
 
-Since Fumadocs doesn't include an icon library, you have to convert the icon names to JSX elements in runtime, and render it as a component.
+由于 Fumadocs 不包含图标库，您需要在运行时将图标名称转换为 JSX 元素，并将其渲染为组件。
 
-You can add an [`icon` handler](/docs/headless/source-api#icons) to `loader()`.
+您可以为 `loader()` 添加一个 [`icon` 处理程序](/docs/headless/source-api#icons)。
 
-## i18n Routing
+## 国际化路由
 
-You can define different style for i18n routing.
+您可以为国际化路由定义不同的样式。
 
 ```ts title="lib/i18n.ts"
 import type { I18nConfig } from 'fumadocs-core/i18n';
@@ -180,11 +181,11 @@ export const i18n: I18nConfig = {
 };
 ```
 
-<Tabs items={['dot', 'dir']}>
+<Tabs items={['点标记', '目录结构']}>
 
   <Tab>
 
-    Add Markdown/meta files for different languages by attending `.{locale}` to your file name, like:
+    通过在文件名后附加 `.{locale}` 来为不同语言添加 Markdown/元数据文件，例如：
 
     <Files>
       <Folder name="content/docs" defaultOpen>
@@ -195,13 +196,13 @@ export const i18n: I18nConfig = {
       </Folder>
     </Files>
 
-    For the default locale, the locale code is optional.
+    对于默认语言环境，语言代码是可选的。
 
   </Tab>
 
   <Tab>
 
-    All content files are grouped by language folders:
+    所有内容文件按语言文件夹分组：
 
     <Files>
       <Folder name="content/docs" defaultOpen>

@@ -1,73 +1,73 @@
 ---
-title: Rethink how we customise UI
-description: Deep dive on how Fumadocs UI is designed
+title: 重新思考如何自定义 UI
+description: 深入探讨 Fumadocs UI 的设计思路
 author: Fuma Nama
 date: 2025-04-15
 ---
 
-## The Problem
+## 问题所在
 
-Making a docs framework isn't challenging, the hardest problem is how I can make it perfect for everyone, from the perspective of users and developers.
-Undoubtedly, this is **a dilemma** for all frameworks, or even library authors — You cannot write generic code that works out-of-the-box, there's no piece of software that is straight usable while being generic.
+构建一个文档框架并不困难，最棘手的问题是如何从用户和开发者的角度，让它在每个人眼中都完美无缺。
+毫无疑问，这对所有框架甚至库的作者来说都是一个**两难困境**——你无法编写开箱即用的通用代码，没有哪款软件能在保持通用性的同时直接可用。
 
-For example, headless UI libraries like **Radix UI** gave us the concept of generic UI components: bare UI primitives that we can customise according to our aesthetics.
-However, you'll need time to tune them, these primitives are unusable without further customisations.
+例如，像 **Radix UI** 这样的无头 UI 库为我们提供了通用 UI 组件的概念：我们可以根据自身审美进行自定义的基础 UI 元素。
+然而，你需要时间来调整它们，这些基础元素没有进一步的定制是无法使用的。
 
-Yep it's 2025, **Shadcn UI** had led a "revolution" on Web Development. It's a great combination of headless UI and styled defaults that takes an extra step away!
-But our problem remains unsolved, it might be preposterous that it becomes "unstyled" again when a vast majority of new sites adopted Shadcn UI.
+是的，现在是 2025 年，**Shadcn UI** 已经在 Web 开发领域引领了一场"革命"。它是无头 UI 和样式默认值的绝佳结合，向前迈进了一大步！
+但我们的问题依然存在，当绝大多数新网站都采用 Shadcn UI 时，它可能又会变得"无样式"，这或许有些荒谬。
 
-Personally, I felt overwhelmed by nearly identical, ubiquitous flat designs that are obviously one of the default Shadcn UI styles. It has nothing to do with Shadcn UI, but the rest of developers who don't actually care about aesthetics and uniqueness.
-Eventually, **Shadcn-like design became the default styles**, so once again, we will need to do a bit more to make it look stylish.
+我个人感到被那些几乎完全相同、无处不在的扁平设计所淹没，这些显然是 Shadcn UI 的默认样式之一。这与 Shadcn UI 本身无关，而是与其他那些并不真正关心美学和独特性的开发者有关。
+最终，**类 Shadcn 的设计变成了默认样式**，因此我们再次需要付出更多努力才能让它看起来时尚。
 
-### What should we do?
+### 我们应该怎么做？
 
-As a docs framework started from **"being flexible"**, Fumadocs must be customisable, tuned to meet developers' preferences.
-We will need to take customisation seriously if DX is what we aim. And most importantly, **it should encourage developers with a sense of beauty to customise.**
+作为一个始于**"灵活性"**的文档框架，Fumadocs 必须具有高度可定制性，能够根据开发者的偏好进行调整。
+如果我们以开发者体验（DX）为目标，就需要认真对待定制化。最重要的是，**它应该鼓励具有审美意识的开发者进行定制。**
 
-## The Solution
+## 解决方案
 
-Typically, there are two types of developers:
+通常，开发者分为两种类型：
 
-### those who want docs that just work
+### 那些只想要能正常工作的文档的人
 
-Fumadocs need to be opinionated by default such that it is immediately usable, and we only have to offer simplest options to change details. (e.g. colors, overriding components).
+Fumadocs 需要默认提供开箱即用的解决方案，使其立即可用，并且我们只需要提供最简单的选项来更改细节（例如颜色、组件覆盖）。
 
-Most developers have no desire to install dozens of components just to change a tiny detail, which makes the Shadcn approach suboptimal.
+大多数开发者不希望为了修改一个小细节而安装数十个组件，这使得 Shadcn 的方法并不理想。
 
-### those who need the perfect docs tailored to their preferences
+### 那些需要完美定制文档以满足个人偏好的人
 
-The kernel of Fumadocs, or the spirit we're pursuing is the latter one. I crafted Fumadocs CLI, a version of Shadcn UI dedicated for Fumadocs, the whole solution is now simplified into a single command:
+Fumadocs 的核心，或者说我们所追求的精神，正是后者。我开发了 Fumadocs CLI，这是一个专为 Fumadocs 打造的 Shadcn UI 版本，整个解决方案现在简化为一个命令：
 
 ```package-install
 npx @fumadocs/cli customise
 ```
 
-It accounts for two types:
+它考虑到了两种类型：
 
-- Customise the default styles when the exposed options are inadequate.
-- Roll their own layout from scratch.
+- 当暴露的选项不足时，自定义默认样式。
+- 从零开始构建自己的布局。
 
-The first one is self-evident, people will always have absurd needs that we have not even considered.
-We can install the original components, so it's simply identical to the default UI which they've been using.
+第一点不言自明，人们总会有我们甚至未曾考虑的荒谬需求。
+我们可以安装原始组件，因此它与他们一直使用的默认 UI 完全相同。
 
-The latter one is simpler, we can offer the minimal template they can start customising from.
+后者更简单，我们可以提供他们可以开始自定义的最小模板。
 
-This methodology, inspired by ejection, brings some nice advantages:
+这种受弹出机制启发的方法带来了一些显著优势：
 
-#### Don't break anything when you upgrade Fumadocs
+#### 升级 Fumadocs 时不会破坏任何内容
 
-Fumadocs need to be opinionated. Hence, we need to iterate the UI frequently which apparently will break people's hacky customisations.
-The charm of Fumadocs CLI is that once you've installed the layout, it stays the same forever regardless of future iterations on Fumadocs UI.
+Fumadocs 需要有主见。因此，我们需要频繁迭代 UI，这显然会破坏人们临时拼凑的自定义设置。
+Fumadocs CLI 的魅力在于，一旦你安装了布局，无论 Fumadocs UI 未来如何迭代，它都将保持不变。
 
-It gives the courage for Fumadocs UI to iterate, and developers to customise unburnt by the fear of upgrading dependencies.
+这给了 Fumadocs UI 迭代的勇气，也让开发者在自定义时无需担心升级依赖项带来的负担。
 
-#### Looks Clean
+#### 看起来简洁
 
-Just like Shadcn UI and Radix UI, Fumadocs UI has a core package (`fumadocs-core`), most generic logic will be abstracted by core.
+就像 Shadcn UI 和 Radix UI 一样，Fumadocs UI 有一个核心包（`fumadocs-core`），大多数通用逻辑将由核心抽象处理。
 
-## What is Next?
+## 下一步是什么？
 
-The innovation of Shadcn UI is amazing, yet, I believe there's more problems Fumadocs can solve.
+Shadcn UI 的创新令人惊叹，但我相信 Fumadocs 可以解决更多问题。
 
-See [Flags SDK](https://flags-sdk.dev/frameworks/next) and [BetterAuth](https://www.better-auth.com/docs/introduction), you can't tell at the first glance if they're powered by Fumadocs.
-I hope it can continue to be a "breakable" framework known for how customisable it is.
+请参阅 [Flags SDK](https://flags-sdk.dev/frameworks/next) 和 [BetterAuth](https://www.better-auth.com/docs/introduction)，您无法一眼看出它们是否由 Fumadocs 驱动。
+我希望它能继续成为一个以高度可定制性而闻名的“可破解”框架。

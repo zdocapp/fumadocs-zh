@@ -1,30 +1,30 @@
 ---
-title: Metadata
-description: Usage with Next.js Metadata API.
+title: 元数据
+description: 与 Next.js 元数据 API 的使用方法。
 ---
 
-> This guide is written for Next.js only.
+> 本指南仅适用于 Next.js。
 
-## Introduction
+## 介绍
 
-Next.js provides an useful set of utilities, allowing a flexible experience with Fumadocs.
-Fumadocs uses the Next.js Metadata API for SEO.
+Next.js 提供了一套实用的工具集，可与 Fumadocs 实现灵活的使用体验。
+Fumadocs 使用 Next.js Metadata API 进行 SEO 优化。
 
-Make sure to read their [Metadata section](https://nextjs.org/docs/app/building-your-application/optimizing/metadata) for the fundamentals of Metadata API.
+请务必阅读 Next.js 的 [Metadata 章节](https://nextjs.org/docs/app/building-your-application/optimizing/metadata) 以了解 Metadata API 的基础知识。
 
-## Open Graph Image
+## Open Graph 图片
 
-For docs pages, Fumadocs has a built-in metadata image generator.
+对于文档页面，Fumadocs 内置了元数据图片生成器。
 
-You will need a route handler to get started.
+您需要一个路由处理器来开始使用。
 
 <include cwd meta='title="app/docs-og/[...slug]/route.tsx"'>
   ../../examples/next-mdx/app/docs-og/[...slug]/route.tsx
 </include>
 
-> We need to append `image.png` to the end of slugs so that we can access it via `/docs-og/my-page/image.png`.
+> 我们需要在 slugs 末尾添加 `image.png`，以便通过 `/docs-og/my-page/image.png` 访问它。
 
-In your docs page, add the image to metadata.
+在您的文档页面中，将图片添加到元数据中。
 
 ```tsx title="app/docs/[[...slug]]/page.tsx"
 import { notFound } from 'next/navigation';
@@ -54,9 +54,9 @@ export async function generateMetadata({
 }
 ```
 
-### Font
+### 字体
 
-You can also customise the font, options for Satori are also available on the built-in generator.
+您还可以自定义字体，内置生成器也支持 Satori 的选项。
 
 ```ts
 import { generateOGImage } from 'fumadocs-ui/og';

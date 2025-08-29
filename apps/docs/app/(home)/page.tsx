@@ -76,9 +76,9 @@ export default function Page() {
             }}
           >
             <h2 className="text-center text-2xl font-semibold sm:text-3xl">
-              Loved by users.
+              深受用户喜爱。
               <br />
-              Built for developers.
+              为开发者打造。
             </h2>
           </div>
           <Features />
@@ -98,13 +98,13 @@ function Architecture() {
     <div className="flex flex-col gap-4 border-x border-t p-8 md:px-12 lg:flex-row">
       <div className="text-start">
         <p className="px-2 py-1 text-sm font-mono bg-fd-primary text-fd-primary-foreground font-bold w-fit mb-4">
-          Designed with Love
+          源于热爱，用心设计
         </p>
-        <h2 className="text-2xl font-semibold mb-4">A breakable framework.</h2>
+        <h2 className="text-2xl font-semibold mb-4">一个可拆解的框架。</h2>
         <p className="text-fd-muted-foreground mb-6">
-          Fumadocs makes it easy to build beautiful docs, write content, and
-          transform content into data for your React.js framework, from Next.js
-          to React Router.
+          Fumadocs 让你轻松构建优美的文档、撰写内容，
+          并将内容转换为数据，服务于你的 React.js 框架， 无论是 Next.js 还是
+          React Router。
         </p>
       </div>
       <Image
@@ -199,10 +199,10 @@ function End() {
     <div className="flex flex-col border-b border-r md:flex-row *:border-l *:border-t">
       <div className="group flex flex-col min-w-0 flex-1 pt-8 **:transition-colors">
         <h2 className="text-3xl text-center font-extrabold font-mono uppercase text-fd-muted-foreground mb-4 lg:text-4xl group-hover:text-blue-500">
-          Build Your Docs
+          构建你的文档
         </h2>
         <p className="text-center font-mono text-xs text-fd-foreground/60 mb-8 group-hover:text-blue-500/80">
-          light and gorgeous, just like the moon.
+          轻盈华美，宛若明月。
         </p>
         <div className="h-[200px] overflow-hidden p-8 bg-gradient-to-b from-fd-primary/10 group-hover:from-blue-500/10">
           <div className="mx-auto bg-radial-[circle_at_0%_100%] from-60% from-transparent to-fd-primary size-[500px] rounded-full group-hover:from-blue-500 group-hover:to-blue-600/10" />
@@ -212,35 +212,38 @@ function End() {
         <li>
           <span className="flex flex-row items-center gap-2 font-medium">
             <BatteryChargingIcon className="size-5" />
-            Battery guaranteed.
+            电池有保障。
           </span>
           <span className="mt-2 text-sm text-fd-muted-foreground">
-            Actively maintained, open for contributions.
+            持续维护，开放贡献。
           </span>
         </li>
+
         <li>
           <span className="flex flex-row items-center gap-2 font-medium">
             <svg viewBox="0 0 24 24" className="size-5" fill="currentColor">
               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
             </svg>
-            Fully open-source.
+            完全开源。
           </span>
           <span className="mt-2 text-sm text-fd-muted-foreground">
-            Open source, available on Github.
+            开源项目，可在 GitHub 获取。
           </span>
         </li>
+
         <li>
           <span className="flex flex-row items-center gap-2 font-medium">
             <TimerIcon className="size-5" />
-            Within seconds.
+            只需数秒。
           </span>
           <span className="mt-2 text-sm text-fd-muted-foreground">
-            Initialize a new project instantly with CLI.
+            使用 CLI 即刻初始化新项目。
           </span>
         </li>
+
         <li className="flex flex-row flex-wrap gap-2 mt-auto">
           <Link href="/docs" className={cn(buttonVariants())}>
-            Read docs
+            阅读文档
           </Link>
           <a
             href="https://stackblitz.com/~/github.com/fuma-nama/fumadocs-ui-template"
@@ -251,7 +254,7 @@ function End() {
               }),
             )}
           >
-            Open Demo
+            打开 Demo
           </a>
         </li>
       </ul>
@@ -302,30 +305,33 @@ function Highlights() {
     <div className="grid grid-cols-1 border-r md:grid-cols-2 lg:grid-cols-3">
       <div className="col-span-full flex flex-row items-start justify-center border-l border-t p-8 pb-2 text-center">
         <h2 className="bg-fd-primary text-fd-primary-foreground px-1 text-2xl font-semibold">
-          Highlights
+          亮点
         </h2>
         <MousePointer className="-ml-1 mt-8" />
       </div>
-      <Highlight icon={TimerIcon} heading="Light & Fast.">
-        Powered by React Server Components, images optimized by default.
+
+      <Highlight icon={TimerIcon} heading="轻量 & 快速。">
+        基于 React Server Components，默认优化图片。
       </Highlight>
-      <Highlight icon={RocketIcon} heading="Framework Agnostic.">
-        Building documentation site with Next.js, React Router, or Tanstack
-        Start.
+
+      <Highlight icon={RocketIcon} heading="框架无关。">
+        使用 Next.js、React Router 或 Tanstack Start 构建文档站点。
       </Highlight>
-      <Highlight icon={LayoutIcon} heading="Accessibility & UX first.">
-        Focus on user experience and accessibility.
+
+      <Highlight icon={LayoutIcon} heading="优先考虑可访问性与体验。">
+        专注于用户体验和无障碍设计。
       </Highlight>
-      <Highlight icon={ServerIcon} heading="Server First.">
-        Allowing seamless CMS integration and dynamic content integrated with
-        server.
+
+      <Highlight icon={ServerIcon} heading="以服务器为先。">
+        无缝集成 CMS，支持与服务器结合的动态内容。
       </Highlight>
-      <Highlight icon={KeyboardIcon} heading="Markdown & MDX.">
-        Syntax highlighting on Shiki, Typescript Twoslash, OpenAPI docs
-        generation, and more.
+
+      <Highlight icon={KeyboardIcon} heading="支持 Markdown & MDX。">
+        提供 Shiki 语法高亮、Typescript Twoslash、OpenAPI 文档生成等功能。
       </Highlight>
-      <Highlight icon={PersonStandingIcon} heading="Personalized.">
-        Advanced options for customising your theme in a comfortable way.
+
+      <Highlight icon={PersonStandingIcon} heading="个性化。">
+        提供高级选项，让你轻松自定义主题。
       </Highlight>
     </div>
   );
@@ -372,16 +378,18 @@ function Hero() {
             'repeating-linear-gradient(65deg, var(--color-purple-300), var(--color-purple-300) 12px, color-mix(in oklab, var(--color-blue-600) 30%, transparent) 20px, transparent 200px)',
         }}
       />
-      <h1 className="mb-8 text-4xl font-medium md:hidden">Build Your Docs</h1>
+      <h1 className="mb-8 text-4xl font-medium md:hidden">构建你的文档</h1>
       <h1 className="mb-8 max-w-[600px] text-4xl font-medium max-md:hidden">
-        Build excellent documentation
+        轻松构建出色文档
         <br />
-        with less effort
+        用更少的精力
       </h1>
+
       <p className="mb-8 text-fd-muted-foreground md:max-w-[80%] md:text-xl">
-        Fumadocs is a beautiful documentation framework for developers,
-        flexible, performant, running on your React framework.
+        Fumadocs 是一个优美的开发者文档框架，灵活、高性能， 可在你的 React
+        框架上运行。
       </p>
+
       <div className="inline-flex items-center gap-3 max-md:mx-auto">
         <Link
           href="/docs/ui"
@@ -389,7 +397,7 @@ function Hero() {
             buttonVariants({ size: 'lg', className: 'rounded-full' }),
           )}
         >
-          Getting Started
+          快速开始
         </Link>
         <a
           href="https://stackblitz.com/~/github.com/fuma-nama/fumadocs-ui-template"
@@ -403,7 +411,7 @@ function Hero() {
             }),
           )}
         >
-          Open StackBlitz
+          在 StackBlitz 中打开
         </a>
       </div>
       <PreviewImages />
@@ -415,30 +423,30 @@ const feedback = [
   {
     avatar: 'https://avatars.githubusercontent.com/u/124599',
     user: 'shadcn',
-    role: 'Creator of Shadcn UI',
-    message: `You know how you end up rebuilding a full docs site every time you start a new project? 
+    role: 'Shadcn UI 创始人',
+    message: `你是否经历过每次开始新项目都得重建整个文档站点？  
 
-Fumadocs fixes this by giving you all the right blocks that you compose together.
+Fumadocs 解决了这个问题，提供了你需要的所有模块，你只需组合即可。  
 
-Like headless docs to build exactly what you need.`,
+就像无头文档，让你精确构建所需内容。`,
   },
   {
     avatar: 'https://avatars.githubusercontent.com/u/35677084',
     user: 'Anthony Shew',
-    role: 'Turbo DX at Vercel',
-    message: `Major shoutout to @fuma_nama for making fumadocs, a gorgeous documentation framework that composes beautifully into the App Router.`,
+    role: 'Vercel Turbo DX',
+    message: `特别感谢 @fuma_nama 制作了 Fumadocs，这个漂亮的文档框架能完美组合到 App Router 中。`,
   },
   {
     user: 'Aiden Bai',
     avatar: 'https://avatars.githubusercontent.com/u/38025074',
-    role: 'Creator of Million.js',
-    message: 'fumadocs is the best Next.js docs framework',
+    role: 'Million.js 创始人',
+    message: 'Fumadocs 是最棒的 Next.js 文档框架',
   },
   {
     avatar: 'https://avatars.githubusercontent.com/u/10645823',
     user: 'David Blass',
-    role: 'Creator of Arktype',
-    message: `I'd have no shot building @arktypeio docs that looked half this good without it 😍`,
+    role: 'Arktype 创始人',
+    message: `没有它，我根本不可能把 @arktypeio 的文档做得一半这么好 😍`,
   },
 ];
 
@@ -447,13 +455,13 @@ function Feedback() {
     <div className="relative border-x border-t pt-8 bg-fd-background">
       <div className="flex flex-row gap-6 justify-between px-6 mb-6 items-center">
         <p className="text-sm font-medium md:text-lg">
-          Trusted by awesome teams and developers
+          受到优秀团队和开发者的信赖
         </p>
         <Link
           href="/showcase"
           className={cn(buttonVariants({ variant: 'outline' }))}
         >
-          Showcase
+          展示案例
         </Link>
       </div>
       <Marquee className="pb-8 [mask-image:linear-gradient(to_right,transparent,white_20px,white_calc(100%-20px),transparent)]">
@@ -491,16 +499,14 @@ function Introduction(): React.ReactElement {
       <div className="flex flex-col gap-2 border-l border-t px-6 py-12 md:py-16">
         <div className={cn(badgeVariants())}>1</div>
         <h3 className="text-xl font-semibold">Create it.</h3>
-        <p className="mb-8 text-fd-muted-foreground">
-          Initialize a new docs with a command.
-        </p>
+        <p className="mb-8 text-fd-muted-foreground">通过命令初始化新文档</p>
         <CreateAppAnimation />
       </div>
       <div className="flex flex-col gap-2 border-l border-t px-6 py-12 md:py-16">
         <div className={cn(badgeVariants())}>2</div>
         <h3 className="text-xl font-semibold">Write.</h3>
         <p className="text-fd-muted-foreground">
-          Write content, with automation tools & type-safe data validation.
+          撰写内容，使用自动化工具并进行类型安全的数据验证
         </p>
         <div className="relative flex flex-col">
           <CodeBlock
@@ -528,9 +534,7 @@ Hello World
       <div className="col-span-full flex flex-col items-center gap-2 border-l border-t px-6 py-16 text-center">
         <div className={cn(badgeVariants())}>3</div>
         <h3 className="text-2xl font-semibold">Ship.</h3>
-        <p className="text-fd-muted-foreground">
-          Deploy your docs easily with any hosting platforms.
-        </p>
+        <p className="text-fd-muted-foreground">轻松将文档部署到任意托管平台</p>
 
         <div className="mt-4 flex flex-row flex-wrap items-center gap-8">
           <a href="https://vercel.com" rel="noreferrer noopener">
@@ -549,25 +553,23 @@ function Contributing() {
   return (
     <div className="flex flex-col items-center border-x border-t px-4 py-16 text-center">
       <Heart fill="currentColor" className="text-pink-500 mb-4" />
-      <h2 className="mb-4 text-xl font-semibold sm:text-2xl">
-        Made Possible by You.
-      </h2>
+      <h2 className="mb-4 text-xl font-semibold sm:text-2xl">因为有你而实现</h2>
       <p className="mb-4 text-fd-muted-foreground">
-        Fumadocs is 100% powered by passion and open source community.
+        Fumadocs 100% 由热情与开源社区驱动
       </p>
       <div className="mb-8 flex flex-row items-center gap-2">
         <Link
           href="/sponsors"
           className={cn(buttonVariants({ variant: 'outline' }))}
         >
-          Sponsors
+          赞助商
         </Link>
         <a
           href="https://github.com/fuma-nama/fumadocs/graphs/contributors"
           rel="noreferrer noopener"
           className={cn(buttonVariants({ variant: 'ghost' }))}
         >
-          Contributors
+          贡献者
         </a>
       </div>
       <ContributorCounter repoOwner={owner} repoName={repo} />
@@ -581,14 +583,14 @@ function Features() {
       <Feature
         icon={PaperclipIcon}
         subheading="Source Agnostic"
-        heading="Your source. Your choice"
+        heading="内容由你掌控，自由选择"
         description={
           <>
             <span className="font-medium text-fd-foreground">
-              Designed to integrate with any content source:{' '}
+              设计可与任意内容源集成：
             </span>
             <span>
-              Fumadocs works on MDX, Content Collections, and even your own CMS.
+              Fumadocs 支持 MDX、Content Collections，甚至你自己的 CMS。
             </span>
           </>
         }
@@ -634,7 +636,7 @@ function Features() {
           <div className="z-2 mt-[-170px] w-[300px] overflow-hidden rounded-lg border border-fd-foreground/10 shadow-xl backdrop-blur-lg">
             <div className="flex flex-row items-center gap-2 bg-fd-muted/50 px-4 py-2 text-xs font-medium text-fd-muted-foreground">
               <FileEditIcon className="size-4" />
-              MDX Editor
+              MDX 编辑器
             </div>
             <pre className="p-4 text-[13px]">
               <code className="grid">
@@ -650,8 +652,8 @@ function Features() {
       <Feature
         icon={SearchIcon}
         subheading="Search Integration"
-        heading="Enhance your search experience."
-        description="Integrate with Orama Search and Algolia Search in your docs easily."
+        heading="让搜索体验更出色"
+        description="轻松将 Orama Search 与 Algolia Search 集成到你的文档中"
       >
         <Link
           href="/docs/headless/search/algolia"
@@ -659,15 +661,15 @@ function Features() {
             buttonVariants({ variant: 'outline', className: 'mt-4' }),
           )}
         >
-          Learn More
+          了解更多
         </Link>
         <Search />
       </Feature>
       <Feature
         icon={Terminal}
         subheading="Fumadocs CLI"
-        heading="The Shadcn UI for docs"
-        description="Fumadocs CLI creates interactive components for your docs, offering a rich experience to your users."
+        heading="用于文档的 Shadcn UI"
+        description="Fumadocs CLI 为你的文档创建交互式组件，为用户提供丰富的体验。"
       >
         <div className="relative">
           <div className="grid grid-cols-[1fr_2fr_1fr] h-[220px] *:border-fd-foreground/50 *:border-dashed mask-radial-circle mask-radial-from-white">
@@ -693,8 +695,8 @@ function Features() {
       <Feature
         icon={CpuIcon}
         subheading="Robust"
-        heading="Flexibility that cover your needs."
-        description="Well documented, separated in packages."
+        heading="灵活性，满足你的需求"
+        description="文档完善，功能模块独立封装。"
       >
         <div className="mt-8 flex flex-col gap-4">
           <Link
@@ -705,7 +707,7 @@ function Features() {
               <LayoutIcon />
               <h3 className="font-semibold">Fumadocs UI</h3>
               <p className="text-sm text-fd-muted-foreground">
-                Default theme of Fumadocs with many useful components.
+                Fumadocs 默认主题，包含众多实用组件
               </p>
             </div>
           </Link>
@@ -716,7 +718,7 @@ function Features() {
             <LibraryIcon />
             <h3 className="font-semibold">Core</h3>
             <p className="text-sm text-fd-muted-foreground">
-              Headless library with a useful set of utilities.
+              无头库，提供实用工具集
             </p>
           </Link>
         </div>

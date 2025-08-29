@@ -1,15 +1,15 @@
 ---
-title: Orama Cloud
-description: Integrate with Orama Cloud
+title: Orama 云服务
+description: 与 Orama 云服务集成
 ---
 
-To begin, create an account on Orama Cloud.
+首先，在 Orama Cloud 上创建一个账户。
 
 ## REST API
 
-REST API integration requires your docs to upload the indexes.
+REST API 集成需要您上传文档的索引。
 
-Create a new REST API index from Dashboard using the following schema:
+在仪表板中使用以下模式创建一个新的 REST API 索引：
 
 ```json
 {
@@ -24,7 +24,7 @@ Create a new REST API index from Dashboard using the following schema:
 }
 ```
 
-Export the search indexes by pre-rendering a static route.
+通过预渲染静态路由导出搜索索引。
 
 ```ts title="lib/export-search-indexes.ts"
 import { source } from '@/lib/source';
@@ -45,7 +45,7 @@ export async function exportSearchIndexes() {
 
 <include>.static-route-example.mdx</include>
 
-Then, using the private API key and index ID from dashboard, create a script to sync search indexes.
+然后，使用仪表板中的私有 API 密钥和索引 ID，创建一个脚本来同步搜索索引。
 
 ```ts title="scripts/sync-content.ts"
 import { sync, type OramaDocument } from 'fumadocs-core/search/orama-cloud';
@@ -83,7 +83,7 @@ async function main() {
 void main();
 ```
 
-Run the script after production build:
+在生产构建后运行该脚本：
 
 ```json title="package.json"
 {
@@ -93,12 +93,12 @@ Run the script after production build:
 }
 ```
 
-### Search Client
+### 搜索客户端
 
-To search documents on the client side, consider:
+要在客户端搜索文档，请考虑：
 
-- Using [Fumadocs UI search dialog](/docs/ui/search/orama-cloud).
-- Custom search UI using the built-in hook of Fumadocs:
+- 使用 [Fumadocs UI 搜索对话框](/docs/ui/search/orama-cloud)。
+- 使用 Fumadocs 的内置钩子自定义搜索 UI：
 
   ```ts
   import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -110,21 +110,21 @@ To search documents on the client side, consider:
     type: 'orama-cloud',
     client,
     params: {
-      // search params
+      // 搜索参数
     },
   });
   ```
 
-- Use their search client directly.
+- 直接使用他们的搜索客户端。
 
-## Web Crawler
+## 网络爬虫
 
-1. Create a Crawler index from dashboard, and configure it correctly with the "Documentation" preset.
-2. Copy the public API key and index ID from dashboard
+1. 从仪表板创建一个爬虫索引，并使用“文档”预设正确配置它。
+2. 从仪表板复制公共 API 密钥和索引 ID
 
-### Search Client
+### 搜索客户端
 
-Same as REST API integration, but make sure to set `index` to `crawler`.
+与 REST API 集成相同，但请确保将 `index` 设置为 `crawler`。
 
 ```ts
 import { useDocsSearch } from 'fumadocs-core/search/client';
@@ -145,4 +145,4 @@ const { search, setSearch, query } = useDocsSearch({
 });
 ```
 
-It's same for Fumadocs UI.
+对于 Fumadocs UI 也是如此。

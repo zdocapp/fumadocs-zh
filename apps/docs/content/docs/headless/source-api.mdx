@@ -1,21 +1,21 @@
 ---
 title: loader()
-description: Turn a content source into a unified interface
+description: 将内容源转换为统一接口
 ---
 
-## Usage
+## 使用方法
 
-`loader()` provides an interface for Fumadocs to integrate with file-system based content sources.
+`loader()` 为 Fumadocs 提供了一个接口，用于与基于文件系统的内容源集成。
 
-### What it does?
+### 功能是什么？
 
-- Generate page trees based on file system.
-- Assign URL and slugs to each page.
-- Output useful utilities to interact with content.
+- 基于文件系统生成页面树。
+- 为每个页面分配 URL 和 slugs。
+- 输出有用的工具来与内容交互。
 
-It doesn't rely on the real file system (zero `node:fs` usage), a virtual storage is also allowed.
+它不依赖真实的文件系统（零 `node:fs` 使用），也允许使用虚拟存储。
 
-You can use it with built-in content sources like Fumadocs MDX.
+你可以将其与内置的内容源（如 Fumadocs MDX）一起使用。
 
 ```ts
 import { loader } from 'fumadocs-core/source';
@@ -28,7 +28,7 @@ export const source = loader({
 
 ### URL
 
-You can override the base URL, or specify a function to generate URL for each page.
+你可以覆盖基础 URL，或指定一个函数来为每个页面生成 URL。
 
 ```ts
 import { loader } from 'fumadocs-core/source';
@@ -43,9 +43,9 @@ loader({
 });
 ```
 
-### Icons
+### 图标
 
-Load the [icon](/docs/headless/page-conventions#icons) property specified by pages and meta files.
+加载由页面和元文件指定的 [图标](/docs/headless/page-conventions#icons) 属性。
 
 ```ts
 import { loader } from 'fumadocs-core/source';
@@ -64,9 +64,9 @@ loader({
 });
 ```
 
-### I18n
+### 国际化 (I18n)
 
-Pass the `i18n` config to loader.
+将 `i18n` 配置传递给 loader。
 
 ```ts title="lib/source.ts"
 import { i18n } from '@/lib/i18n';
@@ -77,17 +77,17 @@ export const source = loader({
 });
 ```
 
-With i18n enabled, loader will generate a page tree for every locale.
+启用 i18n 后，loader 将为每个语言环境生成一个页面树。
 
-If translations are missing for a page, it fallbacks to [`fallbackLanguage`](/docs/headless/internationalization#fallback-language).
+如果页面缺少翻译，它将回退到 [`fallbackLanguage`](/docs/headless/internationalization#fallback-language)。
 
-## Output
+## 输出
 
-The loader outputs a source object.
+loader 输出一个源对象。
 
-### Get Page
+### 获取页面
 
-Get page with slugs.
+通过 slugs 获取页面。
 
 ```ts
 import { source } from '@/lib/source';
@@ -98,9 +98,9 @@ source.getPage(['slug', 'of', 'page']);
 source.getPage(['slug', 'of', 'page'], 'locale');
 ```
 
-### Get Pages
+### 获取页面列表
 
-Get a list of page available for locale.
+获取可用于特定语言环境的页面列表。
 
 ```ts
 import { source } from '@/lib/source';
@@ -112,7 +112,7 @@ source.getPages();
 source.getPages('locale');
 ```
 
-### Page Tree
+### 页面树
 
 ```ts
 import { source } from '@/lib/source';
@@ -124,10 +124,10 @@ source.pageTree;
 source.pageTree['locale'];
 ```
 
-### Get from Node
+### 从节点获取
 
-The page tree nodes contain references to their original file path.
-You can find their original page or meta file from the tree nodes.
+页面树节点包含对其原始文件路径的引用。
+你可以从树节点中找到它们的原始页面或元文件。
 
 ```ts
 import { source } from '@/lib/source';
@@ -136,10 +136,10 @@ source.getNodePage(pageNode);
 source.getNodeMeta(folderNode);
 ```
 
-### Params
+### 参数
 
-A function to generate output for Next.js `generateStaticParams`.
-The generated parameter names will be `slug: string[]` and `lang: string` (i18n only).
+一个用于为 Next.js `generateStaticParams` 生成输出的函数。
+生成的参数名称将为 `slug: string[]` 和 `lang: string`（仅限 i18n）。
 
 ```ts title="app/[[...slug]]/page.tsx"
 import { source } from '@/lib/source';
@@ -149,9 +149,9 @@ export function generateStaticParams() {
 }
 ```
 
-### Language Entries
+### 语言条目
 
-Get available languages and its pages.
+获取可用语言及其页面。
 
 ```ts
 import { source } from '@/lib/source';
@@ -160,14 +160,14 @@ import { source } from '@/lib/source';
 const entries = source.getLanguages();
 ```
 
-## Deep Dive
+## 深入探讨
 
-As mentioned, Source API doesn't rely on real file systems.
-During the process, your input source files will be parsed and form a virtual storage to avoid inconsistent behaviour between different OS.
+如前所述，Source API 不依赖真实的文件系统。
+在此过程中，您的输入源文件将被解析并形成一个虚拟存储，以避免不同操作系统之间的不一致行为。
 
-### Transformer
+### 转换器
 
-To perform virtual file-system operations before processing, you can add a transformer.
+为了在处理前执行虚拟文件系统操作，您可以添加一个转换器。
 
 ```ts
 import { loader } from 'fumadocs-core/source';
@@ -181,11 +181,11 @@ loader({
 });
 ```
 
-### Page Tree
+### 页面树
 
-The page tree is generated from your file system, some unnecessary information (e.g. unused frontmatter properties) will be filtered.
+页面树是从您的文件系统生成的，一些不必要的信息（例如未使用的前言属性）将被过滤。
 
-You can customise it using the `pageTree` option, such as attaching custom properties to nodes, or customising the display name of pages.
+您可以使用 `pageTree` 选项来自定义它，例如为节点附加自定义属性，或自定义页面的显示名称。
 
 ```tsx
 import React from 'react';
@@ -210,16 +210,16 @@ loader({
 });
 ```
 
-### Custom Source
+### 自定义源
 
-To plug your own content source, create a `Source` object.
+要接入您自己的内容源，请创建一个 `Source` 对象。
 
-It includes a `files` property which is an array of virtual files.
-Each virtual file must contain its file path and corresponding data.
-You can check type definitions for more info.
+它包括一个 `files` 属性，这是一个虚拟文件数组。
+每个虚拟文件必须包含其文件路径和相应的数据。
+您可以查看类型定义以获取更多信息。
 
-Since Source API doesn't rely on file system, file paths cannot be absolute or relative (for example, `./file.mdx` and `D://content/file.mdx` are not allowed).
-Instead, pass the file paths like `file.mdx` and `content/file.mdx`.
+由于 Source API 不依赖文件系统，文件路径不能是绝对或相对的（例如，不允许使用 `./file.mdx` 和 `D://content/file.mdx`）。
+相反，请传递像 `file.mdx` 和 `content/file.mdx` 这样的文件路径。
 
 ```ts
 import { Source } from 'fumadocs-core/source';

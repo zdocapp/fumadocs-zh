@@ -5,19 +5,19 @@ author: Fuma Nama
 date: 2025-01-24
 ---
 
-## Overview
+## 概述
 
-The purpose of v15 is mainly to support Tailwind CSS v4.
-Tailwind CSS v4 is a complete redesign of its API and internals, to fully adhere to the new CSS-first config style, a breaking change is required.
+v15 版本的主要目的是支持 Tailwind CSS v4。
+Tailwind CSS v4 对其 API 和内部结构进行了全面重新设计，以完全遵循新的 CSS 优先配置风格，因此需要进行破坏性变更。
 
-Fumadocs v15 has no other significant changes other than migrating the config to Tailwind CSS v4.
+Fumadocs v15 除了将配置迁移至 Tailwind CSS v4 外，没有其他重大变更。
 
-## Breaking Changes
+## 重大变更
 
-Before making the switch, upgrade your site to Tailwind CSS v4 following their [upgrade guide](https://tailwindcss.com/docs/upgrade-guide).
-You can remove the unused `tailwind.config.js` file and fully rely on the new CSS-first config.
+在进行切换之前，请按照 Tailwind CSS 的[升级指南](https://tailwindcss.com/docs/upgrade-guide)将您的站点升级至 v4 版本。
+您可以移除不再使用的 `tailwind.config.js` 文件，并完全依赖新的 CSS 优先配置。
 
-Add `@import` to the presets exported by Fumadocs UI, and include the `fumadocs-ui` package in the source.
+将 Fumadocs UI 导出的预设添加到 `@import` 中，并在源码中包含 `fumadocs-ui` 包。
 
 ```css title="Tailwind CSS"
 @import 'tailwindcss';
@@ -28,12 +28,12 @@ Add `@import` to the presets exported by Fumadocs UI, and include the `fumadocs-
 @source '../node_modules/fumadocs-ui/dist/**/*.js';
 ```
 
-Since v15, you will no longer pass options in JavaScript to customise plugins.
-Instead, you can use the new alternatives in Tailwind CSS v4.
+从 v15 开始，您将不再通过 JavaScript 传递选项来自定义插件。
+取而代之的是，您可以使用 Tailwind CSS v4 中的新替代方案。
 
 ### `addGlobalColors: true`
 
-Forward the colors again:
+再次转发颜色：
 
 ```css
 @theme {
@@ -42,10 +42,10 @@ Forward the colors again:
 }
 ```
 
-### CSS Variables
+### CSS 变量
 
-Fumadocs no longer use `--fd-<color>` like `--fd-primary: 0 0% 0%` for colors, it directly defines and uses colors in `@theme`.
-Instead of the previous format, it uses `hsl()`:
+Fumadocs 不再使用类似 `--fd-primary: 0 0% 0%` 的 `--fd-<color>` 格式来定义颜色，而是直接在 `@theme` 中定义和使用颜色。
+它使用 `hsl()` 替代了之前的格式：
 
 ```css
 @theme {
@@ -53,21 +53,21 @@ Instead of the previous format, it uses `hsl()`:
 }
 ```
 
-### Steps
+### 步骤
 
-Previous Tailwind CSS utilities like `steps` & `step` are renamed to `fd-steps` and `fd-step` to avoid conflicts.
+之前的 Tailwind CSS 工具类如 `steps` 和 `step` 已重命名为 `fd-steps` 和 `fd-step`，以避免冲突。
 
-### Typography
+### 排版
 
-Typography utilities including `prose`, `prose-*` modifiers will continue to work. Please report problems if they are no longer working or have unexpected change in behaviours.
+包含 `prose`、`prose-*` 修饰符的排版工具类将继续正常工作。如果它们不再工作或出现意外行为变化，请报告问题。
 
-## Improvements
+## 改进
 
-v15 also includes some minor improvements to the UI and OpenAPI integration.
+v15 还对 UI 和 OpenAPI 集成进行了一些小改进。
 
-### Code Block Tabs
+### 代码块标签页
 
-In the past, you needed to write the `<Tabs />` manually when separating code blocks into tabs.
+过去，在将代码块分离到标签页时，您需要手动编写 `<Tabs />`。
 
 ````mdx
 <Tabs items={["Tab 1", "Tab 2"]}>
@@ -83,7 +83,7 @@ console.log('Hello World');
 </Tabs>
 ````
 
-Now you can do:
+现在您可以这样做：
 
 ````mdx
 ```ts tab="Tab 1"
@@ -95,11 +95,11 @@ console.log('Hello World');
 ```
 ````
 
-Note that the previous usage still works for those who want to customise or pass props to the `<Tabs />` component.
+请注意，对于希望自定义或向 `<Tabs />` 组件传递属性的用户，之前的用法仍然有效。
 
-### Reversed Items in `meta.json`
+### `meta.json` 中的反向项
 
-The rest item `...` in the `pages` property of `meta.json` now supports reversed order:
+`meta.json` 的 `pages` 属性中的剩余项 `...` 现在支持反向排序：
 
 ```json
 {
@@ -107,11 +107,11 @@ The rest item `...` in the `pages` property of `meta.json` now supports reversed
 }
 ```
 
-### OpenAPI Playground
+### OpenAPI 演练场
 
-v15 improves the playground UI (inspired by the minimalism of Scalar), and brought Scalar API Client support to Fumadocs OpenAPI.
+v15 改进了演练场 UI（灵感来自 Scalar 的极简主义），并为 Fumadocs OpenAPI 带来了 Scalar API 客户端支持。
 
-You can enable the Scalar API Client using `useScalar` option in `createOpenAPI()`:
+您可以在 `createOpenAPI()` 中使用 `useScalar` 选项启用 Scalar API 客户端：
 
 ```ts
 import { createOpenAPI } from 'fumadocs-openapi/server';
@@ -124,7 +124,7 @@ export const openapi = createOpenAPI({
 });
 ```
 
-And install & configure their `@scalar/api-client-react`:
+并安装和配置他们的 `@scalar/api-client-react`：
 
 ```package-install
 @scalar/api-client-react
@@ -140,13 +140,13 @@ And install & configure their `@scalar/api-client-react`:
   libraries use Tailwind CSS for styling.
 </Callout>
 
-## Future Plans
+## 未来计划
 
-This update should be a simple migration for most developers updating to Tailwind CSS v4.
+对于大多数升级到 Tailwind CSS v4 的开发者来说，这次更新应该是一个简单的迁移过程。
 
-In the future, we also want to make further improvements to Fumadocs MDX:
+未来，我们还希望进一步改进 Fumadocs MDX：
 
-- remove `transform` API - you can easily do the same with `.map()` on runtime like:
+- 移除 `transform` API - 您可以在运行时使用 `.map()` 轻松实现相同功能，例如：
 
 ```ts
 import { blog } from "@/.source"
@@ -154,6 +154,6 @@ import { blog } from "@/.source"
 export const updatedBlog = blog.map(...)
 ```
 
-- remove Manifest API - it was designed to export search indexes, but now it's recommended to implement using route handlers.
+- 移除 Manifest API - 该 API 原本设计用于导出搜索索引，但现在建议使用路由处理程序来实现。
 
-- Mention more about our [MDX Remote](/docs/headless/custom-source#mdx-remote) package, it will be the primary solution to handle large docs sites with performance needs that bundlers couldn't do, including lazy compilation of MDX files.
+- 更多介绍我们的 [MDX Remote](/docs/headless/custom-source#mdx-remote) 包，它将成为处理大型文档站点性能需求的主要解决方案，这些需求是打包工具无法满足的，包括 MDX 文件的懒编译。

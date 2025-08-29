@@ -1,17 +1,17 @@
 ---
-title: Static Build
-description: Output static website with Fumadocs.
+title: 静态构建
+description: 使用 Fumadocs 输出静态网站。
 ---
 
-## Overview
+## 概述
 
-By default, Fumadocs use a server-first approach which always requires a running server to serve.
+默认情况下，Fumadocs 采用服务器优先的方法，始终需要运行服务器来提供服务。
 
-You can also output a static build by enabling it on your React framework.
+您也可以通过在自己的 React 框架上启用静态构建来输出静态网站。
 
 ### Next.js
 
-Fumadocs is fully compatible with Next.js static export, allowing you to export the app as a static HTML site without a Node.js server.
+Fumadocs 与 Next.js 静态导出完全兼容，允许您将应用导出为静态 HTML 站点，无需 Node.js 服务器。
 
 ```js title="next.config.mjs"
 /**
@@ -28,11 +28,11 @@ const nextConfig = {
 };
 ```
 
-See [Next.js docs](https://nextjs.org/docs/app/guides/static-exports) for limitations and details.
+有关限制和详细信息，请参阅 [Next.js 文档](https://nextjs.org/docs/app/guides/static-exports)。
 
 ### React Router
 
-By configuring pre-rendering on all pages, you can serve the `build/client` directory as a static website.
+通过配置所有页面的预渲染，您可以将 `build/client` 目录作为静态网站提供服务。
 
 ```ts title="react-router.config.ts"
 import type { Config } from '@react-router/dev/config';
@@ -57,7 +57,7 @@ export default {
 
 ### Tanstack Start
 
-Tanstack Start has powerful auto pre-rendering that automatically crawl your pages.
+Tanstack Start 具有强大的自动预渲染功能，可自动爬取您的页面。
 
 ```ts title="vite.config.ts"
 import react from '@vitejs/plugin-react';
@@ -89,15 +89,15 @@ export default defineConfig({
 });
 ```
 
-## Search
+## 搜索
 
-### Built-in Search
+### 内置搜索
 
-You will need extra configurations to statically store the search indexes, and search will be computed on browser instead:
+您需要额外的配置来静态存储搜索索引，并且搜索将在浏览器端进行计算：
 
-1. **Search Client:** [enable static mode](/docs/ui/search/orama#static).
-2. **Search Server:** [output static indexes](/docs/headless/search/orama#static-export).
+1. **搜索客户端：** [启用静态模式](/docs/ui/search/orama#static)。
+2. **搜索服务器：** [输出静态索引](/docs/headless/search/orama#static-export)。
 
-### Cloud Solutions
+### 云解决方案
 
-Since the search functionality is powered by remote servers, static export works without configuration.
+由于搜索功能由远程服务器提供支持，静态导出无需配置即可工作。
